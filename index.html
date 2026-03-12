@@ -41,63 +41,63 @@
       keywords: ["plumb", "plumbing", "electric", "electrical", "builder", "building", "joiner", "roofer", "roofing", "heating", "hvac", "gas engineer", "boiler", "trades"],
       label: "Trades",
       intro: "Got it. Trades businesses often deal with missed calls, quote requests, urgent jobs, and after-hours enquiries.",
-      question: "What’s the biggest pressure point for you right now?",
+      question: "What's the biggest pressure point for you right now?",
       quickReplies: ["Missed calls", "Quote requests", "Urgent jobs", "After-hours enquiries"]
     },
     Transport: {
       keywords: ["transport", "logistics", "delivery", "courier", "haulage", "freight", "fleet"],
       label: "Transport",
       intro: "Got it. Transport and logistics businesses often deal with quote requests, urgent bookings, delivery queries, and after-hours messages.",
-      question: "What’s the biggest pressure point for you right now?",
+      question: "What's the biggest pressure point for you right now?",
       quickReplies: ["Quote requests", "Urgent bookings", "Delivery queries", "After-hours messages"]
     },
     Hospitality: {
       keywords: ["restaurant", "cafe", "hotel", "hospitality", "bar", "venue", "guest house", "pub"],
       label: "Hospitality",
       intro: "Got it. Hospitality businesses often deal with booking questions, availability checks, event enquiries, and out-of-hours messages.",
-      question: "What’s the biggest pressure point for you right now?",
+      question: "What's the biggest pressure point for you right now?",
       quickReplies: ["Booking enquiries", "Availability questions", "Event leads", "After-hours messages"]
     },
     Fitness: {
       keywords: ["gym", "fitness", "pt", "personal training", "studio", "wellness"],
       label: "Fitness",
       intro: "Got it. Fitness businesses often deal with membership questions, trial requests, class enquiries, and missed follow-up.",
-      question: "What’s the biggest pressure point for you right now?",
+      question: "What's the biggest pressure point for you right now?",
       quickReplies: ["Membership enquiries", "Trial requests", "Class questions", "Missed follow-up"]
     },
     "Commercial Property": {
       keywords: ["property", "commercial property", "workspace", "office space", "serviced office", "tenant", "leasing", "lease", "viewing"],
       label: "Commercial Property",
       intro: "Got it. Commercial property teams often deal with viewing requests, availability questions, lease enquiries, and out-of-hours interest from potential tenants.",
-      question: "What’s the biggest pressure point for you right now?",
+      question: "What's the biggest pressure point for you right now?",
       quickReplies: ["Viewing requests", "Availability questions", "Lease enquiries", "After-hours interest"]
     },
     School: {
       keywords: ["school", "academy", "college", "education", "nursery"],
       label: "School",
       intro: "Got it. Schools often deal with parent enquiries, admissions questions, visit requests, and admin follow-up.",
-      question: "What’s the biggest pressure point for you right now?",
+      question: "What's the biggest pressure point for you right now?",
       quickReplies: ["Admissions questions", "Parent enquiries", "Visit requests", "Admin overload"]
     },
     Church: {
       keywords: ["church", "ministry", "parish", "fellowship"],
       label: "Church",
       intro: "Got it. Churches often deal with visitor questions, event enquiries, prayer requests, and follow-up after first contact.",
-      question: "What’s the biggest pressure point for you right now?",
+      question: "What's the biggest pressure point for you right now?",
       quickReplies: ["Visitor follow-up", "Event enquiries", "Prayer requests", "Admin overload"]
     },
     Legal: {
       keywords: ["law", "legal", "solicitor", "solicitors", "firm", "attorney"],
       label: "Legal",
       intro: "Got it. Legal firms often deal with new case enquiries, urgent contact requests, consultation bookings, and slow follow-up.",
-      question: "What’s the biggest pressure point for you right now?",
+      question: "What's the biggest pressure point for you right now?",
       quickReplies: ["New case enquiries", "Urgent contact requests", "Consultation bookings", "Slow follow-up"]
     },
     General: {
       keywords: [],
       label: "General",
       intro: "Got it. Businesses often lose strong enquiries because nobody responds quickly enough or the handover is messy.",
-      question: "What’s the biggest pressure point for you right now when new enquiries come in?",
+      question: "What's the biggest pressure point for you right now when new enquiries come in?",
       quickReplies: ["Missed enquiries", "Slow follow-up", "Admin overload", "After-hours messages"]
     }
   };
@@ -105,7 +105,7 @@
   const steps = [
     {
       key: "business",
-      ask: "Hi, I’m Fredi.\n\nI help businesses capture and respond to enquiries automatically.\n\nWhat kind of business are you running?",
+      ask: "Hi, I'm Fredi.\n\nI help businesses capture and respond to enquiries automatically.\n\nWhat kind of business are you running?",
       quickReplies: [
         "Plumbing business",
         "Transport company",
@@ -134,7 +134,7 @@
     },
     {
       key: "name",
-      ask: "That helps.\n\nWhat’s your full name?",
+      ask: "That helps.\n\nWhat's your full name?",
       quickReplies: [],
       validate: (value) => value.trim().length > 1,
       onSave: (value) => {
@@ -143,7 +143,7 @@
     },
     {
       key: "email",
-      ask: "Thanks.\n\nWhat’s your best email address?",
+      ask: "Thanks.\n\nWhat's your best email address?",
       quickReplies: [],
       validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
       error: "Please enter a valid email address.",
@@ -153,7 +153,7 @@
     },
     {
       key: "phone",
-      ask: "And what’s your phone number?",
+      ask: "And what's your phone number?",
       quickReplies: [],
       validate: (value) => value.replace(/[^\d+]/g, "").length >= 7,
       error: "Please enter a valid phone number.",
@@ -368,7 +368,7 @@
       }
 
       appendMessage(
-        `Thanks, ${lead.name}.\n\nYour enquiry has been captured and passed on.\n\nIf you’d like, you can also book a demo here:\n${bookingLink}`,
+        `Thanks, ${lead.name}.\n\nYour enquiry has been captured and passed on.\n\nIf you'd like, you can also book a demo here:\n${bookingLink}`,
         "bot"
       );
 
