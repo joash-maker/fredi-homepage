@@ -165,26 +165,20 @@
       box-shadow: 0 28px 70px rgba(0,0,0,0.42);
     }
 
-    .mock-window {
+    .hero-preview {
       border: 1px solid #273649;
       border-radius: 20px;
       overflow: hidden;
       background: #10151c;
     }
 
-    .mock-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--line-soft);
-      background: rgba(13, 16, 22, 0.96);
-    }
-
-    .mock-brand {
+    .hero-preview-top {
       display: flex;
       align-items: center;
       gap: 12px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line-soft);
+      background: rgba(13, 16, 22, 0.96);
     }
 
     .avatar {
@@ -200,89 +194,79 @@
       box-shadow: 0 8px 18px rgba(0, 112, 243, 0.28);
     }
 
-    .mock-brand strong { display: block; font-size: 16px; }
-    .mock-brand span { color: var(--muted-2); font-size: 12px; }
+    .hero-preview-top strong {
+      display: block;
+      font-size: 16px;
+    }
 
-    .mock-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-height: 430px;
+    .hero-preview-top span {
+      color: var(--muted-2);
+      font-size: 12px;
+    }
+
+    .hero-preview-body {
+      padding: 24px 22px;
       background: #11151c;
     }
 
-    .msg {
-      max-width: 82%;
-      padding: 12px 14px;
-      border-radius: 16px;
-      line-height: 1.55;
-      font-size: 14px;
-      white-space: normal;
-    }
-
-    .msg.bot {
-      background: #1a2330;
-      align-self: flex-start;
-      border-bottom-left-radius: 6px;
-    }
-
-    .msg.user {
-      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
-      align-self: flex-end;
-      border-bottom-right-radius: 6px;
-    }
-
-    .quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: -4px;
-      margin-bottom: 4px;
-    }
-
-    .quick-reply-btn {
-      border: 1px solid #2c394c;
-      background: #141923;
-      color: #d9e3ef;
-      padding: 8px 11px;
+    .preview-kicker {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
       border-radius: 999px;
+      border: 1px solid rgba(10, 132, 255, 0.28);
+      background: rgba(10, 132, 255, 0.08);
+      color: #9fc9ff;
       font-size: 12px;
-      cursor: pointer;
-      transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
-    }
-
-    .quick-reply-btn:hover {
-      border-color: var(--blue);
-      background: #182131;
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    .mock-input {
-      border-top: 1px solid #222a35;
-      padding: 14px 18px;
-      display: flex;
-      gap: 10px;
-      background: #0d1016;
-    }
-
-    .mock-field {
-      flex: 1;
-      border-radius: 14px;
-      border: 1px solid #283244;
-      background: #141923;
-      color: #8391a4;
-      font-size: 14px;
-      padding: 13px 14px;
-    }
-
-    .mock-send {
-      padding: 13px 16px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
-      font-size: 14px;
       font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 16px;
+    }
+
+    .hero-preview-body h3 {
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .hero-preview-body p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-preview-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-preview-point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border: 1px solid var(--line-soft);
+      border-radius: 16px;
+      background: rgba(13, 17, 24, 0.62);
+      color: #d6dfeb;
+      line-height: 1.55;
+    }
+
+    .hero-preview-point .tick {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(10, 132, 255, 0.12);
+      border: 1px solid rgba(10, 132, 255, 0.35);
+      color: #8fc2ff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
     .hero-mini-stats {
@@ -310,6 +294,20 @@
       color: var(--muted-2);
       font-size: 12px;
       line-height: 1.5;
+    }
+
+    .hero-link-row {
+      margin-top: 14px;
+    }
+
+    .hero-link-row a {
+      color: #a9cfff;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .hero-link-row a:hover {
+      text-decoration: underline;
     }
 
     .two-col {
@@ -552,6 +550,53 @@
       background: #11151c;
     }
 
+    .msg {
+      max-width: 82%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      line-height: 1.55;
+      font-size: 14px;
+      white-space: pre-line;
+    }
+
+    .msg.bot {
+      background: #1a2330;
+      align-self: flex-start;
+      border-bottom-left-radius: 6px;
+    }
+
+    .msg.user {
+      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
+      align-self: flex-end;
+      border-bottom-right-radius: 6px;
+    }
+
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: -4px;
+      margin-bottom: 4px;
+    }
+
+    .quick-reply-btn {
+      border: 1px solid #2c394c;
+      background: #141923;
+      color: #d9e3ef;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+    }
+
+    .quick-reply-btn:hover {
+      border-color: var(--blue);
+      background: #182131;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
     .typing-row {
       display: flex;
       align-items: center;
@@ -691,40 +736,49 @@
             Fredi helps businesses capture enquiries, qualify leads, alert the right person,
             and offer a booking link automatically, so fewer opportunities slip through the cracks.
           </p>
+
           <div class="hero-actions">
             <button id="openDemoBtn">Try Fredi</button>
-            <a class="ghost" href="#how-it-works">See How It Works</a>
             <a class="ghost" href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" rel="noopener noreferrer">Book a Demo</a>
+          </div>
+
+          <div class="hero-link-row">
+            <a href="#how-it-works">See how it works</a>
           </div>
         </div>
 
         <div class="hero-card">
-          <div class="mock-window">
-            <div class="mock-topbar">
-              <div class="mock-brand">
-                <div class="avatar">F</div>
-                <div>
-                  <strong>Fredi</strong>
-                  <span>AI consultant for Mediahubink</span>
+          <div class="hero-preview">
+            <div class="hero-preview-top">
+              <div class="avatar">F</div>
+              <div>
+                <strong>Fredi</strong>
+                <span>AI lead capture system by Mediahubink</span>
+              </div>
+            </div>
+
+            <div class="hero-preview-body">
+              <div class="preview-kicker">One live widget. One clear next step.</div>
+              <h3>Fredi handles the first response so your team can focus on the real work.</h3>
+              <p>
+                Use the floating Fredi button on this page to try the live chat. The homepage stays clean,
+                and the real widget does the real job.
+              </p>
+
+              <div class="hero-preview-points">
+                <div class="hero-preview-point">
+                  <span class="tick">✓</span>
+                  <span>Captures business enquiries before they go cold</span>
+                </div>
+                <div class="hero-preview-point">
+                  <span class="tick">✓</span>
+                  <span>Gathers the right details for better follow-up</span>
+                </div>
+                <div class="hero-preview-point">
+                  <span class="tick">✓</span>
+                  <span>Offers a clear next step without needing someone free</span>
                 </div>
               </div>
-            </div>
-            <div class="mock-body">
-              <div class="msg bot">Hi, I’m Fredi. I help businesses capture and respond to enquiries automatically.</div>
-              <div class="msg bot">What kind of business are you running?</div>
-              <div class="quick-replies">
-                <button class="quick-reply-btn" type="button">Plumbing business</button>
-                <button class="quick-reply-btn" type="button">Commercial property</button>
-                <button class="quick-reply-btn" type="button">Church</button>
-                <button class="quick-reply-btn" type="button">Law firm</button>
-              </div>
-              <div class="msg user">Commercial property</div>
-              <div class="msg bot">Got it. Commercial property teams often deal with viewing requests, availability questions, lease enquiries, and out-of-hours interest from potential tenants.</div>
-              <div class="msg bot">What’s the biggest pressure point for you right now?</div>
-            </div>
-            <div class="mock-input">
-              <div class="mock-field">Type your reply...</div>
-              <div class="mock-send">Send</div>
             </div>
           </div>
 
@@ -760,6 +814,7 @@
           </p>
         </div>
         <div class="section-card">
+          <h3>What that usually looks like</h3>
           <div class="stack-list">
             <div class="stack-item"><span class="tick">✓</span><span>Missed calls while the team is busy</span></div>
             <div class="stack-item"><span class="tick">✓</span><span>Messages arriving after hours</span></div>
@@ -773,11 +828,12 @@
 
     <section class="section">
       <div class="container">
-        <div class="section-copy" style="max-width: 760px;">
+        <div class="section-copy" style="max-width: 860px;">
           <div class="eyebrow">The solution</div>
           <h2>A Better First Response For Busy Teams</h2>
           <p>
-            When nobody is free to reply straight away, Fredi handles the first part properly so fewer leads slip through the cracks.
+            When nobody is free to reply straight away, Fredi handles the first part properly so fewer leads
+            slip through the cracks.
           </p>
           <p>
             Your team handles the real work. Fredi handles the first response.
@@ -788,11 +844,12 @@
 
     <section class="section" id="how-it-works">
       <div class="container">
-        <div class="section-copy" style="max-width: 760px;">
+        <div class="section-copy" style="max-width: 860px;">
           <div class="eyebrow">How it works</div>
           <h2>From Enquiry To Next Step</h2>
           <p>
-            Fredi starts the conversation, qualifies the lead, captures the contact details, alerts your team, and offers the next action.
+            Fredi starts the conversation, qualifies the lead, captures the contact details,
+            alerts your team, and offers the next action.
           </p>
         </div>
 
@@ -905,7 +962,7 @@
       <div class="container">
         <div class="section-copy" style="max-width: 760px;">
           <div class="eyebrow">Why it matters</div>
-          <h2>A Smarter Way To Handle Inbound Enquiries</h2>
+          <h2>Why It Matters</h2>
           <p>
             A better first response helps your business look more professional, respond faster, reduce admin pressure, and lose fewer opportunities.
           </p>
@@ -923,7 +980,7 @@
       <div class="container">
         <div class="cta-panel">
           <div class="eyebrow">Built by Mediahubink</div>
-          <h2>Clear, Useful, And Commercially Relevant</h2>
+          <h2>Built By Mediahubink</h2>
           <p>
             Mediahubink combines design, messaging, and practical systems thinking to create AI lead capture demos that feel clear, useful, and commercially relevant.
           </p>
@@ -1048,251 +1105,244 @@
       },
       {
         key: "email",
-        ask: "Thanks.\n\nWhat’s your best email address?",
+        ask: "Great.\n\nWhat’s your best email address?",
         quickReplies: [],
-        validate: (value) => /\S+@\S+\.\S+/.test(value.trim()),
+        validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
+        error: "Please enter a valid email address.",
         onSave: (value) => {
           lead.email = value.trim();
         }
       },
       {
         key: "phone",
-        ask: "And if you're happy to share it, what’s your phone number?\n\nYou can also tap skip.",
-        quickReplies: ["Skip"],
-        validate: (value) => value.trim().length > 0,
+        ask: "Thanks.\n\nWhat’s your phone number?",
+        quickReplies: [],
+        validate: (value) => value.replace(/[^\d+]/g, "").length >= 7,
+        error: "Please enter a valid phone number.",
         onSave: (value) => {
-          lead.phone = value.toLowerCase() === "skip" ? "" : value.trim();
+          lead.phone = value.trim();
         }
       },
       {
         key: "preferredCallback",
-        ask: "When is usually best for a callback?",
-        quickReplies: ["Morning", "Afternoon", "Evening", "Skip"],
-        validate: (value) => value.trim().length > 0,
+        ask: "When would you like a response?",
+        quickReplies: ["As soon as possible", "Today", "This week"],
+        validate: (value) => value.trim().length > 1,
         onSave: (value) => {
-          lead.preferredCallback = value.toLowerCase() === "skip" ? "" : value.trim();
+          lead.preferredCallback = value.trim();
         }
       }
     ];
 
-    function inferIndustry(text) {
-      const t = text.toLowerCase();
+    function inferIndustry(value) {
+      const text = value.toLowerCase();
 
-      if (t.includes("plumb") || t.includes("electric") || t.includes("builder") || t.includes("trade")) return "Trades";
-      if (t.includes("restaurant") || t.includes("cafe") || t.includes("food") || t.includes("takeaway")) return "Hospitality";
-      if (t.includes("gym") || t.includes("fitness") || t.includes("studio") || t.includes("personal trainer")) return "Fitness";
-      if (t.includes("dent") || t.includes("clinic") || t.includes("doctor") || t.includes("medical")) return "Healthcare";
-      if (t.includes("commercial property") || t.includes("serviced office") || t.includes("office space") || t.includes("workspace")) return "Commercial Property";
-      if (t.includes("estate") || t.includes("property") || t.includes("lettings") || t.includes("real estate")) return "Property";
-      if (t.includes("law") || t.includes("solicitor") || t.includes("legal") || t.includes("law firm")) return "Legal";
-      if (t.includes("transport") || t.includes("haulage") || t.includes("logistics") || t.includes("courier")) return "Transport";
-      if (t.includes("school") || t.includes("academy") || t.includes("college") || t.includes("education")) return "School";
-      if (t.includes("church") || t.includes("ministry") || t.includes("pastor") || t.includes("congregation")) return "Church";
+      if (text.includes("plumb") || text.includes("electric") || text.includes("trade") || text.includes("builder")) {
+        return "Trades";
+      }
+      if (text.includes("transport") || text.includes("logistics") || text.includes("delivery")) {
+        return "Transport";
+      }
+      if (text.includes("restaurant") || text.includes("cafe") || text.includes("hospitality")) {
+        return "Hospitality";
+      }
+      if (text.includes("gym") || text.includes("fitness")) {
+        return "Fitness";
+      }
+      if (text.includes("property") || text.includes("workspace") || text.includes("office")) {
+        return "Commercial Property";
+      }
+      if (text.includes("school") || text.includes("academy") || text.includes("college")) {
+        return "School";
+      }
+      if (text.includes("church") || text.includes("ministry")) {
+        return "Church";
+      }
+      if (text.includes("law") || text.includes("legal") || text.includes("solicitor")) {
+        return "Legal";
+      }
 
       return "General";
     }
 
-    function getIndustryPainQuestion(industry) {
+    function getPainPointPrompt(industry) {
       switch (industry) {
         case "Trades":
           return {
-            ask: "Got it.\n\nTrades businesses often miss calls while the team is out on jobs.\n\nWhat’s the main issue for you right now?",
-            quickReplies: ["Missed calls on jobs", "After-hours messages", "Website enquiries", "A bit of all three"]
+            text: "Got it. Trades businesses often deal with missed calls, quote requests, urgent jobs, and after-hours enquiries.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Missed calls", "Slow follow-up", "Quote requests", "After-hours enquiries"]
           };
         case "Transport":
           return {
-            ask: "Got it.\n\nTransport and logistics companies often struggle with quote requests, delivery enquiries, and after-hours messages.\n\nWhat’s the biggest pressure point for you right now?",
-            quickReplies: ["Quote requests", "Delivery enquiries", "After-hours messages", "All of the above"]
+            text: "Got it. Transport and logistics companies often deal with quote requests, delivery enquiries, urgent bookings, and after-hours messages.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Quote requests", "Urgent bookings", "After-hours messages", "Slow response times"]
           };
         case "Hospitality":
           return {
-            ask: "Got it.\n\nHospitality businesses often miss bookings and customer questions when staff are busy serving people.\n\nWhat’s the biggest issue for you?",
-            quickReplies: ["Table bookings", "Menu questions", "Evening enquiries", "Staff too busy"]
+            text: "Got it. Hospitality businesses often deal with booking questions, availability checks, event enquiries, and out-of-hours messages.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Booking enquiries", "Availability questions", "Event leads", "After-hours messages"]
           };
         case "Fitness":
           return {
-            ask: "Got it.\n\nFitness businesses often miss membership enquiries, trial requests, and social media messages when the team is tied up.\n\nWhat’s the biggest issue on your side?",
-            quickReplies: ["Membership enquiries", "Trial requests", "Social DMs", "Front desk too busy"]
-          };
-        case "Healthcare":
-          return {
-            ask: "Got it.\n\nHealthcare businesses often lose enquiries when reception is busy or patients contact you outside normal hours.\n\nWhat’s the main bottleneck for you right now?",
-            quickReplies: ["Busy reception", "After-hours enquiries", "Appointment requests", "Patient follow-up"]
+            text: "Got it. Fitness businesses often deal with membership questions, class enquiries, trial requests, and missed follow-up.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Membership enquiries", "Trial requests", "Missed follow-up", "Class questions"]
           };
         case "Commercial Property":
           return {
-            ask: "Got it.\n\nCommercial property teams often deal with viewing requests, availability questions, lease enquiries, and out-of-hours interest from potential tenants.\n\nWhat’s the biggest pressure point for you right now?",
-            quickReplies: ["Viewing requests", "Availability questions", "Lease enquiries", "Slow follow-up"]
-          };
-        case "Property":
-          return {
-            ask: "Got it.\n\nProperty businesses often miss viewing requests and valuation enquiries outside office hours.\n\nWhat’s the biggest challenge with leads for you?",
-            quickReplies: ["Viewing requests", "Valuation enquiries", "After-hours leads", "Slow follow-up"]
-          };
-        case "Legal":
-          return {
-            ask: "Got it.\n\nLegal firms often deal with consultation requests coming in when nobody is available to respond quickly.\n\nWhat’s the biggest issue for your team right now?",
-            quickReplies: ["Consultation requests", "Slow response time", "After-hours enquiries", "Admin overload"]
+            text: "Got it. Commercial property teams often deal with viewing requests, availability questions, lease enquiries, and out-of-hours interest from potential tenants.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Viewing requests", "Availability questions", "Lease enquiries", "After-hours interest"]
           };
         case "School":
           return {
-            ask: "Got it.\n\nSchools often deal with admissions enquiries, open day interest, parent questions, and follow-up during busy periods.\n\nWhat’s the main challenge for your team right now?",
-            quickReplies: ["Admissions enquiries", "Open day bookings", "Parent questions", "Slow follow-up"]
+            text: "Got it. Schools often deal with parent enquiries, admissions questions, visit requests, and admin follow-up.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Admissions questions", "Parent enquiries", "Visit requests", "Admin overload"]
           };
         case "Church":
           return {
-            ask: "Got it.\n\nChurches often receive questions about service times, events, venue hire, volunteering, and visitor follow-up.\n\nWhat’s the biggest challenge for your team right now?",
-            quickReplies: ["Visitor follow-up", "Service information", "Event enquiries", "Venue hire"]
+            text: "Got it. Churches often deal with visitor questions, prayer requests, event enquiries, and follow-up after first contact.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Visitor follow-up", "Event enquiries", "Prayer requests", "Admin overload"]
+          };
+        case "Legal":
+          return {
+            text: "Got it. Legal firms often deal with new case enquiries, urgent contact requests, consultation bookings, and missed follow-up.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["New case enquiries", "Urgent contact requests", "Consultation bookings", "Slow follow-up"]
           };
         default:
           return {
-            ask: "Got it.\n\nWhat’s the biggest challenge with leads or customer enquiries right now?",
-            quickReplies: ["Missing enquiries", "Slow response time", "After-hours leads", "Need better follow-up"]
+            text: "Got it.\n\nWhat’s the biggest pressure point for you right now when new enquiries come in?",
+            quickReplies: ["Missed enquiries", "Slow follow-up", "Admin overload", "After-hours messages"]
           };
       }
     }
 
-    function saveWidgetState(state) {
-      localStorage.setItem(widgetStateKey, state);
+    function appendMessage(text, type = "bot") {
+      const message = document.createElement("div");
+      message.className = `msg ${type}`;
+      message.textContent = text;
+      chatBody.appendChild(message);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      updateTranscript(type, text);
     }
 
-    function clearTeaserTimers() {
-      if (teaserShowTimer) clearTimeout(teaserShowTimer);
-      if (teaserHideTimer) clearTimeout(teaserHideTimer);
-    }
-
-    function showTeaserIfNeeded() {
-      const dismissed = localStorage.getItem(teaserDismissedKey);
-      const savedState = localStorage.getItem(widgetStateKey);
-
-      if (dismissed === "true" || savedState === "open") return;
-
-      clearTeaserTimers();
-
-      teaserShowTimer = setTimeout(() => {
-        if (!widget.classList.contains("open")) {
-          teaserBubble.classList.add("show");
-
-          teaserHideTimer = setTimeout(() => {
-            teaserBubble.classList.remove("show");
-          }, 8500);
-        }
-      }, 2000);
-    }
-
-    function hideTeaser() {
-      teaserBubble.classList.remove("show");
-      clearTeaserTimers();
-    }
-
-    function dismissTeaser() {
-      hideTeaser();
-      localStorage.setItem(teaserDismissedKey, "true");
-    }
-
-    function openWidget() {
-      widget.classList.add("open");
-      hideTeaser();
-      saveWidgetState("open");
-
-      setTimeout(() => chatInput.focus(), 50);
-
-      if (!chatStarted) {
-        chatStarted = true;
-        askCurrentStep();
-      }
-    }
-
-    function closeWidget() {
-      widget.classList.remove("open");
-      saveWidgetState("closed");
-      showTeaserIfNeeded();
-    }
-
-    function clearQuickReplies() {
-      const existing = chatBody.querySelector(".quick-replies");
-      if (existing) existing.remove();
-    }
-
-    function addQuickReplies(options) {
-      clearQuickReplies();
-
+    function appendQuickReplies(options) {
       if (!options || !options.length) return;
 
-      const wrap = document.createElement("div");
-      wrap.className = "quick-replies";
+      const row = document.createElement("div");
+      row.className = "quick-replies";
 
       options.forEach((option) => {
         const btn = document.createElement("button");
-        btn.className = "quick-reply-btn";
         btn.type = "button";
+        btn.className = "quick-reply-btn";
         btn.textContent = option;
         btn.addEventListener("click", () => {
-          handleUserInput(option);
+          chatInput.value = option;
+          handleSend();
         });
-        wrap.appendChild(btn);
+        row.appendChild(btn);
       });
 
-      chatBody.appendChild(wrap);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function addMessage(text, role) {
-      clearQuickReplies();
-
-      const div = document.createElement("div");
-      div.className = "msg " + role;
-      div.innerHTML = text.replace(/\n/g, "<br>");
-      chatBody.appendChild(div);
-      chatBody.scrollTop = chatBody.scrollHeight;
-
-      const speaker = role === "bot" ? "Fredi" : "Visitor";
-      lead.transcript += speaker + ": " + text + "\n";
-    }
-
-    function addTyping() {
-      const row = document.createElement("div");
-      row.className = "typing-row";
-      row.id = "typing";
-      row.innerHTML = `
-        <span>Fredi is typing</span>
-        <span class="typing-dots">
-          <span></span><span></span><span></span>
-        </span>
-      `;
       chatBody.appendChild(row);
       chatBody.scrollTop = chatBody.scrollHeight;
     }
 
-    function removeTyping() {
-      const el = document.getElementById("typing");
-      if (el) el.remove();
+    function updateTranscript(type, text) {
+      const prefix = type === "user" ? "Lead" : "Fredi";
+      lead.transcript += `${prefix}: ${text}\n`;
+    }
+
+    function showTyping() {
+      const typing = document.createElement("div");
+      typing.className = "typing-row";
+      typing.id = "typingRow";
+      typing.innerHTML = `
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <span>Fredi is typing...</span>
+      `;
+      chatBody.appendChild(typing);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function hideTyping() {
+      const typing = document.getElementById("typingRow");
+      if (typing) typing.remove();
     }
 
     function askCurrentStep() {
-      addTyping();
+      const current = steps[step];
+      if (!current) return;
 
-      let askText = steps[step].ask;
-      let quickReplies = steps[step].quickReplies || [];
+      let askText = current.ask;
+      let replies = current.quickReplies || [];
 
-      if (step === 1) {
-        const industryQuestion = getIndustryPainQuestion(lead.industry);
-        askText = industryQuestion.ask;
-        quickReplies = industryQuestion.quickReplies;
+      if (current.key === "painPoints") {
+        const painPrompt = getPainPointPrompt(lead.industry);
+        askText = painPrompt.text;
+        replies = painPrompt.quickReplies;
       }
 
+      showTyping();
       setTimeout(() => {
-        removeTyping();
-        addMessage(askText, "bot");
-        addQuickReplies(quickReplies);
-      }, 550);
+        hideTyping();
+        appendMessage(askText, "bot");
+        appendQuickReplies(replies);
+      }, 500);
+    }
+
+    function resetChat() {
+      chatBody.innerHTML = "";
+      statusBox.style.display = "none";
+      statusBox.innerHTML = "";
+      chatInput.value = "";
+
+      lead.business = "";
+      lead.industry = "";
+      lead.painPoints = "";
+      lead.name = "";
+      lead.email = "";
+      lead.phone = "";
+      lead.preferredCallback = "";
+      lead.transcript = "";
+
+      step = 0;
+      isSubmitting = false;
+      chatStarted = true;
+
+      askCurrentStep();
+    }
+
+    async function handleSend() {
+      if (isSubmitting) return;
+
+      const value = chatInput.value.trim();
+      if (!value) return;
+
+      const current = steps[step];
+      if (!current) return;
+
+      if (!current.validate(value)) {
+        appendMessage(current.error || "Please enter a valid response.", "bot");
+        return;
+      }
+
+      appendMessage(value, "user");
+      current.onSave(value);
+      chatInput.value = "";
+
+      step += 1;
+
+      if (step < steps.length) {
+        askCurrentStep();
+      } else {
+        await submitLead();
+      }
     }
 
     async function submitLead() {
-      if (isSubmitting) return;
       isSubmitting = true;
-
-      addTyping();
+      showTyping();
 
       try {
         const response = await fetch("/api/chat", {
@@ -1304,96 +1354,96 @@
         });
 
         const data = await response.json();
-        removeTyping();
+        hideTyping();
 
         if (!response.ok) {
-          addMessage(
-            "Something went wrong.\n\n" + (data.details || data.error || "Please try again."),
-            "bot"
-          );
-          isSubmitting = false;
-          return;
+          throw new Error(data.error || "Something went wrong.");
         }
 
-        addMessage(
-          "Perfect, thanks.\n\nI've passed your details on to Joash.\n\nIf it helps, you can book a demo now using the link below.\n\n" + bookingLink,
+        appendMessage(
+          `Thanks, ${lead.name}. That’s all I need for now.\n\nYour enquiry has been captured and passed on.\n\nYou can also book a time here if you'd like:\n${bookingLink}`,
           "bot"
         );
 
         statusBox.style.display = "block";
         statusBox.innerHTML = `
-          <h3>Lead captured successfully</h3>
-          <p><strong>Name:</strong> ${lead.name}</p>
-          <p><strong>Business:</strong> ${lead.business}</p>
-          <p><strong>Email:</strong> ${lead.email}</p>
-          <p><strong>Industry:</strong> ${lead.industry}</p>
-          <p><strong>Booking link:</strong> <a href="${bookingLink}" target="_blank">${bookingLink}</a></p>
+          <h3>Lead captured</h3>
+          <p>Your test or live enquiry has been sent successfully.</p>
+          <p><strong>Booking link:</strong><br><a href="${bookingLink}" target="_blank" rel="noopener noreferrer">${bookingLink}</a></p>
         `;
-
-        chatInput.disabled = true;
-        sendBtn.disabled = true;
       } catch (error) {
-        removeTyping();
-        addMessage("Something went wrong while submitting the lead. Please try again.", "bot");
+        hideTyping();
+        appendMessage("Sorry, something went wrong while sending your enquiry. Please try again.", "bot");
+        statusBox.style.display = "block";
+        statusBox.innerHTML = `
+          <h3>Submission issue</h3>
+          <p>${error.message}</p>
+        `;
+      } finally {
         isSubmitting = false;
       }
     }
 
-    function handleUserInput(forcedValue = null) {
-      const value = (forcedValue !== null ? forcedValue : chatInput.value).trim();
-      if (!value || isSubmitting) return;
+    function openWidget() {
+      widget.classList.add("open");
+      localStorage.setItem(widgetStateKey, "open");
+      hideTeaser();
 
-      addMessage(value, "user");
-      chatInput.value = "";
-
-      const current = steps[step];
-
-      if (!current.validate(value)) {
-        if (current.key === "email") {
-          addMessage("That doesn't look like a valid email address. Please try again.", "bot");
-        } else {
-          addMessage("Could you give me a bit more detail?", "bot");
-        }
-
-        addQuickReplies(
-          step === 1
-            ? getIndustryPainQuestion(lead.industry).quickReplies
-            : (current.quickReplies || [])
-        );
-        return;
-      }
-
-      current.onSave(value);
-      step++;
-
-      if (step < steps.length) {
-        askCurrentStep();
-      } else {
-        submitLead();
+      if (!chatStarted) {
+        resetChat();
       }
     }
 
-    widgetToggle.addEventListener("click", openWidget);
-    openDemoBtn.addEventListener("click", openWidget);
-    if (bookDemoBtn) bookDemoBtn.addEventListener("click", openWidget);
-    closeWidgetBtn.addEventListener("click", closeWidget);
-    teaserClose.addEventListener("click", dismissTeaser);
-    teaserBubble.addEventListener("click", openWidget);
+    function closeWidget() {
+      widget.classList.remove("open");
+      localStorage.setItem(widgetStateKey, "closed");
+    }
 
-    sendBtn.addEventListener("click", () => handleUserInput());
+    function showTeaser() {
+      if (localStorage.getItem(teaserDismissedKey) === "true") return;
+      if (widget.classList.contains("open")) return;
+      teaserBubble.classList.add("show");
+    }
 
-    chatInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        handleUserInput();
+    function hideTeaser() {
+      teaserBubble.classList.remove("show");
+    }
+
+    widgetToggle.addEventListener("click", () => {
+      if (widget.classList.contains("open")) {
+        closeWidget();
+      } else {
+        openWidget();
       }
     });
 
-    const savedState = localStorage.getItem(widgetStateKey);
-    if (savedState === "open") {
-      openWidget();
-    } else {
-      showTeaserIfNeeded();
-    }
+    closeWidgetBtn.addEventListener("click", closeWidget);
+    openDemoBtn.addEventListener("click", openWidget);
+    bookDemoBtn.addEventListener("click", openWidget);
+
+    sendBtn.addEventListener("click", handleSend);
+
+    chatInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        handleSend();
+      }
+    });
+
+    teaserClose.addEventListener("click", () => {
+      hideTeaser();
+      localStorage.setItem(teaserDismissedKey, "true");
+    });
+
+    window.addEventListener("load", () => {
+      const widgetState = localStorage.getItem(widgetStateKey);
+
+      if (widgetState === "open") {
+        openWidget();
+      } else {
+        teaserShowTimer = setTimeout(showTeaser, 1800);
+        teaserHideTimer = setTimeout(hideTeaser, 9000);
+      }
+    });
   </script>
 </body>
 </html>
