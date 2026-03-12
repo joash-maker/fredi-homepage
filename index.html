@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fredi | AI Lead Capture by Mediahubink</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --bg: #0b0f14;
+      --panel: #11151c;
+      --panel-soft: #141b24;
+      --line: #223044;
+      --line-soft: #1d2734;
+      --text: #ffffff;
+      --muted: #b8c2cf;
+      --muted-2: #98a2b3;
+      --blue: #0070f3;
+      --blue-2: #0a84ff;
+      --max: 1160px;
+      --radius: 22px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(10, 132, 255, 0.14), transparent 30%),
+        linear-gradient(180deg, #0b0f14 0%, #0d1117 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    .site-wrap {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .section {
+      padding: 88px 24px;
+    }
+
+    .section-tight {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px;
+      color: #9fb6d5;
+      background: rgba(17, 21, 28, 0.75);
+      backdrop-filter: blur(8px);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 21px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .lead,
+    .hero-copy p,
+    .section-copy p,
+    .section-intro {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero {
+      padding: 40px 24px 60px;
+    }
+
+    .hero-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn,
+    .hero-actions button,
+    .hero-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn:hover,
+    .hero-actions button:hover,
+    .hero-actions a:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost,
+    .hero-actions .ghost {
+      background: transparent;
+      border-color: #2b3646;
+      color: #d5deea;
+    }
+
+    .hero-card {
+      position: relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(17, 21, 28, 0.95) 0%, rgba(14, 18, 24, 0.98) 100%);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.42);
+    }
+
+    .mock-window {
+      border: 1px solid #273649;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #10151c;
+    }
+
+    .mock-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line-soft);
+      background: rgba(13, 16, 22, 0.96);
+    }
+
+    .mock-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+      box-shadow: 0 8px 18px rgba(0, 112, 243, 0.28);
+    }
+
+    .mock-brand strong { display: block; font-size: 16px; }
+    .mock-brand span { color: var(--muted-2); font-size: 12px; }
+
+    .mock-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 430px;
+      background: #11151c;
+    }
+
+    .msg {
+      max-width: 82%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      line-height: 1.55;
+      font-size: 14px;
+      white-space: normal;
+    }
+
+    .msg.bot {
+      background: #1a2330;
+      align-self: flex-start;
+      border-bottom-left-radius: 6px;
+    }
+
+    .msg.user {
+      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
+      align-self: flex-end;
+      border-bottom-right-radius: 6px;
+    }
+
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: -4px;
+      margin-bottom: 4px;
+    }
+
+    .quick-reply-btn {
+      border: 1px solid #2c394c;
+      background: #141923;
+      color: #d9e3ef;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+    }
+
+    .quick-reply-btn:hover {
+      border-color: var(--blue);
+      background: #182131;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .mock-input {
+      border-top: 1px solid #222a35;
+      padding: 14px 18px;
+      display: flex;
+      gap: 10px;
+      background: #0d1016;
+    }
+
+    .mock-field {
+      flex: 1;
+      border-radius: 14px;
+      border: 1px solid #283244;
+      background: #141923;
+      color: #8391a4;
+      font-size: 14px;
+      padding: 13px 14px;
+    }
+
+    .mock-send {
+      padding: 13px 16px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero-mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-stat {
+      border: 1px solid var(--line-soft);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(15, 20, 27, 0.76);
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .mini-stat span {
+      display: block;
+      color: var(--muted-2);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .section-copy,
+    .section-card,
+    .info-card,
+    .step-card,
+    .feature-card,
+    .outcome-card,
+    .industry-pill {
+      border: 1px solid var(--line);
+      background: rgba(17, 21, 28, 0.9);
+      border-radius: var(--radius);
+    }
+
+    .section-card,
+    .info-card {
+      padding: 28px;
+    }
+
+    .stack-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stack-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border: 1px solid var(--line-soft);
+      border-radius: 16px;
+      background: rgba(13, 17, 24, 0.62);
+      color: #d6dfeb;
+      line-height: 1.55;
+    }
+
+    .stack-item .tick,
+    .number-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(10, 132, 255, 0.12);
+      border: 1px solid rgba(10, 132, 255, 0.35);
+      color: #8fc2ff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .steps-grid,
+    .features-grid,
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .steps-grid.steps-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .step-card,
+    .feature-card,
+    .outcome-card {
+      padding: 22px;
+    }
+
+    .step-card p,
+    .feature-card p,
+    .outcome-card p,
+    .info-card p,
+    .section-card p { color: var(--muted); }
+
+    .industry-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .industry-pill {
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: #dbe6f3;
+    }
+
+    .cta-panel {
+      padding: 38px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(10, 132, 255, 0.12), transparent 28%),
+        linear-gradient(180deg, rgba(17, 21, 28, 0.96) 0%, rgba(12, 16, 22, 0.98) 100%);
+      text-align: center;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+    }
+
+    .cta-panel p {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-note {
+      color: var(--muted-2);
+      font-size: 13px;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .widget-toggle {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 62px;
+      height: 62px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 16px 36px rgba(0, 112, 243, 0.38);
+      z-index: 1001;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .widget-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(0, 112, 243, 0.42);
+    }
+
+    .teaser-bubble {
+      position: fixed;
+      right: 24px;
+      bottom: 96px;
+      max-width: 270px;
+      background: rgba(17, 21, 28, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #d8e1ec;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.38);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .teaser-bubble.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .teaser-bubble strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .teaser-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: 0;
+      color: #8fa0b5;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .widget {
+      position: fixed;
+      right: 24px;
+      bottom: 98px;
+      width: 390px;
+      max-width: calc(100vw - 24px);
+      height: 600px;
+      max-height: calc(100vh - 140px);
+      background: #11151c;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.5);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .widget.open { display: flex; }
+
+    .chat-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid #202b39;
+      background: rgba(13, 16, 22, 0.96);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chat-header h1 { font-size: 17px; margin: 0; letter-spacing: 0; }
+    .chat-header p { margin: 2px 0 0; font-size: 12px; color: #98a2b3; }
+
+    .close-btn {
+      margin-left: auto;
+      background: transparent;
+      border: 0;
+      color: #98a2b3;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .chat-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: #11151c;
+    }
+
+    .typing-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #98a2b3;
+      font-size: 12px;
+      padding-left: 4px;
+    }
+
+    .typing-dots {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .typing-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #6f8095;
+      display: inline-block;
+      animation: bounce 1.2s infinite ease-in-out;
+    }
+
+    .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+      40% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    .chat-input {
+      border-top: 1px solid #222a35;
+      padding: 14px;
+      display: flex;
+      gap: 10px;
+      background: #0d1016;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid #283244;
+      background: #141923;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .chat-input input:focus { border-color: var(--blue); }
+
+    .chat-input button {
+      padding: 13px 16px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .status-box {
+      margin: 0 18px 18px;
+      background: #101923;
+      border: 1px solid #243041;
+      border-radius: 12px;
+      padding: 14px;
+      display: none;
+    }
+
+    .status-box h3 { margin: 0 0 8px; font-size: 15px; }
+    .status-box p { margin: 6px 0; color: #c8d1dc; font-size: 13px; line-height: 1.45; }
+    .status-box a { color: #7db7ff; word-break: break-word; }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .two-col,
+      .steps-grid.steps-5 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .hero-card {
+        max-width: 640px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .section { padding: 64px 20px; }
+      .hero { padding: 24px 20px 44px; }
+      .steps-grid,
+      .features-grid,
+      .outcomes-grid,
+      .hero-mini-stats { grid-template-columns: 1fr; }
+      .cta-panel { padding: 28px 22px; }
+    }
+
+    @media (max-width: 640px) {
+      .widget {
+        right: 12px;
+        bottom: 84px;
+        width: calc(100vw - 24px);
+        height: calc(100vh - 110px);
+      }
+
+      .widget-toggle {
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .teaser-bubble {
+        right: 12px;
+        bottom: 84px;
+        max-width: calc(100vw - 90px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrap">
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">AI Lead Capture by Mediahubink</div>
+          <h1>Never Miss Another Serious Enquiry</h1>
+          <p>
+            Fredi helps businesses capture enquiries, qualify leads, alert the right person,
+            and offer a booking link automatically, so fewer opportunities slip through the cracks.
+          </p>
+          <div class="hero-actions">
+            <button id="openDemoBtn">Try Fredi</button>
+            <a class="ghost" href="#how-it-works">See How It Works</a>
+            <a class="ghost" href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" rel="noopener noreferrer">Book a Demo</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mock-window">
+            <div class="mock-topbar">
+              <div class="mock-brand">
+                <div class="avatar">F</div>
+                <div>
+                  <strong>Fredi</strong>
+                  <span>AI consultant for Mediahubink</span>
+                </div>
+              </div>
+            </div>
+            <div class="mock-body">
+              <div class="msg bot">Hi, I’m Fredi. I help businesses capture and respond to enquiries automatically.</div>
+              <div class="msg bot">What kind of business are you running?</div>
+              <div class="quick-replies">
+                <button class="quick-reply-btn" type="button">Plumbing business</button>
+                <button class="quick-reply-btn" type="button">Commercial property</button>
+                <button class="quick-reply-btn" type="button">Church</button>
+                <button class="quick-reply-btn" type="button">Law firm</button>
+              </div>
+              <div class="msg user">Commercial property</div>
+              <div class="msg bot">Got it. Commercial property teams often deal with viewing requests, availability questions, lease enquiries, and out-of-hours interest from potential tenants.</div>
+              <div class="msg bot">What’s the biggest pressure point for you right now?</div>
+            </div>
+            <div class="mock-input">
+              <div class="mock-field">Type your reply...</div>
+              <div class="mock-send">Send</div>
+            </div>
+          </div>
+
+          <div class="hero-mini-stats">
+            <div class="mini-stat">
+              <strong>Captures leads</strong>
+              <span>Collects key details before warm interest goes cold.</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Alerts your team</strong>
+              <span>Creates a clearer handover for proper follow-up.</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Offers next step</strong>
+              <span>Can share a booking link without someone being free.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tight">
+      <div class="container two-col">
+        <div class="section-copy">
+          <div class="eyebrow">The problem</div>
+          <h2>When Your Team Is Busy, Fredi Steps In</h2>
+          <p>
+            Missed calls, after-hours messages, and slow follow-up cost real opportunities.
+            Fredi helps close that gap.
+          </p>
+          <p>
+            Strong enquiries should not go cold just because no one was available in the moment.
+          </p>
+        </div>
+        <div class="section-card">
+          <div class="stack-list">
+            <div class="stack-item"><span class="tick">✓</span><span>Missed calls while the team is busy</span></div>
+            <div class="stack-item"><span class="tick">✓</span><span>Messages arriving after hours</span></div>
+            <div class="stack-item"><span class="tick">✓</span><span>Website enquiries sitting untouched</span></div>
+            <div class="stack-item"><span class="tick">✓</span><span>Slow follow-up and admin overload</span></div>
+            <div class="stack-item"><span class="tick">✓</span><span>Warm leads going cold before anyone replies</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-copy" style="max-width: 760px;">
+          <div class="eyebrow">The solution</div>
+          <h2>A Better First Response For Busy Teams</h2>
+          <p>
+            When nobody is free to reply straight away, Fredi handles the first part properly so fewer leads slip through the cracks.
+          </p>
+          <p>
+            Your team handles the real work. Fredi handles the first response.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-copy" style="max-width: 760px;">
+          <div class="eyebrow">How it works</div>
+          <h2>From Enquiry To Next Step</h2>
+          <p>
+            Fredi starts the conversation, qualifies the lead, captures the contact details, alerts your team, and offers the next action.
+          </p>
+        </div>
+
+        <div class="steps-grid steps-5">
+          <div class="step-card">
+            <div class="number-badge">1</div>
+            <h3>Starts the conversation</h3>
+            <p>Fredi greets the visitor and gets the exchange moving properly.</p>
+          </div>
+          <div class="step-card">
+            <div class="number-badge">2</div>
+            <h3>Qualifies the lead</h3>
+            <p>It asks practical questions shaped around the type of enquiry coming in.</p>
+          </div>
+          <div class="step-card">
+            <div class="number-badge">3</div>
+            <h3>Captures contact details</h3>
+            <p>Important details get collected while the interest is still warm.</p>
+          </div>
+          <div class="step-card">
+            <div class="number-badge">4</div>
+            <h3>Alerts your team</h3>
+            <p>The lead gets logged and your team gets the context they need.</p>
+          </div>
+          <div class="step-card">
+            <div class="number-badge">5</div>
+            <h3>Offers the next step</h3>
+            <p>Fredi can share a booking link or direct the visitor to the right next action.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div class="section-copy">
+          <div class="eyebrow">What Fredi can do</div>
+          <h2>Capture More Leads Without Adding More Admin</h2>
+          <p>
+            Fredi collects the right details, logs them automatically, and gives your team a clearer handover for follow-up.
+          </p>
+          <p>
+            By the time your team follows up, they already have the key details and context they need.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card"><h3>Qualify visitors</h3><p>Ask better first questions and sort serious enquiries from vague browsing.</p></div>
+          <div class="feature-card"><h3>Capture lead details</h3><p>Collect names, emails, phone numbers, and business context in one flow.</p></div>
+          <div class="feature-card"><h3>Log leads automatically</h3><p>Write captured details into your lead sheet without extra admin.</p></div>
+          <div class="feature-card"><h3>Alert your team</h3><p>Send an email so the right person knows a new enquiry has come in.</p></div>
+          <div class="feature-card"><h3>Send confirmation emails</h3><p>Give the enquirer a proper acknowledgement straight away.</p></div>
+          <div class="feature-card"><h3>Offer a booking link</h3><p>Move the conversation forward even when nobody is available live.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div class="section-copy">
+          <div class="eyebrow">Positioning</div>
+          <h2>Built For Real Business Enquiries</h2>
+          <p>
+            Fredi is not a generic chatbot. It is a practical lead capture system shaped around the kinds of questions and enquiries your business actually gets.
+          </p>
+          <p>
+            Not just a widget. A lead capture and enquiry-handling system built to move conversations forward.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>Simple to understand. Useful in practice.</h3>
+          <p>
+            Fredi is designed to solve a real business problem in a way that feels clear, calm, and commercially useful.
+          </p>
+          <div class="stack-list" style="margin-top: 18px;">
+            <div class="stack-item"><span class="tick">✓</span><span>Clear first response</span></div>
+            <div class="stack-item"><span class="tick">✓</span><span>Better follow-up context</span></div>
+            <div class="stack-item"><span class="tick">✓</span><span>Less reliance on chance</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-copy" style="max-width: 800px;">
+          <div class="eyebrow">Industry fit</div>
+          <h2>Designed To Fit Your Industry</h2>
+          <p>
+            Fredi can be adapted for trades, churches, commercial property, schools, legal firms, hospitality, fitness, transport, and other service-led organisations.
+          </p>
+          <p>
+            Fredi can be tailored to your industry, your lead flow, and the way your business actually works.
+          </p>
+        </div>
+        <div class="industry-grid">
+          <div class="industry-pill">Trades</div>
+          <div class="industry-pill">Church</div>
+          <div class="industry-pill">Commercial Property</div>
+          <div class="industry-pill">School</div>
+          <div class="industry-pill">Legal</div>
+          <div class="industry-pill">Hospitality</div>
+          <div class="industry-pill">Fitness</div>
+          <div class="industry-pill">Transport</div>
+          <div class="industry-pill">General</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-copy" style="max-width: 760px;">
+          <div class="eyebrow">Why it matters</div>
+          <h2>A Smarter Way To Handle Inbound Enquiries</h2>
+          <p>
+            A better first response helps your business look more professional, respond faster, reduce admin pressure, and lose fewer opportunities.
+          </p>
+        </div>
+        <div class="outcomes-grid">
+          <div class="outcome-card"><h3>Better first impressions</h3><p>Visitors get a clearer response instead of silence or a dead-end form.</p></div>
+          <div class="outcome-card"><h3>Faster response handling</h3><p>Important enquiries get captured before they drift elsewhere.</p></div>
+          <div class="outcome-card"><h3>Less admin pressure</h3><p>Your team spends less time patching together missing details.</p></div>
+          <div class="outcome-card"><h3>Fewer missed opportunities</h3><p>Warm interest turns into organised next steps rather than lost chances.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="eyebrow">Built by Mediahubink</div>
+          <h2>Clear, Useful, And Commercially Relevant</h2>
+          <p>
+            Mediahubink combines design, messaging, and practical systems thinking to create AI lead capture demos that feel clear, useful, and commercially relevant.
+          </p>
+          <p>
+            See how Fredi would work for your business, your industry, and your enquiry flow.
+          </p>
+          <div class="hero-actions" style="justify-content: center; margin-top: 24px;">
+            <button id="bookDemoBtn">Try Fredi</button>
+            <a class="ghost" href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" rel="noopener noreferrer">Book a Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">Fredi by Mediahubink • AI lead capture demo system</div>
+  </div>
+
+  <div id="teaserBubble" class="teaser-bubble">
+    <button id="teaserClose" class="teaser-close" aria-label="Close teaser">×</button>
+    <strong>Never miss another enquiry</strong>
+    I’m Fredi. I can show you how this would work for your business.
+  </div>
+
+  <button id="widgetToggle" class="widget-toggle" aria-label="Open chat">F</button>
+
+  <div id="widget" class="widget">
+    <div class="chat-header">
+      <div class="avatar">F</div>
+      <div>
+        <h1>Fredi</h1>
+        <p>AI consultant for Mediahubink</p>
+      </div>
+      <button id="closeWidgetBtn" class="close-btn" aria-label="Close chat">×</button>
+    </div>
+
+    <div id="chatBody" class="chat-body"></div>
+
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Type your reply..." />
+      <button id="sendBtn">Send</button>
+    </div>
+
+    <div id="statusBox" class="status-box"></div>
+  </div>
+
+  <script>
+    const widget = document.getElementById("widget");
+    const widgetToggle = document.getElementById("widgetToggle");
+    const closeWidgetBtn = document.getElementById("closeWidgetBtn");
+    const openDemoBtn = document.getElementById("openDemoBtn");
+    const bookDemoBtn = document.getElementById("bookDemoBtn");
+
+    const teaserBubble = document.getElementById("teaserBubble");
+    const teaserClose = document.getElementById("teaserClose");
+
+    const chatBody = document.getElementById("chatBody");
+    const chatInput = document.getElementById("chatInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const statusBox = document.getElementById("statusBox");
+
+    const bookingLink = "https://calendar.app.google/qc3wqfpXBVnsQvxq7";
+    const widgetStateKey = "mediahubink_fredi_widget_state";
+    const teaserDismissedKey = "mediahubink_fredi_teaser_dismissed";
+
+    let teaserShowTimer = null;
+    let teaserHideTimer = null;
+
+    const lead = {
+      business: "",
+      industry: "",
+      painPoints: "",
+      name: "",
+      email: "",
+      phone: "",
+      preferredCallback: "",
+      source: "Website AI",
+      bookingLinkOffered: "Yes",
+      transcript: ""
+    };
+
+    let step = 0;
+    let isSubmitting = false;
+    let chatStarted = false;
+
+    const steps = [
+      {
+        key: "business",
+        ask: "Hey, I'm Fredi.\n\nI help businesses capture and respond to enquiries automatically.\n\nWhat kind of business are you running?",
+        quickReplies: [
+          "Plumbing business",
+          "Transport company",
+          "Restaurant",
+          "Gym",
+          "Commercial property",
+          "School",
+          "Church",
+          "Law firm"
+        ],
+        validate: (value) => value.trim().length > 1,
+        onSave: (value) => {
+          lead.business = value.trim();
+          lead.industry = inferIndustry(value);
+        }
+      },
+      {
+        key: "painPoints",
+        ask: "",
+        quickReplies: [],
+        validate: (value) => value.trim().length > 3,
+        onSave: (value) => {
+          lead.painPoints = value.trim();
+        }
+      },
+      {
+        key: "name",
+        ask: "That’s helpful.\n\nWhat’s your full name?",
+        quickReplies: [],
+        validate: (value) => value.trim().length > 1,
+        onSave: (value) => {
+          lead.name = value.trim();
+        }
+      },
+      {
+        key: "email",
+        ask: "Thanks.\n\nWhat’s your best email address?",
+        quickReplies: [],
+        validate: (value) => /\S+@\S+\.\S+/.test(value.trim()),
+        onSave: (value) => {
+          lead.email = value.trim();
+        }
+      },
+      {
+        key: "phone",
+        ask: "And if you're happy to share it, what’s your phone number?\n\nYou can also tap skip.",
+        quickReplies: ["Skip"],
+        validate: (value) => value.trim().length > 0,
+        onSave: (value) => {
+          lead.phone = value.toLowerCase() === "skip" ? "" : value.trim();
+        }
+      },
+      {
+        key: "preferredCallback",
+        ask: "When is usually best for a callback?",
+        quickReplies: ["Morning", "Afternoon", "Evening", "Skip"],
+        validate: (value) => value.trim().length > 0,
+        onSave: (value) => {
+          lead.preferredCallback = value.toLowerCase() === "skip" ? "" : value.trim();
+        }
+      }
+    ];
+
+    function inferIndustry(text) {
+      const t = text.toLowerCase();
+
+      if (t.includes("plumb") || t.includes("electric") || t.includes("builder") || t.includes("trade")) return "Trades";
+      if (t.includes("restaurant") || t.includes("cafe") || t.includes("food") || t.includes("takeaway")) return "Hospitality";
+      if (t.includes("gym") || t.includes("fitness") || t.includes("studio") || t.includes("personal trainer")) return "Fitness";
+      if (t.includes("dent") || t.includes("clinic") || t.includes("doctor") || t.includes("medical")) return "Healthcare";
+      if (t.includes("commercial property") || t.includes("serviced office") || t.includes("office space") || t.includes("workspace")) return "Commercial Property";
+      if (t.includes("estate") || t.includes("property") || t.includes("lettings") || t.includes("real estate")) return "Property";
+      if (t.includes("law") || t.includes("solicitor") || t.includes("legal") || t.includes("law firm")) return "Legal";
+      if (t.includes("transport") || t.includes("haulage") || t.includes("logistics") || t.includes("courier")) return "Transport";
+      if (t.includes("school") || t.includes("academy") || t.includes("college") || t.includes("education")) return "School";
+      if (t.includes("church") || t.includes("ministry") || t.includes("pastor") || t.includes("congregation")) return "Church";
+
+      return "General";
+    }
+
+    function getIndustryPainQuestion(industry) {
+      switch (industry) {
+        case "Trades":
+          return {
+            ask: "Got it.\n\nTrades businesses often miss calls while the team is out on jobs.\n\nWhat’s the main issue for you right now?",
+            quickReplies: ["Missed calls on jobs", "After-hours messages", "Website enquiries", "A bit of all three"]
+          };
+        case "Transport":
+          return {
+            ask: "Got it.\n\nTransport and logistics companies often struggle with quote requests, delivery enquiries, and after-hours messages.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Quote requests", "Delivery enquiries", "After-hours messages", "All of the above"]
+          };
+        case "Hospitality":
+          return {
+            ask: "Got it.\n\nHospitality businesses often miss bookings and customer questions when staff are busy serving people.\n\nWhat’s the biggest issue for you?",
+            quickReplies: ["Table bookings", "Menu questions", "Evening enquiries", "Staff too busy"]
+          };
+        case "Fitness":
+          return {
+            ask: "Got it.\n\nFitness businesses often miss membership enquiries, trial requests, and social media messages when the team is tied up.\n\nWhat’s the biggest issue on your side?",
+            quickReplies: ["Membership enquiries", "Trial requests", "Social DMs", "Front desk too busy"]
+          };
+        case "Healthcare":
+          return {
+            ask: "Got it.\n\nHealthcare businesses often lose enquiries when reception is busy or patients contact you outside normal hours.\n\nWhat’s the main bottleneck for you right now?",
+            quickReplies: ["Busy reception", "After-hours enquiries", "Appointment requests", "Patient follow-up"]
+          };
+        case "Commercial Property":
+          return {
+            ask: "Got it.\n\nCommercial property teams often deal with viewing requests, availability questions, lease enquiries, and out-of-hours interest from potential tenants.\n\nWhat’s the biggest pressure point for you right now?",
+            quickReplies: ["Viewing requests", "Availability questions", "Lease enquiries", "Slow follow-up"]
+          };
+        case "Property":
+          return {
+            ask: "Got it.\n\nProperty businesses often miss viewing requests and valuation enquiries outside office hours.\n\nWhat’s the biggest challenge with leads for you?",
+            quickReplies: ["Viewing requests", "Valuation enquiries", "After-hours leads", "Slow follow-up"]
+          };
+        case "Legal":
+          return {
+            ask: "Got it.\n\nLegal firms often deal with consultation requests coming in when nobody is available to respond quickly.\n\nWhat’s the biggest issue for your team right now?",
+            quickReplies: ["Consultation requests", "Slow response time", "After-hours enquiries", "Admin overload"]
+          };
+        case "School":
+          return {
+            ask: "Got it.\n\nSchools often deal with admissions enquiries, open day interest, parent questions, and follow-up during busy periods.\n\nWhat’s the main challenge for your team right now?",
+            quickReplies: ["Admissions enquiries", "Open day bookings", "Parent questions", "Slow follow-up"]
+          };
+        case "Church":
+          return {
+            ask: "Got it.\n\nChurches often receive questions about service times, events, venue hire, volunteering, and visitor follow-up.\n\nWhat’s the biggest challenge for your team right now?",
+            quickReplies: ["Visitor follow-up", "Service information", "Event enquiries", "Venue hire"]
+          };
+        default:
+          return {
+            ask: "Got it.\n\nWhat’s the biggest challenge with leads or customer enquiries right now?",
+            quickReplies: ["Missing enquiries", "Slow response time", "After-hours leads", "Need better follow-up"]
+          };
+      }
+    }
+
+    function saveWidgetState(state) {
+      localStorage.setItem(widgetStateKey, state);
+    }
+
+    function clearTeaserTimers() {
+      if (teaserShowTimer) clearTimeout(teaserShowTimer);
+      if (teaserHideTimer) clearTimeout(teaserHideTimer);
+    }
+
+    function showTeaserIfNeeded() {
+      const dismissed = localStorage.getItem(teaserDismissedKey);
+      const savedState = localStorage.getItem(widgetStateKey);
+
+      if (dismissed === "true" || savedState === "open") return;
+
+      clearTeaserTimers();
+
+      teaserShowTimer = setTimeout(() => {
+        if (!widget.classList.contains("open")) {
+          teaserBubble.classList.add("show");
+
+          teaserHideTimer = setTimeout(() => {
+            teaserBubble.classList.remove("show");
+          }, 8500);
+        }
+      }, 2000);
+    }
+
+    function hideTeaser() {
+      teaserBubble.classList.remove("show");
+      clearTeaserTimers();
+    }
+
+    function dismissTeaser() {
+      hideTeaser();
+      localStorage.setItem(teaserDismissedKey, "true");
+    }
+
+    function openWidget() {
+      widget.classList.add("open");
+      hideTeaser();
+      saveWidgetState("open");
+
+      setTimeout(() => chatInput.focus(), 50);
+
+      if (!chatStarted) {
+        chatStarted = true;
+        askCurrentStep();
+      }
+    }
+
+    function closeWidget() {
+      widget.classList.remove("open");
+      saveWidgetState("closed");
+      showTeaserIfNeeded();
+    }
+
+    function clearQuickReplies() {
+      const existing = chatBody.querySelector(".quick-replies");
+      if (existing) existing.remove();
+    }
+
+    function addQuickReplies(options) {
+      clearQuickReplies();
+
+      if (!options || !options.length) return;
+
+      const wrap = document.createElement("div");
+      wrap.className = "quick-replies";
+
+      options.forEach((option) => {
+        const btn = document.createElement("button");
+        btn.className = "quick-reply-btn";
+        btn.type = "button";
+        btn.textContent = option;
+        btn.addEventListener("click", () => {
+          handleUserInput(option);
+        });
+        wrap.appendChild(btn);
+      });
+
+      chatBody.appendChild(wrap);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function addMessage(text, role) {
+      clearQuickReplies();
+
+      const div = document.createElement("div");
+      div.className = "msg " + role;
+      div.innerHTML = text.replace(/\n/g, "<br>");
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      const speaker = role === "bot" ? "Fredi" : "Visitor";
+      lead.transcript += speaker + ": " + text + "\n";
+    }
+
+    function addTyping() {
+      const row = document.createElement("div");
+      row.className = "typing-row";
+      row.id = "typing";
+      row.innerHTML = `
+        <span>Fredi is typing</span>
+        <span class="typing-dots">
+          <span></span><span></span><span></span>
+        </span>
+      `;
+      chatBody.appendChild(row);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function removeTyping() {
+      const el = document.getElementById("typing");
+      if (el) el.remove();
+    }
+
+    function askCurrentStep() {
+      addTyping();
+
+      let askText = steps[step].ask;
+      let quickReplies = steps[step].quickReplies || [];
+
+      if (step === 1) {
+        const industryQuestion = getIndustryPainQuestion(lead.industry);
+        askText = industryQuestion.ask;
+        quickReplies = industryQuestion.quickReplies;
+      }
+
+      setTimeout(() => {
+        removeTyping();
+        addMessage(askText, "bot");
+        addQuickReplies(quickReplies);
+      }, 550);
+    }
+
+    async function submitLead() {
+      if (isSubmitting) return;
+      isSubmitting = true;
+
+      addTyping();
+
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(lead)
+        });
+
+        const data = await response.json();
+        removeTyping();
+
+        if (!response.ok) {
+          addMessage(
+            "Something went wrong.\n\n" + (data.details || data.error || "Please try again."),
+            "bot"
+          );
+          isSubmitting = false;
+          return;
+        }
+
+        addMessage(
+          "Perfect, thanks.\n\nI've passed your details on to Joash.\n\nIf it helps, you can book a demo now using the link below.\n\n" + bookingLink,
+          "bot"
+        );
+
+        statusBox.style.display = "block";
+        statusBox.innerHTML = `
+          <h3>Lead captured successfully</h3>
+          <p><strong>Name:</strong> ${lead.name}</p>
+          <p><strong>Business:</strong> ${lead.business}</p>
+          <p><strong>Email:</strong> ${lead.email}</p>
+          <p><strong>Industry:</strong> ${lead.industry}</p>
+          <p><strong>Booking link:</strong> <a href="${bookingLink}" target="_blank">${bookingLink}</a></p>
+        `;
+
+        chatInput.disabled = true;
+        sendBtn.disabled = true;
+      } catch (error) {
+        removeTyping();
+        addMessage("Something went wrong while submitting the lead. Please try again.", "bot");
+        isSubmitting = false;
+      }
+    }
+
+    function handleUserInput(forcedValue = null) {
+      const value = (forcedValue !== null ? forcedValue : chatInput.value).trim();
+      if (!value || isSubmitting) return;
+
+      addMessage(value, "user");
+      chatInput.value = "";
+
+      const current = steps[step];
+
+      if (!current.validate(value)) {
+        if (current.key === "email") {
+          addMessage("That doesn't look like a valid email address. Please try again.", "bot");
+        } else {
+          addMessage("Could you give me a bit more detail?", "bot");
+        }
+
+        addQuickReplies(
+          step === 1
+            ? getIndustryPainQuestion(lead.industry).quickReplies
+            : (current.quickReplies || [])
+        );
+        return;
+      }
+
+      current.onSave(value);
+      step++;
+
+      if (step < steps.length) {
+        askCurrentStep();
+      } else {
+        submitLead();
+      }
+    }
+
+    widgetToggle.addEventListener("click", openWidget);
+    openDemoBtn.addEventListener("click", openWidget);
+    if (bookDemoBtn) bookDemoBtn.addEventListener("click", openWidget);
+    closeWidgetBtn.addEventListener("click", closeWidget);
+    teaserClose.addEventListener("click", dismissTeaser);
+    teaserBubble.addEventListener("click", openWidget);
+
+    sendBtn.addEventListener("click", () => handleUserInput());
+
+    chatInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        handleUserInput();
+      }
+    });
+
+    const savedState = localStorage.getItem(widgetStateKey);
+    if (savedState === "open") {
+      openWidget();
+    } else {
+      showTeaserIfNeeded();
+    }
+  </script>
+</body>
+</html>
