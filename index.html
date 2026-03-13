@@ -723,27 +723,39 @@
         max-width: calc(100vw - 90px);
       }
     }
+
+    @media (max-width: 760px) {
+      div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+      div[style*="grid-template-columns:1fr 1fr;gap:3rem"] { grid-template-columns: 1fr !important; }
+      div[style*="grid-template-columns:1fr 1fr;gap:1rem"] { grid-template-columns: 1fr 1fr !important; }
+    }
   </style>
 </head>
 <body>
   <div class="site-wrap">
+    <!-- TOP NAV -->
+    <nav style="position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 24px;background:rgba(11,15,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #223044;">
+      <a href="https://www.mediahubink.com" style="font-family:Georgia,serif;font-size:1.15rem;font-weight:700;color:#ffffff;text-decoration:none;letter-spacing:0.03em;">Media<span style="color:#c9a84c;">hub</span>ink</a>
+      <a href="https://www.mediahubink.com" style="font-size:0.82rem;color:#9fb6d5;text-decoration:none;letter-spacing:0.04em;border:1px solid #223044;padding:0.4rem 0.9rem;border-radius:4px;transition:border-color 0.2s;">&larr; Back to Shopfront</a>
+    </nav>
+
     <section class="hero" id="top">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">AI Lead Capture by Mediahubink</div>
-          <h1>Never Miss Another Serious Enquiry</h1>
+          <div class="eyebrow">AI Lead Capture Agent by Mediahubink</div>
+          <h1>Fredi AI Lead Capture Agent</h1>
           <p>
-            Fredi helps businesses capture enquiries, qualify leads, alert the right person,
-            and offer a booking link automatically, so fewer opportunities slip through the cracks.
+            Never miss another serious enquiry. Fredi handles the first response so your team can focus on closing deals.
           </p>
+          <p style="font-size:0.9rem;color:#9fb6d5;margin-top:-8px;">One live widget. One clear next step.</p>
 
           <div class="hero-actions">
-            <button id="openDemoBtn" type="button">Try Fredi</button>
+            <button id="openDemoBtn" type="button">Try Fredi Live</button>
             <a class="ghost" href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" rel="noopener noreferrer">Book a Demo</a>
           </div>
 
           <div class="hero-link-row">
-            <a href="#how-it-works">See how it works</a>
+            <a href="#how-it-works">Already trusted by commercial property teams in Yorkshire — see the live case study</a>
           </div>
         </div>
 
@@ -976,28 +988,102 @@
       </div>
     </section>
 
+    <!-- PRICING -->
+    <section class="section" style="background: rgba(17,21,28,0.8); border-top: 1px solid #223044; border-bottom: 1px solid #223044;">
+      <div class="container">
+        <div class="section-copy" style="max-width: 760px; margin-bottom: 1rem;">
+          <div class="eyebrow">Transparent Pricing</div>
+          <h2>Simple Pricing for Businesses That Can't Afford to Miss Enquiries.</h2>
+          <p style="font-size:0.88rem;color:#9fb6d5;border-left:2px solid #c9a84c;padding-left:1rem;margin-top:1rem;">Fredi is built for businesses that need a better first response without adding more admin, missed messages, or manual follow-up.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;">
+          <div style="background:#0f1318;border:1px solid #223044;border-radius:12px;padding:2rem;">
+            <p style="font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;margin-bottom:0.8rem;">Fredi <span style="color:#0a84ff;">Capture</span></p>
+            <div style="font-size:2rem;font-weight:700;color:#fff;line-height:1.2;">£299 <span style="font-size:1rem;color:#9fb6d5;font-weight:400;">setup</span></div>
+            <div style="font-size:1.6rem;font-weight:700;color:#fff;">£397 <span style="font-size:0.9rem;color:#9fb6d5;font-weight:400;">/ month</span></div>
+            <hr style="border:none;border-top:1px solid #223044;margin:1rem 0;">
+            <ul style="list-style:none;padding:0;margin:0 0 1.5rem;font-size:0.82rem;color:#b8c2cf;">
+              <li style="padding:0.35rem 0;">✓ AI website widget</li>
+              <li style="padding:0.35rem 0;">✓ Tailored questions for your business</li>
+              <li style="padding:0.35rem 0;">✓ Lead logging to Google Sheets</li>
+              <li style="padding:0.35rem 0;">✓ Email alerts for new enquiries</li>
+              <li style="padding:0.35rem 0;">✓ Booking link integration</li>
+            </ul>
+            <a href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" style="display:block;text-align:center;background:#0070f3;color:#fff;padding:0.75rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">Book a Demo</a>
+          </div>
+          <div style="background:#0f1318;border:2px solid #0070f3;border-radius:12px;padding:2rem;position:relative;">
+            <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#c9a84c;color:#0a0a0f;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.9rem;border-radius:20px;">Most Popular</div>
+            <p style="font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;margin-bottom:0.8rem;">Fredi <span style="color:#0a84ff;">Capture+</span></p>
+            <div style="font-size:2rem;font-weight:700;color:#fff;line-height:1.2;">£299 <span style="font-size:1rem;color:#9fb6d5;font-weight:400;">setup</span></div>
+            <div style="font-size:1.6rem;font-weight:700;color:#fff;">£697 <span style="font-size:0.9rem;color:#9fb6d5;font-weight:400;">/ month</span></div>
+            <hr style="border:none;border-top:1px solid #223044;margin:1rem 0;">
+            <ul style="list-style:none;padding:0;margin:0 0 1.5rem;font-size:0.82rem;color:#b8c2cf;">
+              <li style="padding:0.35rem 0;">✓ AI chat &amp; voice</li>
+              <li style="padding:0.35rem 0;">✓ Multi-channel handling</li>
+              <li style="padding:0.35rem 0;">✓ Advanced booking integration</li>
+              <li style="padding:0.35rem 0;">✓ Priority support</li>
+              <li style="padding:0.35rem 0;">✓ WhatsApp integration</li>
+            </ul>
+            <a href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" style="display:block;text-align:center;background:#0070f3;color:#fff;padding:0.75rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">Book a Demo</a>
+          </div>
+          <div style="background:#0f1318;border:1px solid #223044;border-radius:12px;padding:2rem;">
+            <p style="font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;margin-bottom:0.8rem;">Fredi <span style="color:#0a84ff;">Enterprise</span></p>
+            <div style="font-size:1.8rem;font-weight:700;color:#fff;line-height:1.4;">Custom Pricing</div>
+            <hr style="border:none;border-top:1px solid #223044;margin:1rem 0;">
+            <ul style="list-style:none;padding:0;margin:0 0 1.5rem;font-size:0.82rem;color:#b8c2cf;">
+              <li style="padding:0.35rem 0;">✓ Multi-site rollout</li>
+              <li style="padding:0.35rem 0;">✓ Custom integrations</li>
+              <li style="padding:0.35rem 0;">✓ White-label option</li>
+              <li style="padding:0.35rem 0;">✓ Dedicated support</li>
+            </ul>
+            <a href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" style="display:block;text-align:center;background:#c9a84c;color:#0a0a0f;padding:0.75rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Let's Talk</a>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:0.8rem;color:#9fb6d5;margin-top:2rem;"><strong style="color:#fff;">Why businesses pay for Fredi:</strong> <em>Missed enquiries cost more than the monthly fee. Fredi helps you capture more leads and respond faster.</em></p>
+
+    <!-- CASE STUDY -->
     <section class="section">
       <div class="container">
-        <div class="cta-panel">
-          <!-- CHANGE 2: Added link to Mediahubink in eyebrow -->
-          <div class="eyebrow">Built by <a href="https://www.mediahubink.com" target="_blank" rel="noopener noreferrer" style="color: #a9cfff; text-decoration: none;">Mediahubink</a></div>
-          <h2>Built By Mediahubink</h2>
-          <p>
-            Mediahubink combines design, messaging, and practical systems thinking to create AI lead capture demos that feel clear, useful, and commercially relevant.
-          </p>
-          <p>
-            See how Fredi would work for your business, your industry, and your enquiry flow.
-          </p>
-          <div class="hero-actions" style="justify-content: center; margin-top: 24px;">
-            <button id="bookDemoBtn" type="button">Try Fredi</button>
-            <a class="ghost" href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" rel="noopener noreferrer">Book a Demo</a>
+        <div class="eyebrow">Proven in the Field</div>
+        <h2 style="max-width:600px;">Built for Commercial Property. Proven in Yorkshire.</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem;">
+          <div>
+            <p style="color:#9fb6d5;font-size:0.95rem;line-height:1.8;margin-bottom:1.5rem;">A commercial property operator in Yorkshire needed a way to handle out-of-hours enquiries and qualify leads without relying on front desk availability. We built and deployed a fully custom AI agent within 72 hours.</p>
+            <div style="border-left:2px solid #c9a84c;padding:1rem 1.5rem;background:rgba(201,168,76,0.04);border-radius:0 8px 8px 0;margin-bottom:1.5rem;">
+              <p style="font-style:italic;color:#fff;font-size:1rem;line-height:1.6;margin-bottom:0.5rem;">"I was blown away. This is exactly what we've needed. I'm taking this straight to senior management — we need this across every site."</p>
+              <p style="font-size:0.75rem;color:#c9a84c;letter-spacing:0.06em;text-transform:uppercase;">— Commercial Property Manager, Yorkshire</p>
+            </div>
+            <p style="color:#9fb6d5;font-size:0.9rem;">Following deployment, the solution was escalated to senior stakeholders for potential rollout across their <strong style="color:#fff;">70+ UK locations.</strong></p>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div style="background:#11151c;border:1px solid #223044;border-radius:8px;padding:1.2rem;"><div style="font-size:2rem;font-weight:700;color:#c9a84c;">24/7</div><p style="font-size:0.78rem;color:#9fb6d5;margin-top:0.2rem;">Enquiry handling, including evenings and weekends</p></div>
+            <div style="background:#11151c;border:1px solid #223044;border-radius:8px;padding:1.2rem;"><div style="font-size:2rem;font-weight:700;color:#c9a84c;">100%</div><p style="font-size:0.78rem;color:#9fb6d5;margin-top:0.2rem;">Leads automatically logged to Google Sheets CRM</p></div>
+            <div style="background:#11151c;border:1px solid #223044;border-radius:8px;padding:1.2rem;"><div style="font-size:2rem;font-weight:700;color:#c9a84c;">70+</div><p style="font-size:0.78rem;color:#9fb6d5;margin-top:0.2rem;">UK locations under consideration for rollout</p></div>
+            <div style="background:#11151c;border:1px solid #223044;border-radius:8px;padding:1.2rem;"><div style="font-size:2rem;font-weight:700;color:#c9a84c;">72h</div><p style="font-size:0.78rem;color:#9fb6d5;margin-top:0.2rem;">From brief to full live deployment</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CHANGE 1: Added link to Mediahubink in footer -->
-    <div class="footer-note">Fredi by <a href="https://www.mediahubink.com" target="_blank" rel="noopener noreferrer" style="color: #a9cfff; text-decoration: none;">Mediahubink</a> • AI lead capture demo system</div>
+    <!-- FINAL CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="eyebrow">Ready to stop losing leads?</div>
+          <h2>Ready to stop losing leads?</h2>
+          <p>
+            See exactly how Fredi would work on your website — live, handling your real enquiries.
+          </p>
+          <div class="hero-actions" style="justify-content: center; margin-top: 24px;">
+            <a href="https://calendar.app.google/qc3wqfpXBVnsQvxq7" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#0070f3;color:#fff;padding:0.9rem 2rem;border-radius:6px;text-decoration:none;font-size:0.9rem;font-weight:500;">Book Your Free 20-min Demo</a>
+            <button id="bookDemoBtn" type="button" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:0.9rem 2rem;border-radius:6px;cursor:pointer;font-size:0.9rem;">Try Fredi Live</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer-note">&copy; 2026 Mediahubink. AI Agents for Business. &bull; <a href="mailto:hello@mediahubink.com" style="color:#a9cfff;text-decoration:none;">hello@mediahubink.com</a> &bull; <a href="https://www.mediahubink.com" style="color:#a9cfff;text-decoration:none;">mediahubink.com</a></div>
   </div>
 
   <div id="teaserBubble" class="teaser-bubble">
