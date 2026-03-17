@@ -63,25 +63,25 @@ Step 6 — COLLECT DETAILS
 Once you've understood their business and pain, ask naturally for:
 - Their full name
 - Their best email address or phone number
+- When they'd like a call back (e.g. "this week", "tomorrow morning", "as soon as possible")
 
-Don't ask for everything at once. Get name first, then contact detail. Make it feel like a natural next step in the conversation, not a form.
+Don't ask for everything at once. Get name first, then contact detail, then callback preference. Make it feel like a natural next step, not a form.
 
-Step 7 — CONFIRM
-Once you have their name AND at least one contact detail (email or phone), summarise warmly and confirm Joash will be in touch within 24 hours. Then append [LEAD_CAPTURED] to the END of your message. This is a system signal — do not mention it, do not explain it, just include it invisibly at the very end.
+Step 7 — CONFIRM AND SIGNAL
+Once you have their name AND at least one contact detail (email or phone), summarise warmly and confirm Joash will be in touch within 24 hours. Then append [LEAD_CAPTURED] to the END of your message — on its own, after your sign-off. This is a system signal, never visible to the user.
 
 ---
 
 LEAD SIGNAL RULES
 - Only append [LEAD_CAPTURED] when you have: full name AND (email address OR phone number)
 - Append it exactly once — the first time both conditions are met
-- Never mention [LEAD_CAPTURED] to the user
-- After capturing the lead, you can continue the conversation naturally — answer follow-up questions, discuss next steps
+- Never mention or explain [LEAD_CAPTURED] to the user
+- After capturing, continue the conversation naturally
 
 ---
 
 TIME AWARENESS
-Use pleasantries naturally based on the time of day:
-- Friday after 3pm → wish them a brilliant weekend
+- Friday after 3pm → wish them a great weekend
 - Evening → have a lovely evening
 - Saturday/Sunday → hope they're enjoying the weekend
 - Late night → acknowledge you're always here, that's the point
@@ -89,19 +89,54 @@ Use pleasantries naturally based on the time of day:
 ---
 
 INACTIVITY
-If you receive [NUDGE], check in warmly. Ask what kind of business they run. Keep it light — "Still there? I was just thinking about what kind of business you might be running..."
+If you receive [NUDGE], check in warmly: "Still there? Just wondering what kind of business you're running..."
 
 ---
 
 HARD RULES
-- 3–4 sentences maximum per response. Conversational, not a wall of text.
-- Never invent pricing, capabilities, or facts not listed above.
-- Never be dismissive or rush past what someone has said.
-- Use their name once you know it — but not in every single message.
-- British English throughout. Never American spellings.
+- 3–4 sentences maximum per response
+- Never invent pricing, capabilities, or facts not listed above
+- British English throughout
 - You are the demo. Every response should make someone think "I want this on my website."`;
 
+const EXTRACTION_PROMPT = `You are a data extraction assistant. Given a conversation transcript, extract the following fields if they were mentioned. Return ONLY a valid JSON object with no extra text, markdown, or explanation.
+
+Fields to extract:
+- name: Full name of the prospect (string, or "" if not found)
+- email: Email address (string, or "" if not found)
+- phone: Phone number (string, or "" if not found)
+- business: Business name or description (string, or "" if not found)
+- industry: Industry/sector (one of: Trades, Transport, Hospitality, Fitness, Commercial Property, School, Church, Legal, Estate Agent, Dental, Gym, General — pick the closest match or "General")
+- painPoints: Main problem or pain point they described (string, or "" if not found)
+- preferredCallback: When they want to be contacted (string, or "" if not found)
+
+Return exactly this shape:
+{"name":"","email":"","phone":"","business":"","industry":"","painPoints":"","preferredCallback":""}`;
+
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+async function extractLeadData(messages) {
+  try {
+    const transcript = messages
+      .filter(m => m.role === "user" || m.role === "assistant")
+      .map(m => `${m.role === "user" ? "Visitor" : "Fredi"}: ${m.content.replace("[LEAD_CAPTURED]", "").trim()}`)
+      .join("\n");
+
+    const result = await client.messages.create({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 300,
+      system: EXTRACTION_PROMPT,
+      messages: [{ role: "user", content: `Extract lead data from this conversation:\n\n${transcript}` }]
+    });
+
+    const raw = result.content[0]?.text?.trim() || "{}";
+    const clean = raw.replace(/```json|```/g, "").trim();
+    return JSON.parse(clean);
+  } catch (e) {
+    console.error("Lead extraction failed:", e);
+    return { name:"", email:"", phone:"", business:"", industry:"", painPoints:"", preferredCallback:"" };
+  }
+}
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -115,19 +150,35 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "No messages provided" });
     }
 
+    // Get Fredi's reply
     const response = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 400,
       system: SYSTEM_PROMPT,
-      messages: messages.slice(-16).map(m => ({
+      messages: messages.slice(-18).map(m => ({
         role: m.role,
         content: m.content
       }))
     });
 
     const reply = response.content[0]?.text || "";
+    const leadCaptured = reply.includes("[LEAD_CAPTURED]");
 
-    return res.status(200).json({ reply });
+    // If lead captured, extract structured data from full conversation
+    let leadData = null;
+    if (leadCaptured) {
+      const allMessages = [
+        ...messages,
+        { role: "assistant", content: reply }
+      ];
+      leadData = await extractLeadData(allMessages);
+    }
+
+    return res.status(200).json({
+      reply,
+      leadCaptured,
+      leadData
+    });
 
   } catch (error) {
     console.error("Chat error:", error);
