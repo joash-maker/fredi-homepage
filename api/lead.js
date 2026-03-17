@@ -40,13 +40,23 @@ export default async function handler(req, res) {
     } = req.body || {};
 
     const bookingLink = process.env.BOOKING_LINK || "https://calendar.app.google/9BEVTDBPUjEqcaRdA";
-    const ownerEmail = process.env.ALERT_EMAIL || process.env.GOOGLE_ALERT_EMAIL || process.env.GOOGLE_CLIENT_EMAIL;
+
+    // Support dual notification emails
+    const alertEmails = [
+      process.env.ALERT_EMAIL,
+      process.env.ALERT_EMAIL_2
+    ].filter(Boolean);
+
+    // Fallback if neither set
+    if (!alertEmails.length) {
+      alertEmails.push("hello@mediahubink.com");
+    }
 
     const { firstName, lastName } = splitName(name);
     const leadScore = calculateLeadScore({ name, email, phone, business, painPoints, preferredCallback });
     const status = "New Lead";
 
-    // Log to Google Sheets
+    // ── GOOGLE SHEETS ──
     const auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -82,36 +92,37 @@ export default async function handler(req, res) {
       }
     });
 
-    // Send emails via Resend
+    // ── EMAILS VIA RESEND ──
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const fromEmail = process.env.FROM_EMAIL || "Mediahubink <hello@mediahubink.com>";
 
-      // Notification to Joash
-      if (ownerEmail) {
+      const notificationHtml = `
+        <div style="font-family:sans-serif;max-width:580px;margin:0 auto;padding:28px;background:#0e0e14;color:#e8e8f0;border-radius:10px;">
+          <h2 style="color:#c9a84c;margin:0 0 20px;">&#128276; New Lead — Fredi Homepage</h2>
+          <p><strong style="color:#aaa;">Name:</strong> ${name || "—"}</p>
+          <p><strong style="color:#aaa;">Email:</strong> ${email || "—"}</p>
+          <p><strong style="color:#aaa;">Phone:</strong> ${phone || "—"}</p>
+          <p><strong style="color:#aaa;">Business:</strong> ${business || "—"}</p>
+          <p><strong style="color:#aaa;">Industry:</strong> ${industry || "—"}</p>
+          <p><strong style="color:#aaa;">Pain Points:</strong> ${painPoints || "—"}</p>
+          <p><strong style="color:#aaa;">Callback:</strong> ${preferredCallback || "—"}</p>
+          <p><strong style="color:#aaa;">Lead Score:</strong> <span style="color:#c9a84c;font-weight:700;">${leadScore}</span></p>
+          <hr style="border-color:#333;margin:20px 0;">
+          <p style="color:#888;font-size:13px;"><strong>Conversation transcript:</strong></p>
+          <pre style="background:#111;padding:14px;border-radius:6px;font-size:12px;color:#ccc;white-space:pre-wrap;word-wrap:break-word;">${transcript || "—"}</pre>
+          <p style="margin-top:20px;">
+            <a href="${bookingLink}" style="background:#c9a84c;color:#0a0a0f;padding:10px 20px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13px;">Book a Demo Call</a>
+          </p>
+        </div>`;
+
+      // Send to all notification addresses
+      for (const toEmail of alertEmails) {
         await resend.emails.send({
           from: fromEmail,
-          to: ownerEmail,
+          to: toEmail,
           subject: `New lead from Fredi: ${name || "Unknown"}${business ? ` — ${business}` : ""}`,
-          html: `
-            <div style="font-family:sans-serif;max-width:580px;margin:0 auto;padding:28px;background:#0e0e14;color:#e8e8f0;border-radius:10px;">
-              <h2 style="color:#c9a84c;margin:0 0 20px;">&#128276; New Lead — Fredi Homepage</h2>
-              <p><strong style="color:#aaa;">Name:</strong> ${name || "—"}</p>
-              <p><strong style="color:#aaa;">Email:</strong> ${email || "—"}</p>
-              <p><strong style="color:#aaa;">Phone:</strong> ${phone || "—"}</p>
-              <p><strong style="color:#aaa;">Business:</strong> ${business || "—"}</p>
-              <p><strong style="color:#aaa;">Industry:</strong> ${industry || "—"}</p>
-              <p><strong style="color:#aaa;">Pain Points:</strong> ${painPoints || "—"}</p>
-              <p><strong style="color:#aaa;">Lead Score:</strong> <span style="color:#c9a84c;font-weight:700;">${leadScore}</span></p>
-              <p><strong style="color:#aaa;">Callback:</strong> ${preferredCallback || "—"}</p>
-              <hr style="border-color:#333;margin:20px 0;">
-              <p style="color:#aaa;font-size:13px;"><strong style="color:#888;">Conversation transcript:</strong></p>
-              <pre style="background:#111;padding:14px;border-radius:6px;font-size:12px;color:#ccc;white-space:pre-wrap;word-wrap:break-word;">${transcript || "—"}</pre>
-              <p style="margin-top:20px;">
-                <a href="${bookingLink}" style="background:#c9a84c;color:#0a0a0f;padding:10px 20px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13px;">Book a Demo Call</a>
-              </p>
-            </div>
-          `
+          html: notificationHtml
         });
       }
 
@@ -128,8 +139,7 @@ export default async function handler(req, res) {
               <p>Thanks for your enquiry. Joash will be in touch within 24 hours.</p>
               ${bookingLink ? `<p>If you'd like to skip the wait and book a free 20-minute demo now:</p><p><a href="${bookingLink}" style="color:#c9a84c;">${bookingLink}</a></p>` : ""}
               <p>Best,<br>Joash<br><span style="color:#999;font-size:13px;">Mediahubink &middot; mediahubink.com</span></p>
-            </div>
-          `
+            </div>`
         });
       }
     }
