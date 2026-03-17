@@ -391,7 +391,7 @@
       .features-grid { grid-template-columns: 1fr; }
       .mini-stats { grid-template-columns: 1fr; }
       .results-grid { grid-template-columns: 1fr 1fr; }
-      .widget { right: 10px; bottom: 80px; width: calc(100vw - 20px); height: calc(100vh - 105px); }
+      .widget { right: 10px; bottom: 80px; width: calc(100vw - 20px); height: calc(100svh - 160px); max-height: calc(100svh - 160px); }
       .widget-toggle { right: 12px; bottom: 12px; }
       .teaser-bubble { right: 12px; bottom: 80px; max-width: calc(100vw - 85px); }
     }
@@ -718,23 +718,8 @@
     let nudgeCount    = 0;
     let transcript    = "";   // running transcript for /api/lead
 
-    // Extracted lead data (populated by regex as conversation progresses)
-    const extracted = { name:"", email:"", phone:"", business:"", industry:"", painPoints:"" };
-
-    // ── LEAD EXTRACTION ──
-    const EMAIL_RE  = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/;
-    const PHONE_RE  = /(?:0|\+44)[0-9\s\-]{9,14}/;
-    const NAME_RE   = /(?:my name(?:'?s)?|I am|I'?m|this is|it'?s|name is|call me|I go by)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i;
-
-    function extractLeadData(text) {
-      if (!extracted.email) { const m = text.match(EMAIL_RE); if (m) extracted.email = m[0]; }
-      if (!extracted.phone) { const m = text.match(PHONE_RE); if (m) extracted.phone = m[0].trim(); }
-      if (!extracted.name)  { const m = text.match(NAME_RE);  if (m) extracted.name  = m[1]; }
-    }
-
-    function hasMinLead() {
-      return extracted.name && (extracted.email || extracted.phone);
-    }
+    // Lead data — populated by Claude extraction when [LEAD_CAPTURED] fires
+    let leadData = { name:"", email:"", phone:"", business:"", industry:"", painPoints:"", preferredCallback:"" };
 
     // ── RENDERING ──
     function esc(s = "") {
@@ -784,19 +769,19 @@
     }
 
     // ── LEAD SUBMISSION ──
-    async function submitLead() {
+    async function submitLead(data) {
       try {
         await fetch("/api/lead", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            name:              extracted.name,
-            email:             extracted.email,
-            phone:             extracted.phone,
-            business:          extracted.business,
-            industry:          extracted.industry,
-            painPoints:        extracted.painPoints,
-            preferredCallback: "",
+            name:              data.name || "",
+            email:             data.email || "",
+            phone:             data.phone || "",
+            business:          data.business || "",
+            industry:          data.industry || "",
+            painPoints:        data.painPoints || "",
+            preferredCallback: data.preferredCallback || "",
             source:            "Fredi Homepage AI",
             transcript:        transcript
           })
@@ -828,7 +813,6 @@
 
       if (!isNudge) {
         addMsg(userText, "user");
-        extractLeadData(userText);
         chatInput.value = "";
       }
 
@@ -848,32 +832,15 @@
         if (data.reply) {
           const reply = data.reply;
           messages.push({ role: "assistant", content: reply });
-
-          // Extract lead data from Fredi's reply too (Fredi may echo back what was shared)
-          extractLeadData(reply);
-
-          // Try to extract business/industry from full conversation context
-          if (!extracted.business) {
-            const convo = messages.map(m => m.content).join(" ");
-            const bizMatch = convo.match(/(?:run|own|manage|work(?:ing)? (?:at|for)|it'?s called|called|trading as)\s+(?:a\s+)?([A-Za-z0-9\s&'.,-]{3,40?)(?:\.|,|\n|$)/i);
-            if (bizMatch) extracted.business = bizMatch[1].trim();
-          }
-
           addMsg(reply, "bot");
           resetNudge();
 
-          // Detect [LEAD_CAPTURED] signal
-          if (!leadCaptured && reply.includes("[LEAD_CAPTURED]")) {
+          // Use Claude-extracted structured lead data from backend
+          if (!leadCaptured && data.leadCaptured && data.leadData) {
+            leadData = data.leadData;
             leadCaptured = true;
             showLeadBanner();
-            submitLead();
-          }
-
-          // Fallback: detect email in conversation even without signal
-          if (!leadCaptured && hasMinLead()) {
-            leadCaptured = true;
-            showLeadBanner();
-            submitLead();
+            submitLead(leadData);
           }
 
         } else {
