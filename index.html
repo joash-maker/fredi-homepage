@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fredi | AI Lead Capture by Mediahubink</title>
   <meta name="description" content="Fredi is Mediahubink's AI lead capture agent. Never miss another enquiry. Live in 72 hours.">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b0f14">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fredi.mediahubink.com">
+<meta property="og:title" content="Fredi — AI Lead Capture Agent by Mediahubink">
+<meta property="og:description" content="Never miss another enquiry. Fredi handles the first response so your team can focus on closing. Live in 72 hours.">
+<meta property="og:image" content="https://mediahubink.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Mediahubink">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fredi — AI Lead Capture Agent by Mediahubink">
+<meta name="twitter:description" content="Never miss another enquiry. Live in 72 hours.">
+<meta name="twitter:image" content="https://mediahubink.com/og-image.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -374,6 +393,18 @@
     .status-box p { margin: 5px 0; color: #c0cadc; font-size: 12px; line-height: 1.45; }
     .status-box a { color: #7db7ff; word-break: break-word; }
 
+
+    /* ── BACK TO TOP ── */
+    #back-to-top { position: fixed; bottom: 22px; left: 22px; width: 42px; height: 42px; border-radius: 50%; background: var(--panel); border: 1px solid var(--line); color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s; pointer-events: none; }
+    #back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    #back-to-top:hover { border-color: var(--blue); color: var(--blue); }
+    #back-to-top svg { width: 15px; height: 15px; fill: currentColor; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── PS COLUMNS MOBILE FIX ── */
     /* ── RESPONSIVE ── */
     @media(max-width:980px){
       .hero-grid { grid-template-columns: 1fr; min-height: auto; }
@@ -385,6 +416,8 @@
       .pricing-cards { grid-template-columns: 1fr; }
     }
     @media(max-width:640px){
+      .ps-grid { gap: 2rem; }
+      .ps-col-title { margin-top: 0.5rem; }
       .section { padding: 3.5rem 5vw; }
       .hero { padding: 2rem 5vw 3.5rem; }
       .steps-row { grid-template-columns: 1fr 1fr; }
@@ -392,6 +425,7 @@
       .mini-stats { grid-template-columns: 1fr; }
       .results-grid { grid-template-columns: 1fr 1fr; }
       .widget { right: 10px; bottom: 80px; width: calc(100vw - 20px); height: calc(100svh - 160px); max-height: calc(100svh - 160px); }
+      #back-to-top { bottom: 12px; left: 12px; }
       .widget-toggle { right: 12px; bottom: 12px; }
       .teaser-bubble { right: 12px; bottom: 80px; max-width: calc(100vw - 85px); }
     }
@@ -451,7 +485,7 @@
   </section>
 
   <!-- PROBLEM + SOLUTION -->
-  <section class="section problem-solution-bg">
+  <section class="section problem-solution-bg reveal">
     <div class="section-inner">
       <div class="tag">The Problem &amp; The Fix</div>
       <h2>Strong enquiries go cold.<br>Fredi stops that.</h2>
@@ -481,7 +515,7 @@
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="section how-bg" id="how-it-works">
+  <section class="section how-bg reveal" id="how-it-works">
     <div class="section-inner">
       <div class="tag">How It Works</div>
       <h2>From enquiry to next step<br>in five moves.</h2>
@@ -557,7 +591,7 @@
   </section>
 
   <!-- PRICING -->
-  <section class="section pricing-bg" id="pricing">
+  <section class="section pricing-bg reveal" id="pricing">
     <div class="section-inner">
       <div class="tag">Transparent Pricing</div>
       <h2>One lead pays for<br>a month of Fredi.</h2>
@@ -663,6 +697,11 @@
     <span class="footer-sep">&bull;</span>
     <a href="https://www.mediahubink.com/terms">Terms &amp; Conditions</a>
   </div>
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+  </button>
 
   <!-- TEASER -->
   <div id="teaserBubble" class="teaser-bubble">
@@ -944,6 +983,30 @@
       const open = w.classList.toggle("open");
       this.textContent = open ? "▲ Hide comparison" : "▼ See full feature comparison";
     });
+
+    // ── BACK TO TOP ──
+    (function(){
+      const btn = document.getElementById("back-to-top");
+      if (!btn) return;
+      window.addEventListener("scroll", () => {
+        btn.classList.toggle("visible", window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    })();
+
+    // ── SCROLL REVEAL ──
+    (function(){
+      const els = document.querySelectorAll(".reveal");
+      if (!els.length) return;
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      els.forEach(el => io.observe(el));
+    })();
   </script>
 </body>
 </html>
