@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Fredi by Mediahubink</title>
+  <meta name="description" content="Mediahubink Privacy Policy — how we collect, use, and protect your data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #e8c96a;
+      --dark: #0e0e14;
+      --dark-2: #1a1a26;
+      --text: #e0e0ec;
+      --text-muted: #888899;
+      --border: rgba(201,168,76,0.2);
+      --max: 760px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,14,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-back {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+    .nav-back::before { content: '\2190  '; }
+
+    /* ── HERO ── */
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 2rem 4rem;
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .hero-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+    .dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; display: inline-block; }
+
+    /* ── TOC ── */
+    .toc {
+      max-width: var(--max);
+      margin: 3rem auto 0;
+      padding: 0 2rem;
+    }
+    .toc-box {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.8rem 2rem;
+    }
+    .toc-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.35rem 2rem;
+    }
+    .toc-list a {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc-list a:hover { color: var(--gold); }
+    .toc-list a::before { content: '\2192  '; color: var(--gold); font-size: 0.75rem; }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    section:last-child { border-bottom: none; }
+
+    .section-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+
+    p { color: var(--text); margin-bottom: 1rem; font-size: 0.95rem; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      margin: 0.8rem 0 1rem;
+    }
+    ul li {
+      font-size: 0.95rem;
+      color: var(--text);
+      padding: 0.4rem 0 0.4rem 1.4rem;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    ul li:last-child { border-bottom: none; }
+    ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* Data table */
+    /* data-table removed */
+
+    /* Rights grid */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .right-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+    }
+    .right-card-title {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+    .right-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Info box */
+    .info-box {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      padding: 1.2rem 1.4rem;
+      margin: 1.2rem 0;
+    }
+    .info-box p { font-size: 0.88rem; margin: 0; }
+
+    /* Contact block */
+    .contact-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .contact-row {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 0.7rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .contact-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+    .contact-value { font-size: 0.88rem; color: #fff; }
+    .contact-value a { color: var(--gold); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .footer-inner { max-width: var(--max); margin: 0 auto; }
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin: 0.8rem 0; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-tagline { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 0.4rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .toc-list { grid-template-columns: 1fr; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .contact-block { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Mediahubink</a>
+      <a href="https://fredi.mediahubink.com" class="nav-back">Back to Fredi</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Legal &amp; Data</p>
+      <h1 class="hero-title">Privacy Policy</h1>
+      <div class="hero-meta">
+        <span><span class="dot"></span> Effective March 2026</span>
+        <span><span class="dot"></span> Mediahubink</span>
+        <span><span class="dot"></span> West Yorkshire, UK</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-box">
+      <p class="toc-title">Contents</p>
+      <ul class="toc-list">
+        <li><a href="#who">Who we are</a></li>
+        <li><a href="#collect">What data we collect</a></li>
+        <li><a href="#legal">Legal basis</a></li>
+        <li><a href="#storage">How data is stored</a></li>
+        <li><a href="#retention">How long we keep it</a></li>
+        <li><a href="#rights">Your rights</a></li>
+        <li><a href="#complaints">Complaints</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <section id="who">
+      <span class="section-num">01</span>
+      <h2>Who We Are</h2>
+      <p>Mediahubink is a West Yorkshire-based AI agent business that builds and deploys custom AI chat and voice agents for UK small and medium-sized businesses.</p>
+      <p>Contact: <a href="mailto:hello@mediahubink.com" style="color:var(--gold)">hello@mediahubink.com</a> &middot; <a href="https://mediahubink.com" style="color:var(--gold)">mediahubink.com</a></p>
+    </section>
+
+    <section id="collect">
+      <span class="section-num">02</span>
+      <h2>What Data We Collect and Why</h2>
+      <p>When you interact with an AI agent built and operated by Mediahubink — on our website or a client's website — the following data may be collected:</p>
+      <ul>
+        <li><strong>Name</strong> — provided by you to arrange a follow-up</li>
+        <li><strong>Email address</strong> — provided by you to receive information or a callback</li>
+        <li><strong>Phone number</strong> — provided by you to receive a call from the business</li>
+        <li><strong>Conversation content</strong> — the text of your conversation, stored to give context to the business you are enquiring with</li>
+        <li><strong>Technical data</strong> — timestamp, day of week, whether the enquiry was made outside business hours</li>
+      </ul>
+      <div class="info-box">
+        <p>We collect this data on behalf of the business you are enquiring with. That business is the data controller; Mediahubink is the data processor.</p>
+      </div>
+    </section>
+
+    <section id="legal">
+      <span class="section-num">03</span>
+      <h2>Legal Basis for Processing</h2>
+      <ul>
+        <li><strong>Legitimate interests</strong> — to help connect you with the business you chose to enquire with</li>
+        <li><strong>Contract performance</strong> — where you have requested information or a callback</li>
+      </ul>
+    </section>
+
+    <section id="storage">
+      <span class="section-num">04</span>
+      <h2>How Your Data Is Stored and Shared</h2>
+      <p>Your data is stored securely using trusted cloud infrastructure providers based in the US and EU, all of which operate under recognised data protection frameworks including SOC 2 and GDPR-compliant standards. Access is strictly limited to Mediahubink and, where applicable, the business you enquired with.</p>
+      <div class="info-box" style="margin:1.2rem 0;">
+        <p>Responses in this chat are generated using AI. Your conversation is processed to produce a reply and is not stored by Mediahubink beyond the current session.</p>
+      </div>
+      <p>Mediahubink does not sell, rent, or share your data with any third party for marketing or commercial purposes.</p>
+    </section>
+
+    <section id="retention">
+      <span class="section-num">05</span>
+      <h2>How Long We Keep Your Data</h2>
+      <p>Your data is retained for the duration of the client business's contract with Mediahubink and for up to 30 days after termination. You may request deletion at any time by emailing <a href="mailto:hello@mediahubink.com" style="color:var(--gold)">hello@mediahubink.com</a> or contacting the business you enquired with.</p>
+    </section>
+
+    <section id="rights">
+      <span class="section-num">06</span>
+      <h2>Your Rights Under UK GDPR</h2>
+      <div class="rights-grid">
+        <div class="right-card">
+          <p class="right-card-title">Right to access</p>
+          <p>Request a copy of the personal data we hold about you.</p>
+        </div>
+        <div class="right-card">
+          <p class="right-card-title">Right to rectification</p>
+          <p>Ask us to correct inaccurate data.</p>
+        </div>
+        <div class="right-card">
+          <p class="right-card-title">Right to erasure</p>
+          <p>Ask us to delete your data.</p>
+        </div>
+        <div class="right-card">
+          <p class="right-card-title">Right to restriction</p>
+          <p>Ask us to limit how we use your data.</p>
+        </div>
+        <div class="right-card">
+          <p class="right-card-title">Right to object</p>
+          <p>Object to processing on the basis of legitimate interests.</p>
+        </div>
+        <div class="right-card">
+          <p class="right-card-title">Right to portability</p>
+          <p>Request your data in a portable format.</p>
+        </div>
+      </div>
+      <p>To exercise any right, contact us at <a href="mailto:hello@mediahubink.com" style="color:var(--gold)">hello@mediahubink.com</a>. We will respond within 30 days.</p>
+    </section>
+
+    <section id="complaints">
+      <span class="section-num">07</span>
+      <h2>Complaints</h2>
+      <p>If you are unhappy with how we have handled your data, you have the right to complain to the Information Commissioner's Office (ICO).</p>
+      <div class="info-box">
+        <p>ICO website: <a href="https://ico.org.uk" target="_blank" rel="noopener" style="color:var(--gold)">ico.org.uk</a> &nbsp;&middot;&nbsp; Helpline: 0303 123 1113</p>
+      </div>
+    </section>
+
+    <section id="cookies">
+      <span class="section-num">08</span>
+      <h2>Cookies</h2>
+      <p>Our website (mediahubink.com) uses only essential technical cookies required for the site to function. We do not use tracking or advertising cookies. No cookie consent banner is required.</p>
+    </section>
+
+    <section id="changes">
+      <span class="section-num">09</span>
+      <h2>Changes to This Policy</h2>
+      <p>The current version of this policy is always available at <a href="https://fredi.mediahubink.com/privacy" style="color:var(--gold)">fredi.mediahubink.com/privacy</a>. We will notify active clients of material changes by email.</p>
+    </section>
+
+    <section id="contact">
+      <span class="section-num">10</span>
+      <h2>Contact</h2>
+      <div class="contact-block">
+        <div class="contact-row"><span class="contact-label">Business</span><span class="contact-value">Mediahubink</span></div>
+        <div class="contact-row"><span class="contact-label">Owner</span><span class="contact-value">Joash Frederick Perera</span></div>
+        <div class="contact-row"><span class="contact-label">Location</span><span class="contact-value">West Yorkshire, UK</span></div>
+        <div class="contact-row"><span class="contact-label">Email</span><span class="contact-value"><a href="mailto:hello@mediahubink.com">hello@mediahubink.com</a></span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">Mediahubink</p>
+      <div class="footer-links">
+        <a href="https://fredi.mediahubink.com">Home</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="mailto:hello@mediahubink.com">Contact</a>
+      </div>
+      <p class="footer-tagline">AI agents that capture leads while you sleep.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
