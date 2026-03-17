@@ -4,1153 +4,689 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fredi | AI Lead Capture by Mediahubink</title>
+  <meta name="description" content="Fredi is Mediahubink's AI lead capture agent. Never miss another enquiry. Live in 72 hours.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #0b0f14;
       --panel: #11151c;
-      --panel-soft: #141b24;
       --line: #223044;
       --line-soft: #1d2734;
       --text: #ffffff;
-      --muted: #b8c2cf;
-      --muted-2: #98a2b3;
+      --muted: #8a9ab0;
       --blue: #0070f3;
       --blue-2: #0a84ff;
-      --max: 1160px;
-      --radius: 22px;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --max: 1120px;
+      --radius: 14px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(10, 132, 255, 0.14), transparent 30%),
-        linear-gradient(180deg, #0b0f14 0%, #0d1117 100%);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; }
-
-    .site-wrap {
-      width: 100%;
+      line-height: 1.7;
       overflow-x: hidden;
     }
 
-    .section {
-      padding: 88px 24px;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .section-tight {
-      padding-top: 64px;
-      padding-bottom: 64px;
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 5vw;
+      background: rgba(11,15,20,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
     }
-
-    .container {
-      max-width: var(--max);
-      margin: 0 auto;
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.03em; }
+    .nav-logo span { color: var(--gold); }
+    .nav-back {
+      font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em;
+      border: 1px solid var(--line); padding: 0.38rem 0.85rem; border-radius: 4px;
+      transition: border-color 0.2s, color 0.2s;
     }
+    .nav-back:hover { border-color: var(--gold); color: var(--gold); }
+    .nav-back::before { content: '\2190  '; }
 
+    /* ── SHARED ── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 5vw; }
+    .section { padding: 5.5rem 5vw; }
+    .section-inner { max-width: var(--max); margin: 0 auto; }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: 13px;
-      color: #9fb6d5;
-      background: rgba(17, 21, 28, 0.75);
-      backdrop-filter: blur(8px);
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
-
-    h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: 18px;
-    }
-
-    h3 {
-      font-size: 21px;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-
-    .lead,
-    .hero-copy p,
-    .section-copy p,
-    .section-intro {
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--muted);
-    }
-
-    .hero {
-      padding: 40px 24px 60px;
-    }
-
-    .hero-grid {
-      max-width: var(--max);
-      margin: 0 auto;
-      min-height: 88vh;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .hero-copy {
-      max-width: 700px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .btn,
-    .hero-actions button,
-    .hero-actions a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 20px;
-      border-radius: 14px;
-      border: 1px solid transparent;
-      background: var(--blue);
-      color: #fff;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-    }
-
-    .btn:hover,
-    .hero-actions button:hover,
-    .hero-actions a:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost,
-    .hero-actions .ghost {
-      background: transparent;
-      border-color: #2b3646;
-      color: #d5deea;
-    }
-
-    .hero-card {
-      position: relative;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(17, 21, 28, 0.95) 0%, rgba(14, 18, 24, 0.98) 100%);
-      border-radius: 26px;
-      padding: 24px;
-      box-shadow: 0 28px 70px rgba(0,0,0,0.42);
-    }
-
-    .hero-preview {
-      border: 1px solid #273649;
-      border-radius: 20px;
-      overflow: hidden;
-      background: #10151c;
-    }
-
-    .hero-preview-top {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--line-soft);
-      background: rgba(13, 16, 22, 0.96);
-    }
-
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      flex-shrink: 0;
-      box-shadow: 0 8px 18px rgba(0, 112, 243, 0.28);
-    }
-
-    .hero-preview-top strong {
-      display: block;
-      font-size: 16px;
-    }
-
-    .hero-preview-top span {
-      color: var(--muted-2);
-      font-size: 12px;
-    }
-
-    .hero-preview-body {
-      padding: 24px 22px;
-      background: #11151c;
-    }
-
-    .preview-kicker {
-      display: inline-flex;
-      align-items: center;
-      padding: 7px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(10, 132, 255, 0.28);
-      background: rgba(10, 132, 255, 0.08);
-      color: #9fc9ff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px; border: 1px solid var(--line);
+      border-radius: 999px; font-size: 12px; color: #8fb8d5;
+      background: rgba(17,21,28,0.7); backdrop-filter: blur(8px);
       margin-bottom: 16px;
     }
+    .tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
+    .tag::before { content: ''; display: block; width: 18px; height: 1px; background: var(--gold); }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.6rem); line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 18px; font-weight: 900; }
+    h1 em { font-style: italic; color: var(--gold); }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3vw, 2.9rem); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.4rem; line-height: 1.3; }
+    p { color: var(--muted); }
 
-    .hero-preview-body h3 {
-      font-size: 28px;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 14px;
+    .btn-primary {
+      display: inline-block; background: var(--blue); color: #fff;
+      padding: 0.9rem 1.8rem; border-radius: var(--radius); border: none;
+      font-size: 0.88rem; font-weight: 500; cursor: pointer;
+      transition: transform 0.18s, opacity 0.18s; text-decoration: none;
     }
-
-    .hero-preview-body p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.92; }
+    .btn-ghost {
+      display: inline-block; background: transparent;
+      color: var(--muted); border: 1px solid var(--line);
+      padding: 0.9rem 1.8rem; border-radius: var(--radius);
+      font-size: 0.88rem; cursor: pointer;
+      transition: border-color 0.18s, color 0.18s; text-decoration: none;
     }
-
-    .hero-preview-points {
-      display: grid;
-      gap: 12px;
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-gold {
+      display: inline-block; background: var(--gold); color: #0a0a0f;
+      padding: 0.9rem 1.8rem; border-radius: var(--radius);
+      font-size: 0.88rem; font-weight: 600; cursor: pointer;
+      transition: background 0.18s, transform 0.18s; text-decoration: none;
     }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-    .hero-preview-point {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 14px 16px;
-      border: 1px solid var(--line-soft);
-      border-radius: 16px;
-      background: rgba(13, 17, 24, 0.62);
-      color: #d6dfeb;
-      line-height: 1.55;
+    /* ── HERO ── */
+    .hero { padding: 3.5rem 5vw 5rem; }
+    .hero-grid {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem; align-items: center; min-height: 80vh;
     }
+    .hero-copy { max-width: 640px; }
+    .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.8; max-width: 480px; }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 1.4rem; }
+    .trust-note { font-size: 0.72rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+    .trust-note::before { content: ''; display: block; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; box-shadow: 0 0 6px #4ade80; }
 
-    .hero-preview-point .tick {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: rgba(10, 132, 255, 0.12);
-      border: 1px solid rgba(10, 132, 255, 0.35);
-      color: #8fc2ff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      flex-shrink: 0;
+    /* Hero card */
+    .hero-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(17,21,28,0.95) 0%, rgba(14,18,24,0.98) 100%);
+      border-radius: 22px; padding: 22px;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.45);
     }
-
-    .hero-mini-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 18px;
+    .hero-preview { border: 1px solid #273649; border-radius: 18px; overflow: hidden; background: #10151c; }
+    .preview-top {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; border-bottom: 1px solid var(--line-soft);
+      background: rgba(13,16,22,0.96);
     }
-
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(180deg, var(--blue-2), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(0,112,243,0.28);
+    }
+    .preview-top strong { display: block; font-size: 15px; }
+    .preview-top span { color: var(--muted); font-size: 11px; }
+    .preview-body { padding: 22px 20px; background: #11151c; }
+    .preview-kicker {
+      display: inline-flex; align-items: center;
+      padding: 6px 11px; border-radius: 999px;
+      border: 1px solid rgba(10,132,255,0.25);
+      background: rgba(10,132,255,0.07);
+      color: #9fc9ff; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.01em; margin-bottom: 14px;
+    }
+    .preview-body h3 { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--text); }
+    .preview-body p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 16px; }
+    .preview-points { display: grid; gap: 10px; }
+    .preview-point {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 12px 14px; border: 1px solid var(--line-soft);
+      border-radius: 14px; background: rgba(13,17,24,0.6);
+      color: #d6dfeb; font-size: 0.82rem; line-height: 1.5;
+    }
+    .tick {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(10,132,255,0.1); border: 1px solid rgba(10,132,255,0.3);
+      color: #8fc2ff; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .mini-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 16px; }
     .mini-stat {
-      border: 1px solid var(--line-soft);
-      border-radius: 16px;
-      padding: 14px;
-      background: rgba(15, 20, 27, 0.76);
+      border: 1px solid var(--line-soft); border-radius: 14px;
+      padding: 12px; background: rgba(15,20,27,0.75);
     }
+    .mini-stat strong { display: block; font-size: 13px; margin-bottom: 4px; }
+    .mini-stat span { display: block; color: var(--muted); font-size: 11px; line-height: 1.5; }
 
-    .mini-stat strong {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 6px;
+    /* ── PROBLEM + SOLUTION (combined) ── */
+    .problem-solution-bg { background: rgba(17,21,28,0.7); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2.5rem; }
+    .ps-col-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--line); }
+    .ps-col-title.problem { color: #f87171; }
+    .ps-col-title.solution { color: #4ade80; }
+    .ps-list { list-style: none; display: grid; gap: 0.7rem; }
+    .ps-list li {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 12px 14px; border: 1px solid var(--line-soft);
+      border-radius: 12px; background: rgba(13,17,24,0.5);
+      font-size: 0.85rem; color: #ccd5e0; line-height: 1.5;
     }
+    .ps-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
 
-    .mini-stat span {
-      display: block;
-      color: var(--muted-2);
-      font-size: 12px;
-      line-height: 1.5;
+    /* ── HOW IT WORKS ── */
+    .how-bg { background: rgba(17,21,28,0.6); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .steps-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; margin-top: 2.5rem; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .step-cell {
+      background: var(--bg); padding: 1.8rem 1.2rem;
+      border-right: 1px solid var(--line);
+      transition: background 0.25s; text-align: center;
+      position: relative;
     }
-
-    .hero-link-row {
-      margin-top: 14px;
+    .step-cell:last-child { border-right: none; }
+    .step-cell:hover { background: rgba(10,132,255,0.04); }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(10,132,255,0.08); border: 1px solid rgba(10,132,255,0.25);
+      color: #8fc2ff; font-size: 1.1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; font-family: 'Playfair Display', serif;
+      transition: background 0.25s, border-color 0.25s;
     }
+    .step-cell:hover .step-num { background: rgba(10,132,255,0.14); border-color: rgba(10,132,255,0.5); }
+    .step-cell h3 { font-size: 0.88rem; margin-bottom: 0.4rem; }
+    .step-cell p { font-size: 0.76rem; color: var(--muted); line-height: 1.6; }
 
-    .hero-link-row a {
-      color: #a9cfff;
-      font-size: 14px;
-      text-decoration: none;
+    /* ── FEATURES ── */
+    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 2.5rem; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .f-cell {
+      background: var(--panel); padding: 1.6rem 1.4rem;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      transition: background 0.22s; position: relative; overflow: hidden;
     }
+    .f-cell::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .f-cell:hover { background: rgba(10,132,255,0.04); }
+    .f-cell:hover::before { transform: scaleX(1); }
+    .f-icon { font-size: 1.5rem; margin-bottom: 0.7rem; display: block; }
+    .f-cell h3 { font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .f-cell p { font-size: 0.78rem; line-height: 1.65; }
 
-    .hero-link-row a:hover {
-      text-decoration: underline;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      align-items: start;
-    }
-
-    .section-copy,
-    .section-card,
-    .info-card,
-    .step-card,
-    .feature-card,
-    .outcome-card,
+    /* ── INDUSTRIES ── */
+    .industry-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
     .industry-pill {
-      border: 1px solid var(--line);
-      background: rgba(17, 21, 28, 0.9);
-      border-radius: var(--radius);
+      padding: 10px 16px; border: 1px solid var(--line);
+      border-radius: 999px; font-size: 13px; color: #d0dcea;
+      background: rgba(17,21,28,0.8);
+      transition: border-color 0.2s, color 0.2s;
     }
+    .industry-pill:hover { border-color: var(--blue); color: #fff; }
 
-    .section-card,
-    .info-card {
-      padding: 28px;
+    /* ── CASE STUDY ── */
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-top: 2.5rem; }
+    .case-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.6rem; }
+    .quote-block {
+      border-left: 2px solid var(--gold); padding: 1rem 1.4rem;
+      background: rgba(201,168,76,0.04); border-radius: 0 8px 8px 0; margin-bottom: 1.4rem;
     }
-
-    .stack-list {
-      display: grid;
-      gap: 12px;
+    .quote-block blockquote { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--text); line-height: 1.65; margin-bottom: 0.4rem; }
+    .quote-block cite { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; font-style: normal; }
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .result-card {
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 10px; padding: 1.2rem;
     }
+    .result-n { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 0.4rem; }
+    .result-card p { font-size: 0.73rem; color: var(--muted); line-height: 1.5; }
 
-    .stack-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 14px 16px;
-      border: 1px solid var(--line-soft);
-      border-radius: 16px;
-      background: rgba(13, 17, 24, 0.62);
-      color: #d6dfeb;
-      line-height: 1.55;
-    }
+    /* ── PRICING ── */
+    .pricing-bg { background: rgba(17,21,28,0.8); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .pricing-intro { font-size: 0.85rem; color: var(--muted); padding: 0.8rem 1rem; border-left: 2px solid var(--gold); background: rgba(201,168,76,0.04); border-radius: 0 4px 4px 0; margin-bottom: 2rem; max-width: 560px; }
+    .pricing-intro strong { color: var(--text); }
+    .pricing-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 1.2rem; }
+    .p-card { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 1.8rem 1.5rem; position: relative; transition: transform 0.22s; }
+    .p-card.featured { border-color: var(--blue); background: linear-gradient(135deg, rgba(10,132,255,0.06), var(--bg)); }
+    .p-card:hover { transform: translateY(-4px); }
+    .p-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #0a0a0f; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 20px; white-space: nowrap; }
+    .p-tier { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+    .p-price { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 0.2rem; }
+    .p-price small { font-size: 0.85rem; color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+    .p-setup { font-size: 0.72rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .p-divider { border: none; border-top: 1px solid var(--line); margin: 1rem 0; }
+    .p-features { list-style: none; margin-bottom: 1.5rem; }
+    .p-features li { font-size: 0.78rem; color: var(--muted); padding: 0.32rem 0; display: flex; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .p-features li:last-child { border-bottom: none; }
+    .p-features li::before { content: '✓'; color: var(--blue); flex-shrink: 0; font-size: 0.72rem; }
+    .p-cta { display: block; text-align: center; padding: 0.75rem; border-radius: 8px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+    .p-cta-blue { background: var(--blue); color: #fff; }
+    .p-cta-ghost { border: 1px solid var(--line); color: var(--muted); }
+    .p-cta-gold { background: var(--gold); color: #0a0a0f; }
+    .p-cta:hover { opacity: 0.85; }
 
-    .stack-item .tick,
-    .number-badge {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: rgba(10, 132, 255, 0.12);
-      border: 1px solid rgba(10, 132, 255, 0.35);
-      color: #8fc2ff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
+    .compare-toggle { display: block; background: none; border: 1px solid var(--line); color: var(--muted); font-size: 0.75rem; padding: 0.55rem 1.1rem; border-radius: 4px; cursor: pointer; margin: 0 auto 1.5rem; transition: border-color 0.2s, color 0.2s; letter-spacing: 0.04em; }
+    .compare-toggle:hover { border-color: var(--gold); color: var(--gold); }
+    .compare-wrap { display: none; overflow-x: auto; }
+    .compare-wrap.open { display: block; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+    .compare-table th { padding: 0.65rem 0.85rem; border-bottom: 2px solid var(--line); color: #8fb8d5; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; }
+    .compare-table th:first-child { text-align: left; color: var(--muted); font-weight: 300; }
+    .compare-table td { padding: 0.55rem 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--muted); text-align: center; }
+    .compare-table td:first-child { text-align: left; }
+    .compare-table .ck { color: var(--blue); }
+    .compare-table .da { color: rgba(255,255,255,0.12); }
+    .pricing-note { text-align: center; font-size: 0.76rem; color: var(--muted); margin-top: 1.2rem; }
 
-    .steps-grid,
-    .features-grid,
-    .outcomes-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .steps-grid.steps-5 {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .step-card,
-    .feature-card,
-    .outcome-card {
-      padding: 22px;
-    }
-
-    .step-card p,
-    .feature-card p,
-    .outcome-card p,
-    .info-card p,
-    .section-card p { color: var(--muted); }
-
-    .industry-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 26px;
-    }
-
-    .industry-pill {
-      padding: 12px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      color: #dbe6f3;
-    }
-
+    /* ── CTA ── */
     .cta-panel {
-      padding: 38px;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at top right, rgba(10, 132, 255, 0.12), transparent 28%),
-        linear-gradient(180deg, rgba(17, 21, 28, 0.96) 0%, rgba(12, 16, 22, 0.98) 100%);
-      text-align: center;
-      box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+      text-align: center; padding: 4rem 2rem;
+      border: 1px solid var(--line); border-radius: 22px;
+      background: radial-gradient(circle at top right, rgba(10,132,255,0.1), transparent 30%),
+                  linear-gradient(180deg, rgba(17,21,28,0.95), rgba(12,16,22,0.98));
+      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
     }
+    .cta-panel h2 { margin-bottom: 0.8rem; }
+    .cta-panel p { font-size: 0.92rem; max-width: 440px; margin: 0 auto 1.8rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-    .cta-panel p {
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
+    /* ── FOOTER ── */
     .footer-note {
-      color: var(--muted-2);
-      font-size: 13px;
-      text-align: center;
-      padding: 24px;
-      border-top: 1px solid #223044;
-      line-height: 2;
+      color: var(--muted); font-size: 12px; text-align: center;
+      padding: 1.6rem 5vw; border-top: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.3rem 1rem; line-height: 2;
     }
+    .footer-note a { color: #7aa8d5; transition: color 0.2s; }
+    .footer-note a:hover { color: var(--gold); }
+    .footer-sep { color: var(--line); }
 
-    .footer-note a {
-      color: #a9cfff;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-note a:hover { color: #c9a84c; }
-
+    /* ── WIDGET ── */
     .widget-toggle {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: 62px;
-      height: 62px;
-      border: 0;
-      border-radius: 999px;
-      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
-      color: #fff;
-      font-size: 22px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 16px 36px rgba(0, 112, 243, 0.38);
-      z-index: 1001;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      position: fixed; right: 22px; bottom: 22px;
+      width: 58px; height: 58px; border: 0; border-radius: 999px;
+      background: linear-gradient(180deg, var(--blue-2), var(--blue));
+      color: #fff; font-size: 20px; font-weight: 700;
+      cursor: pointer; box-shadow: 0 12px 32px rgba(0,112,243,0.38);
+      z-index: 1001; transition: transform 0.18s, box-shadow 0.18s;
+      display: flex; align-items: center; justify-content: center;
     }
-
-    .widget-toggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px rgba(0, 112, 243, 0.42);
-    }
-
+    .widget-toggle:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(0,112,243,0.44); }
     .teaser-bubble {
-      position: fixed;
-      right: 24px;
-      bottom: 96px;
-      max-width: 270px;
-      background: rgba(17, 21, 28, 0.96);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 14px 16px;
-      font-size: 13px;
-      line-height: 1.5;
-      color: #d8e1ec;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.38);
-      z-index: 1000;
-      opacity: 0;
-      transform: translateY(8px);
-      pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      position: fixed; right: 22px; bottom: 92px;
+      max-width: 260px; background: rgba(17,21,28,0.96);
+      border: 1px solid var(--line); border-radius: 16px;
+      padding: 13px 15px; font-size: 12px; line-height: 1.55;
+      color: #d4dde8; box-shadow: 0 14px 32px rgba(0,0,0,0.38);
+      z-index: 1000; opacity: 0; transform: translateY(8px);
+      pointer-events: none; transition: opacity 0.3s, transform 0.3s;
     }
-
-    .teaser-bubble.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .teaser-bubble strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #fff;
-      font-size: 14px;
-      letter-spacing: -0.01em;
-    }
-
-    .teaser-close {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: transparent;
-      border: 0;
-      color: #8fa0b5;
-      cursor: pointer;
-      font-size: 14px;
-      line-height: 1;
-    }
-
+    .teaser-bubble.show { opacity: 1; transform: none; pointer-events: auto; }
+    .teaser-bubble strong { display: block; margin-bottom: 4px; color: #fff; font-size: 13px; }
+    .teaser-close { position: absolute; top: 7px; right: 8px; background: transparent; border: 0; color: #6a7a8a; cursor: pointer; font-size: 13px; }
     .widget {
-      position: fixed;
-      right: 24px;
-      bottom: 98px;
-      width: 390px;
-      max-width: calc(100vw - 24px);
-      height: 600px;
-      max-height: calc(100vh - 140px);
-      background: #11151c;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 28px 70px rgba(0,0,0,0.5);
-      display: none;
-      flex-direction: column;
-      z-index: 1000;
+      position: fixed; right: 22px; bottom: 92px;
+      width: 380px; max-width: calc(100vw - 22px);
+      height: 580px; max-height: calc(100vh - 130px);
+      background: #11151c; border: 1px solid var(--line);
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.52);
+      display: none; flex-direction: column; z-index: 1000;
     }
-
-    .widget.open { display: flex; }
-
+    .widget.open { display: flex; animation: wSlide 0.24s ease; }
+    @keyframes wSlide { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
     .chat-header {
-      padding: 16px 18px;
-      border-bottom: 1px solid #202b39;
-      background: rgba(13, 16, 22, 0.96);
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      padding: 14px 16px; border-bottom: 1px solid #202b39;
+      background: rgba(13,16,22,0.96);
+      display: flex; align-items: center; gap: 11px;
     }
-
-    .chat-header h1 { font-size: 17px; margin: 0; letter-spacing: 0; }
-    .chat-header p { margin: 2px 0 0; font-size: 12px; color: #98a2b3; }
-
-    .close-btn {
-      margin-left: auto;
-      background: transparent;
-      border: 0;
-      color: #98a2b3;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-    .chat-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      background: #11151c;
-    }
-
-    .msg {
-      max-width: 82%;
-      padding: 12px 14px;
-      border-radius: 16px;
-      line-height: 1.55;
-      font-size: 14px;
-      white-space: pre-line;
-    }
-
-    .msg.bot {
-      background: #1a2330;
-      align-self: flex-start;
-      border-bottom-left-radius: 6px;
-    }
-
-    .msg.user {
-      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
-      align-self: flex-end;
-      border-bottom-right-radius: 6px;
-    }
-
-    .quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: -4px;
-      margin-bottom: 4px;
-    }
-
-    .quick-reply-btn {
-      border: 1px solid #2c394c;
-      background: #141923;
-      color: #d9e3ef;
-      padding: 8px 11px;
-      border-radius: 999px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
-    }
-
-    .quick-reply-btn:hover {
-      border-color: var(--blue);
-      background: #182131;
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    .typing-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #98a2b3;
-      font-size: 12px;
-      padding-left: 4px;
-    }
-
-    .typing-dots {
-      display: inline-flex;
-      gap: 4px;
-      align-items: center;
-    }
-
-    .typing-dots span {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #6f8095;
-      display: inline-block;
-      animation: bounce 1.2s infinite ease-in-out;
-    }
-
-    .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
-    .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
-
-    @keyframes bounce {
-      0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
-      40% { transform: translateY(-4px); opacity: 1; }
-    }
-
-    .chat-input {
-      border-top: 1px solid #222a35;
-      padding: 14px;
-      display: flex;
-      gap: 10px;
-      background: #0d1016;
-    }
-
-    .chat-input input {
-      flex: 1;
-      padding: 13px 14px;
-      border-radius: 14px;
-      border: 1px solid #283244;
-      background: #141923;
-      color: #fff;
-      font-size: 14px;
-      outline: none;
-    }
-
+    .chat-header h1 { font-size: 16px; margin: 0; letter-spacing: 0; }
+    .chat-header p { margin: 1px 0 0; font-size: 11px; color: var(--muted); }
+    .chat-av { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(180deg, var(--blue-2), var(--blue)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,112,243,0.28); }
+    .close-btn { margin-left: auto; background: transparent; border: 0; color: var(--muted); font-size: 20px; cursor: pointer; line-height: 1; }
+    .chat-body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #11151c; }
+    .msg { max-width: 84%; padding: 11px 13px; border-radius: 15px; line-height: 1.55; font-size: 13px; white-space: pre-line; }
+    .msg.bot { background: #1a2330; align-self: flex-start; border-bottom-left-radius: 5px; }
+    .msg.user { background: linear-gradient(180deg, var(--blue-2), var(--blue)); align-self: flex-end; border-bottom-right-radius: 5px; }
+    .quick-replies { display: flex; flex-wrap: wrap; gap: 7px; margin-top: -3px; }
+    .qr-btn { border: 1px solid #2c394c; background: #141923; color: #d4dce8; padding: 7px 10px; border-radius: 999px; font-size: 11px; cursor: pointer; transition: border-color 0.18s, background 0.18s; }
+    .qr-btn:hover { border-color: var(--blue); background: #182131; color: #fff; }
+    .typing-row { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
+    .dots { display: inline-flex; gap: 3px; }
+    .dots span { width: 5px; height: 5px; border-radius: 50%; background: #5a6a7a; animation: db 1.2s infinite; }
+    .dots span:nth-child(2){animation-delay:0.15s}.dots span:nth-child(3){animation-delay:0.3s}
+    @keyframes db{0%,80%,100%{transform:translateY(0);opacity:0.5}40%{transform:translateY(-4px);opacity:1}}
+    .chat-input { border-top: 1px solid #1e2a36; padding: 12px; display: flex; gap: 9px; background: #0d1016; }
+    .chat-input input { flex: 1; padding: 11px 13px; border-radius: 12px; border: 1px solid #283244; background: #141923; color: #fff; font-size: 13px; outline: none; font-family: 'DM Sans', sans-serif; }
     .chat-input input:focus { border-color: var(--blue); }
-
-    .chat-input button {
-      padding: 13px 16px;
-      border: 0;
-      border-radius: 14px;
-      background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue) 100%);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .widget-privacy-note {
-      text-align: center;
-      font-size: 11px;
-      color: #3a4a5c;
-      padding: 6px 14px;
-      border-top: 1px solid rgba(255,255,255,0.04);
-      background: #0d1016;
-    }
-
-    .widget-privacy-note a {
-      color: #4a6a8a;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .widget-privacy-note a:hover { color: #a9cfff; }
-
-    .status-box {
-      margin: 0 18px 18px;
-      background: #101923;
-      border: 1px solid #243041;
-      border-radius: 12px;
-      padding: 14px;
-      display: none;
-    }
-
-    .status-box h3 { margin: 0 0 8px; font-size: 15px; }
-    .status-box p { margin: 6px 0; color: #c8d1dc; font-size: 13px; line-height: 1.45; }
+    .chat-input input::placeholder { color: #4a5a6a; }
+    .chat-input button { padding: 11px 14px; border: 0; border-radius: 12px; background: linear-gradient(180deg, var(--blue-2), var(--blue)); color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .widget-privacy { text-align: center; font-size: 10px; color: #2a3a4a; padding: 5px; border-top: 1px solid rgba(255,255,255,0.04); background: #0d1016; }
+    .widget-privacy a { color: #3a5a7a; text-decoration: none; transition: color 0.2s; }
+    .widget-privacy a:hover { color: #7ab0d5; }
+    .status-box { margin: 0 16px 16px; background: #101923; border: 1px solid #243041; border-radius: 10px; padding: 13px; display: none; }
+    .status-box h3 { margin: 0 0 7px; font-size: 14px; }
+    .status-box p { margin: 5px 0; color: #c0cadc; font-size: 12px; line-height: 1.45; }
     .status-box a { color: #7db7ff; word-break: break-word; }
 
-    @media (max-width: 980px) {
-      .hero-grid,
-      .two-col,
-      .steps-grid.steps-5 {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 28px;
-      }
-
-      .hero-grid {
-        min-height: auto;
-      }
-
-      .hero-card {
-        max-width: 640px;
-      }
+    /* ── RESPONSIVE ── */
+    @media(max-width:980px){
+      .hero-grid { grid-template-columns: 1fr; min-height: auto; }
+      .hero { padding-top: 2.5rem; }
+      .ps-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: repeat(3,1fr); }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+      .pricing-cards { grid-template-columns: 1fr; }
     }
-
-    @media (max-width: 760px) {
-      .section { padding: 64px 20px; }
-      .hero { padding: 24px 20px 44px; }
-      .steps-grid,
-      .features-grid,
-      .outcomes-grid,
-      .hero-mini-stats { grid-template-columns: 1fr; }
-      .cta-panel { padding: 28px 22px; }
+    @media(max-width:640px){
+      .section { padding: 3.5rem 5vw; }
+      .hero { padding: 2rem 5vw 3.5rem; }
+      .steps-row { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .mini-stats { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr 1fr; }
+      .widget { right: 10px; bottom: 80px; width: calc(100vw - 20px); height: calc(100vh - 105px); }
+      .widget-toggle { right: 12px; bottom: 12px; }
+      .teaser-bubble { right: 12px; bottom: 80px; max-width: calc(100vw - 85px); }
     }
-
-    @media (max-width: 640px) {
-      .widget {
-        right: 12px;
-        bottom: 84px;
-        width: calc(100vw - 24px);
-        height: calc(100vh - 110px);
-      }
-
-      .widget-toggle {
-        right: 12px;
-        bottom: 12px;
-      }
-
-      .teaser-bubble {
-        right: 12px;
-        bottom: 84px;
-        max-width: calc(100vw - 90px);
-      }
-    }
-
-    @media (max-width: 760px) {
-      div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
-      div[style*="grid-template-columns:1fr 1fr;gap:3rem"] { grid-template-columns: 1fr !important; }
-      div[style*="grid-template-columns:1fr 1fr;gap:1rem"] { grid-template-columns: 1fr 1fr !important; }
+    @media(max-width:480px){
+      .steps-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="site-wrap">
-    <!-- TOP NAV -->
-    <nav style="position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 24px;background:rgba(11,15,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #223044;">
-      <a href="https://www.mediahubink.com" style="font-family:Georgia,serif;font-size:1.15rem;font-weight:700;color:#ffffff;text-decoration:none;letter-spacing:0.03em;">Media<span style="color:#c9a84c;">hub</span>ink</a>
-      <a href="https://www.mediahubink.com" style="font-size:0.82rem;color:#9fb6d5;text-decoration:none;letter-spacing:0.04em;border:1px solid #223044;padding:0.4rem 0.9rem;border-radius:4px;transition:border-color 0.2s;">&larr; Back to Shopfront</a>
-    </nav>
 
-    <section class="hero" id="top">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">AI Lead Capture Agent by Mediahubink</div>
-          <h1>Fredi AI Lead Capture Agent</h1>
-          <p>
-            Never miss another serious enquiry. Fredi handles the first response so your team can focus on closing deals.
-          </p>
-          <p style="font-size:0.9rem;color:#9fb6d5;margin-top:-8px;">One live widget. One clear next step.</p>
+  <!-- NAV -->
+  <nav>
+    <a href="https://www.mediahubink.com" class="nav-logo">Media<span>hub</span>ink</a>
+    <a href="https://www.mediahubink.com" class="nav-back">Back to Shopfront</a>
+  </nav>
 
-          <div class="hero-actions">
-            <button id="openDemoBtn" type="button">Try Fredi Live</button>
-            <a class="ghost" href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer">Book a Demo</a>
-          </div>
-
-          <div class="hero-link-row">
-            <a href="#how-it-works">Already trusted by commercial property teams in Yorkshire — see the live case study</a>
-          </div>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">AI Lead Capture Agent by Mediahubink</div>
+        <h1>Fredi.<br>Your 24/7<br><em>Lead Machine.</em></h1>
+        <p class="hero-sub">Never miss another serious enquiry. Fredi handles the first response so your team can <strong>focus on closing</strong> — not chasing.</p>
+        <div class="hero-actions">
+          <button id="openDemoBtn" class="btn-primary" type="button">Try Fredi Live</button>
+          <a class="btn-ghost" href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer">Book a Demo</a>
         </div>
+        <div class="trust-note">Trusted by commercial property teams in Yorkshire &bull; Live in 72 hours</div>
+      </div>
 
-        <div class="hero-card">
-          <div class="hero-preview">
-            <div class="hero-preview-top">
-              <div class="avatar">F</div>
-              <div>
-                <strong>Fredi</strong>
-                <span>AI lead capture system by Mediahubink</span>
-              </div>
-            </div>
-
-            <div class="hero-preview-body">
-              <div class="preview-kicker">One live widget. One clear next step.</div>
-              <h3>Fredi handles the first response so your team can focus on the real work.</h3>
-              <p>
-                Use the floating Fredi button on this page to try the live chat. The homepage stays clean,
-                and the real widget does the real job.
-              </p>
-
-              <div class="hero-preview-points">
-                <div class="hero-preview-point">
-                  <span class="tick">&#10003;</span>
-                  <span>Captures business enquiries before they go cold</span>
-                </div>
-                <div class="hero-preview-point">
-                  <span class="tick">&#10003;</span>
-                  <span>Gathers the right details for better follow-up</span>
-                </div>
-                <div class="hero-preview-point">
-                  <span class="tick">&#10003;</span>
-                  <span>Offers a clear next step without needing someone free</span>
-                </div>
-              </div>
+      <div class="hero-card">
+        <div class="hero-preview">
+          <div class="preview-top">
+            <div class="avatar">F</div>
+            <div>
+              <strong>Fredi</strong>
+              <span>AI lead capture &middot; Mediahubink</span>
             </div>
           </div>
-
-          <div class="hero-mini-stats">
-            <div class="mini-stat">
-              <strong>Captures leads</strong>
-              <span>Collects key details before warm interest goes cold.</span>
-            </div>
-            <div class="mini-stat">
-              <strong>Alerts your team</strong>
-              <span>Creates a clearer handover for proper follow-up.</span>
-            </div>
-            <div class="mini-stat">
-              <strong>Offers next step</strong>
-              <span>Can share a booking link without someone being free.</span>
+          <div class="preview-body">
+            <div class="preview-kicker">One widget. One clear next step.</div>
+            <h3>Handles the first response so your team can focus on the real work.</h3>
+            <div class="preview-points">
+              <div class="preview-point"><span class="tick">&#10003;</span><span>Captures enquiries before they go cold</span></div>
+              <div class="preview-point"><span class="tick">&#10003;</span><span>Qualifies and logs the right details automatically</span></div>
+              <div class="preview-point"><span class="tick">&#10003;</span><span>Offers a clear next step — even at 2am</span></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-tight">
-      <div class="container two-col">
-        <div class="section-copy">
-          <div class="eyebrow">The problem</div>
-          <h2>When Your Team Is Busy, Fredi Steps In</h2>
-          <p>
-            Missed calls, after-hours messages, and slow follow-up cost real opportunities.
-            Fredi helps close that gap.
-          </p>
-          <p>
-            Strong enquiries should not go cold just because no one was available in the moment.
-          </p>
-        </div>
-        <div class="section-card">
-          <h3>What that usually looks like</h3>
-          <div class="stack-list">
-            <div class="stack-item"><span class="tick">&#10003;</span><span>Missed calls while the team is busy</span></div>
-            <div class="stack-item"><span class="tick">&#10003;</span><span>Messages arriving after hours</span></div>
-            <div class="stack-item"><span class="tick">&#10003;</span><span>Website enquiries sitting untouched</span></div>
-            <div class="stack-item"><span class="tick">&#10003;</span><span>Slow follow-up and admin overload</span></div>
-            <div class="stack-item"><span class="tick">&#10003;</span><span>Warm leads going cold before anyone replies</span></div>
-          </div>
+        <div class="mini-stats">
+          <div class="mini-stat"><strong>Captures leads</strong><span>Key details collected before interest goes cold.</span></div>
+          <div class="mini-stat"><strong>Alerts your team</strong><span>Cleaner handover for proper follow-up.</span></div>
+          <div class="mini-stat"><strong>Offers next step</strong><span>Shares a booking link when you're not free.</span></div>
         </div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-copy" style="max-width: 860px;">
-          <div class="eyebrow">The solution</div>
-          <h2>A Better First Response For Busy Teams</h2>
-          <p>
-            When nobody is free to reply straight away, Fredi handles the first part properly so fewer leads
-            slip through the cracks.
-          </p>
-          <p>
-            Your team handles the real work. Fredi handles the first response.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="how-it-works">
-      <div class="container">
-        <div class="section-copy" style="max-width: 860px;">
-          <div class="eyebrow">How it works</div>
-          <h2>From Enquiry To Next Step</h2>
-          <p>
-            Fredi starts the conversation, qualifies the lead, captures the contact details,
-            alerts your team, and offers the next action.
-          </p>
-        </div>
-
-        <div class="steps-grid steps-5">
-          <div class="step-card">
-            <div class="number-badge">1</div>
-            <h3>Starts the conversation</h3>
-            <p>Fredi greets the visitor and gets the exchange moving properly.</p>
-          </div>
-          <div class="step-card">
-            <div class="number-badge">2</div>
-            <h3>Qualifies the lead</h3>
-            <p>It asks practical questions shaped around the type of enquiry coming in.</p>
-          </div>
-          <div class="step-card">
-            <div class="number-badge">3</div>
-            <h3>Captures contact details</h3>
-            <p>Important details get collected while the interest is still warm.</p>
-          </div>
-          <div class="step-card">
-            <div class="number-badge">4</div>
-            <h3>Alerts your team</h3>
-            <p>The lead gets logged and your team gets the context they need.</p>
-          </div>
-          <div class="step-card">
-            <div class="number-badge">5</div>
-            <h3>Offers the next step</h3>
-            <p>Fredi can share a booking link or direct the visitor to the right next action.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container two-col">
-        <div class="section-copy">
-          <div class="eyebrow">What Fredi can do</div>
-          <h2>Capture More Leads Without Adding More Admin</h2>
-          <p>
-            Fredi collects the right details, logs them automatically, and gives your team a clearer handover for follow-up.
-          </p>
-          <p>
-            By the time your team follows up, they already have the key details and context they need.
-          </p>
-        </div>
-        <div class="features-grid">
-          <div class="feature-card"><h3>Qualify visitors</h3><p>Ask better first questions and sort serious enquiries from vague browsing.</p></div>
-          <div class="feature-card"><h3>Capture lead details</h3><p>Collect names, emails, phone numbers, and business context in one flow.</p></div>
-          <div class="feature-card"><h3>Log leads automatically</h3><p>Write captured details into your lead sheet without extra admin.</p></div>
-          <div class="feature-card"><h3>Alert your team</h3><p>Send an email so the right person knows a new enquiry has come in.</p></div>
-          <div class="feature-card"><h3>Send confirmation emails</h3><p>Give the enquirer a proper acknowledgement straight away.</p></div>
-          <div class="feature-card"><h3>Offer a booking link</h3><p>Move the conversation forward even when nobody is available live.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container two-col">
-        <div class="section-copy">
-          <div class="eyebrow">Positioning</div>
-          <h2>Built For Real Business Enquiries</h2>
-          <p>
-            Fredi is not a generic chatbot. It is a practical lead capture system shaped around the kinds of questions and enquiries your business actually gets.
-          </p>
-          <p>
-            Not just a widget. A lead capture and enquiry-handling system built to move conversations forward.
-          </p>
-        </div>
-        <div class="info-card">
-          <h3>Simple to understand. Useful in practice.</h3>
-          <p>
-            Fredi is designed to solve a real business problem in a way that feels clear, calm, and commercially useful.
-          </p>
-          <div class="stack-list" style="margin-top: 18px;">
-            <div class="stack-item"><span class="tick">&#10003;</span><span>Clear first response</span></div>
-            <div class="stack-item"><span class="tick">&#10003;</span><span>Better follow-up context</span></div>
-            <div class="stack-item"><span class="tick">&#10003;</span><span>Less reliance on chance</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-copy" style="max-width: 800px;">
-          <div class="eyebrow">Industry fit</div>
-          <h2>Designed To Fit Your Industry</h2>
-          <p>
-            Fredi can be adapted for trades, churches, commercial property, schools, legal firms, hospitality, fitness, transport, and other service-led organisations.
-          </p>
-          <p>
-            Fredi can be tailored to your industry, your lead flow, and the way your business actually works.
-          </p>
-        </div>
-        <div class="industry-grid">
-          <div class="industry-pill">Trades</div>
-          <div class="industry-pill">Church</div>
-          <div class="industry-pill">Commercial Property</div>
-          <div class="industry-pill">School</div>
-          <div class="industry-pill">Legal</div>
-          <div class="industry-pill">Hospitality</div>
-          <div class="industry-pill">Fitness</div>
-          <div class="industry-pill">Transport</div>
-          <div class="industry-pill">General</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-copy" style="max-width: 760px;">
-          <div class="eyebrow">Why it matters</div>
-          <h2>Why It Matters</h2>
-          <p>
-            A better first response helps your business look more professional, respond faster, reduce admin pressure, and lose fewer opportunities.
-          </p>
-        </div>
-        <div class="outcomes-grid">
-          <div class="outcome-card"><h3>Better first impressions</h3><p>Visitors get a clearer response instead of silence or a dead-end form.</p></div>
-          <div class="outcome-card"><h3>Faster response handling</h3><p>Important enquiries get captured before they drift elsewhere.</p></div>
-          <div class="outcome-card"><h3>Less admin pressure</h3><p>Your team spends less time patching together missing details.</p></div>
-          <div class="outcome-card"><h3>Fewer missed opportunities</h3><p>Warm interest turns into organised next steps rather than lost chances.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="section" style="background: rgba(17,21,28,0.8); border-top: 1px solid #223044; border-bottom: 1px solid #223044;">
-      <div class="container">
-        <div class="section-copy" style="max-width: 760px; margin-bottom: 1rem;">
-          <div class="eyebrow">Transparent Pricing</div>
-          <h2>Simple Pricing for Businesses That Can't Afford to Miss Enquiries.</h2>
-          <p style="font-size:0.88rem;color:#9fb6d5;border-left:2px solid #c9a84c;padding-left:1rem;margin-top:1rem;">Fredi is built for businesses that need a better first response without adding more admin, missed messages, or manual follow-up.</p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;">
-          <div style="background:#0f1318;border:1px solid #223044;border-radius:12px;padding:2rem;">
-            <p style="font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;margin-bottom:0.8rem;">Fredi <span style="color:#0a84ff;">Capture</span></p>
-            <div style="font-size:2rem;font-weight:700;color:#fff;line-height:1.2;">£299 <span style="font-size:1rem;color:#9fb6d5;font-weight:400;">setup</span></div>
-            <div style="font-size:1.6rem;font-weight:700;color:#fff;">£397 <span style="font-size:0.9rem;color:#9fb6d5;font-weight:400;">/ month</span></div>
-            <hr style="border:none;border-top:1px solid #223044;margin:1rem 0;">
-            <ul style="list-style:none;padding:0;margin:0 0 1.5rem;font-size:0.82rem;color:#b8c2cf;">
-              <li style="padding:0.35rem 0;">&#10003; AI website widget</li>
-              <li style="padding:0.35rem 0;">&#10003; Tailored questions for your business</li>
-              <li style="padding:0.35rem 0;">&#10003; Lead logging to Google Sheets</li>
-              <li style="padding:0.35rem 0;">&#10003; Email alerts for new enquiries</li>
-              <li style="padding:0.35rem 0;">&#10003; Booking link integration</li>
-            </ul>
-            <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" style="display:block;text-align:center;background:#0070f3;color:#fff;padding:0.75rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">Book a Demo</a>
-          </div>
-          <div style="background:#0f1318;border:2px solid #0070f3;border-radius:12px;padding:2rem;position:relative;">
-            <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#c9a84c;color:#0a0a0f;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.9rem;border-radius:20px;">Most Popular</div>
-            <p style="font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;margin-bottom:0.8rem;">Fredi <span style="color:#0a84ff;">Capture+</span></p>
-            <div style="font-size:2rem;font-weight:700;color:#fff;line-height:1.2;">£299 <span style="font-size:1rem;color:#9fb6d5;font-weight:400;">setup</span></div>
-            <div style="font-size:1.6rem;font-weight:700;color:#fff;">£697 <span style="font-size:0.9rem;color:#9fb6d5;font-weight:400;">/ month</span></div>
-            <hr style="border:none;border-top:1px solid #223044;margin:1rem 0;">
-            <ul style="list-style:none;padding:0;margin:0 0 1.5rem;font-size:0.82rem;color:#b8c2cf;">
-              <li style="padding:0.35rem 0;">&#10003; AI chat &amp; voice</li>
-              <li style="padding:0.35rem 0;">&#10003; Multi-channel handling</li>
-              <li style="padding:0.35rem 0;">&#10003; Advanced booking integration</li>
-              <li style="padding:0.35rem 0;">&#10003; Priority support</li>
-              <li style="padding:0.35rem 0;">&#10003; WhatsApp integration</li>
-            </ul>
-            <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" style="display:block;text-align:center;background:#0070f3;color:#fff;padding:0.75rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">Book a Demo</a>
-          </div>
-          <div style="background:#0f1318;border:1px solid #223044;border-radius:12px;padding:2rem;">
-            <p style="font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;margin-bottom:0.8rem;">Fredi <span style="color:#0a84ff;">Enterprise</span></p>
-            <div style="font-size:1.8rem;font-weight:700;color:#fff;line-height:1.4;">Custom Pricing</div>
-            <hr style="border:none;border-top:1px solid #223044;margin:1rem 0;">
-            <ul style="list-style:none;padding:0;margin:0 0 1.5rem;font-size:0.82rem;color:#b8c2cf;">
-              <li style="padding:0.35rem 0;">&#10003; Multi-site rollout</li>
-              <li style="padding:0.35rem 0;">&#10003; Custom integrations</li>
-              <li style="padding:0.35rem 0;">&#10003; White-label option</li>
-              <li style="padding:0.35rem 0;">&#10003; Dedicated support</li>
-            </ul>
-            <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" style="display:block;text-align:center;background:#c9a84c;color:#0a0a0f;padding:0.75rem;border-radius:6px;text-decoration:none;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Let's Talk</a>
-          </div>
-        </div>
-        <p style="text-align:center;font-size:0.8rem;color:#9fb6d5;margin-top:2rem;"><strong style="color:#fff;">Why businesses pay for Fredi:</strong> <em>Missed enquiries cost more than the monthly fee. Fredi helps you capture more leads and respond faster.</em></p>
-        <p style="text-align:center;font-size:0.8rem;color:#9fb6d5;margin-top:0.6rem;">Deployed in 72 hours. No extra staff needed.</p>
-      </div>
-    </section>
-
-    <!-- CASE STUDY -->
-    <section class="section">
-      <div class="container">
-        <div class="eyebrow">Proven in the Field</div>
-        <h2 style="max-width:600px;">Built for Commercial Property. Proven in Yorkshire.</h2>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem;">
-          <div>
-            <p style="color:#9fb6d5;font-size:0.95rem;line-height:1.8;margin-bottom:1.5rem;">A commercial property operator in Yorkshire needed a way to handle out-of-hours enquiries and qualify leads without relying on front desk availability. We built and deployed a fully custom AI agent within 72 hours.</p>
-            <div style="border-left:2px solid #c9a84c;padding:1rem 1.5rem;background:rgba(201,168,76,0.04);border-radius:0 8px 8px 0;margin-bottom:1.5rem;">
-              <p style="font-style:italic;color:#fff;font-size:1rem;line-height:1.6;margin-bottom:0.5rem;">"I was blown away. This is exactly what we've needed. I'm taking this straight to senior management — we need this across every site."</p>
-              <p style="font-size:0.75rem;color:#c9a84c;letter-spacing:0.06em;text-transform:uppercase;">— Commercial Property Manager, Yorkshire</p>
-            </div>
-            <p style="color:#9fb6d5;font-size:0.9rem;">Following deployment, the solution was escalated to senior stakeholders for potential rollout across their <strong style="color:#fff;">70+ UK locations.</strong></p>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-            <div style="background:#11151c;border:1px solid #223044;border-radius:8px;padding:1.2rem;"><div style="font-size:2rem;font-weight:700;color:#c9a84c;">24/7</div><p style="font-size:0.78rem;color:#9fb6d5;margin-top:0.2rem;">Enquiry handling, including evenings and weekends</p></div>
-            <div style="background:#11151c;border:1px solid #223044;border-radius:8px;padding:1.2rem;"><div style="font-size:2rem;font-weight:700;color:#c9a84c;">100%</div><p style="font-size:0.78rem;color:#9fb6d5;margin-top:0.2rem;">Leads automatically logged to Google Sheets CRM</p></div>
-            <div style="background:#11151c;border:1px solid #223044;border-radius:8px;padding:1.2rem;"><div style="font-size:2rem;font-weight:700;color:#c9a84c;">70+</div><p style="font-size:0.78rem;color:#9fb6d5;margin-top:0.2rem;">UK locations under consideration for rollout</p></div>
-            <div style="background:#11151c;border:1px solid #223044;border-radius:8px;padding:1.2rem;"><div style="font-size:2rem;font-weight:700;color:#c9a84c;">72h</div><p style="font-size:0.78rem;color:#9fb6d5;margin-top:0.2rem;">From brief to full live deployment</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="section">
-      <div class="container">
-        <div class="cta-panel">
-          <div class="eyebrow">Ready to stop losing leads?</div>
-          <h2>Ready to stop losing leads?</h2>
-          <p>
-            See exactly how Fredi would work on your website — live, handling your real enquiries.
-          </p>
-          <div class="hero-actions" style="justify-content: center; margin-top: 24px;">
-            <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#c9a84c;color:#0a0a0f;padding:0.9rem 2rem;border-radius:6px;text-decoration:none;font-size:0.9rem;font-weight:600;">Book Your Free 20-min Demo</a>
-            <button id="bookDemoBtn" type="button" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:0.9rem 2rem;border-radius:6px;cursor:pointer;font-size:0.9rem;">Try Fredi Live</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <div class="footer-note">
-      &copy; 2026 Mediahubink. AI Agents for Business.
-      &bull; <a href="mailto:hello@mediahubink.com">hello@mediahubink.com</a>
-      &bull; <a href="https://www.mediahubink.com">mediahubink.com</a>
-      &bull; <a href="https://www.mediahubink.com/privacy">Privacy Policy</a>
-      &bull; <a href="https://www.mediahubink.com/terms">Terms &amp; Conditions</a>
     </div>
+  </section>
+
+  <!-- PROBLEM + SOLUTION -->
+  <section class="section problem-solution-bg">
+    <div class="section-inner">
+      <div class="tag">The Problem &amp; The Fix</div>
+      <h2>Strong enquiries go cold.<br>Fredi stops that.</h2>
+      <div class="ps-grid">
+        <div>
+          <div class="ps-col-title problem">&#10005; Without Fredi</div>
+          <ul class="ps-list">
+            <li><span class="ps-icon">&#128222;</span>Missed calls while the team is busy</li>
+            <li><span class="ps-icon">&#128337;</span>Messages arriving after hours, unanswered</li>
+            <li><span class="ps-icon">&#128187;</span>Website enquiries sitting untouched</li>
+            <li><span class="ps-icon">&#128196;</span>Slow follow-up and admin overload</li>
+            <li><span class="ps-icon">&#10052;</span>Warm leads going cold before anyone replies</li>
+          </ul>
+        </div>
+        <div>
+          <div class="ps-col-title solution">&#10003; With Fredi</div>
+          <ul class="ps-list">
+            <li><span class="ps-icon">&#9889;</span>Every enquiry gets an instant first response</li>
+            <li><span class="ps-icon">&#127760;</span>24/7 cover — evenings, weekends, bank holidays</li>
+            <li><span class="ps-icon">&#128203;</span>Lead details captured and logged automatically</li>
+            <li><span class="ps-icon">&#128276;</span>Your team notified the moment a lead comes in</li>
+            <li><span class="ps-icon">&#128197;</span>Booking link offered — warm leads stay warm</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-bg" id="how-it-works">
+    <div class="section-inner">
+      <div class="tag">How It Works</div>
+      <h2>From enquiry to next step<br>in five moves.</h2>
+      <div class="steps-row">
+        <div class="step-cell"><div class="step-num">1</div><h3>Starts the conversation</h3><p>Greets the visitor and gets the exchange moving immediately.</p></div>
+        <div class="step-cell"><div class="step-num">2</div><h3>Qualifies the lead</h3><p>Asks practical questions shaped around your type of enquiry.</p></div>
+        <div class="step-cell"><div class="step-num">3</div><h3>Captures contact details</h3><p>Collects name, email, phone while interest is still warm.</p></div>
+        <div class="step-cell"><div class="step-num">4</div><h3>Alerts your team</h3><p>Logs the lead and sends you an instant email notification.</p></div>
+        <div class="step-cell"><div class="step-num">5</div><h3>Offers the next step</h3><p>Shares your booking link or directs to the right action.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="tag">What Fredi Does</div>
+      <h2>Six ways Fredi<br>earns its keep.</h2>
+      <div class="features-grid">
+        <div class="f-cell"><span class="f-icon">&#127919;</span><h3>Qualify visitors</h3><p>Sort serious enquiries from vague browsing before they reach your team.</p></div>
+        <div class="f-cell"><span class="f-icon">&#128222;</span><h3>Capture lead details</h3><p>Name, email, phone, and business context — collected in one natural flow.</p></div>
+        <div class="f-cell"><span class="f-icon">&#128203;</span><h3>Log leads automatically</h3><p>Every lead written to your Google Sheet within seconds. Zero admin.</p></div>
+        <div class="f-cell"><span class="f-icon">&#128276;</span><h3>Alert your team</h3><p>Instant email notification so the right person knows immediately.</p></div>
+        <div class="f-cell"><span class="f-icon">&#9989;</span><h3>Send confirmation emails</h3><p>The enquirer gets a proper acknowledgement straight away.</p></div>
+        <div class="f-cell"><span class="f-icon">&#128197;</span><h3>Offer a booking link</h3><p>Move the conversation forward even when nobody is available live.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="section" style="background:rgba(17,21,28,0.5);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="section-inner">
+      <div class="tag">Industry Fit</div>
+      <h2>Shaped around<br>how your industry works.</h2>
+      <p style="max-width:600px;margin-bottom:0.5rem;">Fredi can be tailored to your sector, your lead flow, and the questions your business actually gets asked.</p>
+      <div class="industry-wrap">
+        <div class="industry-pill">Trades</div>
+        <div class="industry-pill">Church</div>
+        <div class="industry-pill">Commercial Property</div>
+        <div class="industry-pill">School</div>
+        <div class="industry-pill">Legal</div>
+        <div class="industry-pill">Hospitality</div>
+        <div class="industry-pill">Fitness</div>
+        <div class="industry-pill">Transport</div>
+        <div class="industry-pill">General</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="tag">Proven in the Field</div>
+      <h2>Built for commercial property.<br>Proven in Yorkshire.</h2>
+      <div class="case-grid">
+        <div>
+          <p class="case-desc">A commercial property operator in Yorkshire needed 24/7 lead cover without adding headcount. We deployed a custom AI agent in 72 hours — it now handles every out-of-hours enquiry and logs leads to a live Google Sheet.</p>
+          <div class="quote-block">
+            <blockquote>"I was blown away. This is exactly what we've needed. I'm taking this straight to senior management — we need this across every site."</blockquote>
+            <cite>&mdash; Centre Manager, Yorkshire</cite>
+          </div>
+          <p style="font-size:0.85rem;margin-bottom:1.4rem;">Following deployment, escalated to senior stakeholders for rollout across their <strong style="color:#fff;">70+ UK locations.</strong></p>
+          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="btn-gold">See It In Action &rarr;</a>
+        </div>
+        <div class="results-grid">
+          <div class="result-card"><div class="result-n">24/7</div><p>Enquiry handling including evenings &amp; weekends</p></div>
+          <div class="result-card"><div class="result-n">100%</div><p>Leads automatically logged to Google Sheets</p></div>
+          <div class="result-card"><div class="result-n">70+</div><p>UK locations under consideration for rollout</p></div>
+          <div class="result-card"><div class="result-n">72h</div><p>From brief to full live deployment</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing-bg" id="pricing">
+    <div class="section-inner">
+      <div class="tag">Transparent Pricing</div>
+      <h2>One lead pays for<br>a month of Fredi.</h2>
+      <p class="pricing-intro">Most clients recapture their monthly fee within the first week. <strong>Live in 72 hours. No contracts. No extra staff.</strong></p>
+
+      <div class="pricing-cards">
+        <div class="p-card">
+          <div class="p-tier">Fredi Capture</div>
+          <div class="p-price">£397<small>/mo</small></div>
+          <div class="p-setup">+ £299 one-off setup</div>
+          <hr class="p-divider">
+          <ul class="p-features">
+            <li>AI website chat widget</li>
+            <li>Tailored qualification questions</li>
+            <li>Lead logging to Google Sheets</li>
+            <li>Email alerts on every lead</li>
+            <li>Booking link integration</li>
+          </ul>
+          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-ghost">Book a Demo</a>
+        </div>
+
+        <div class="p-card featured">
+          <div class="p-badge">Most Popular</div>
+          <div class="p-tier">Fredi Capture+</div>
+          <div class="p-price">£697<small>/mo</small></div>
+          <div class="p-setup">+ £299 one-off setup</div>
+          <hr class="p-divider">
+          <ul class="p-features">
+            <li>Everything in Capture</li>
+            <li>AI voice agent (inbound calls)</li>
+            <li>WhatsApp integration</li>
+            <li>Advanced booking integration</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-blue">Book a Demo</a>
+        </div>
+
+        <div class="p-card">
+          <div class="p-tier">Fredi Enterprise</div>
+          <div class="p-price" style="font-size:1.7rem;">Custom</div>
+          <div class="p-setup">Multi-site pricing available</div>
+          <hr class="p-divider">
+          <ul class="p-features">
+            <li>Multi-site rollout</li>
+            <li>Volume pricing per location</li>
+            <li>White-label option</li>
+            <li>Dedicated account manager</li>
+            <li>Custom integrations</li>
+          </ul>
+          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-gold">Let's Talk</a>
+        </div>
+      </div>
+
+      <button class="compare-toggle" id="compareToggle">&#9660; See full feature comparison</button>
+      <div class="compare-wrap" id="compareWrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Feature</th><th>Capture</th><th>Capture+</th><th>Enterprise</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>AI website widget</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>Tailored questions</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>Google Sheets logging</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>Email alerts</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>Booking link integration</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>AI voice agent</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>WhatsApp integration</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>Advanced booking</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>Priority support</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>Multi-site / white-label</td><td class="da">—</td><td class="da">—</td><td class="ck">✓</td></tr>
+            <tr><td>Dedicated account manager</td><td class="da">—</td><td class="da">—</td><td class="ck">✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="pricing-note">72-hour deployment &bull; No contracts &bull; Cancel anytime</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="cta-panel">
+        <div class="eyebrow">Ready?</div>
+        <h2>Stop losing leads.<br><em>Start with Fredi.</em></h2>
+        <p>See exactly how Fredi would work on your website — live, handling your real enquiries.</p>
+        <div class="cta-actions">
+          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer" class="btn-gold">Book Your Free 20-min Demo</a>
+          <button id="bookDemoBtn" type="button" class="btn-ghost">Try Fredi Live</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    <span>&copy; 2026 Mediahubink</span>
+    <span class="footer-sep">&bull;</span>
+    <a href="mailto:hello@mediahubink.com">hello@mediahubink.com</a>
+    <span class="footer-sep">&bull;</span>
+    <a href="https://www.mediahubink.com">mediahubink.com</a>
+    <span class="footer-sep">&bull;</span>
+    <a href="https://www.mediahubink.com/privacy">Privacy Policy</a>
+    <span class="footer-sep">&bull;</span>
+    <a href="https://www.mediahubink.com/terms">Terms &amp; Conditions</a>
   </div>
 
+  <!-- TEASER -->
   <div id="teaserBubble" class="teaser-bubble">
-    <button id="teaserClose" class="teaser-close" aria-label="Close teaser">&times;</button>
+    <button id="teaserClose" class="teaser-close" aria-label="Close">&times;</button>
     <strong>Never miss another enquiry</strong>
-    I'm Fredi. I can show you how this would work for your business.
+    I'm Fredi. Let me show you how this works for your business.
   </div>
 
+  <!-- WIDGET TOGGLE -->
   <button id="widgetToggle" class="widget-toggle" aria-label="Open chat">F</button>
 
+  <!-- WIDGET -->
   <div id="widget" class="widget">
     <div class="chat-header">
-      <div class="avatar">F</div>
-      <div>
-        <h1>Fredi</h1>
-        <p>AI consultant for Mediahubink</p>
-      </div>
+      <div class="chat-av">F</div>
+      <div><h1>Fredi</h1><p>AI consultant for Mediahubink</p></div>
       <button id="closeWidgetBtn" class="close-btn" aria-label="Close chat">&times;</button>
     </div>
-
     <div id="chatBody" class="chat-body"></div>
-
     <div class="chat-input">
       <input id="chatInput" type="text" placeholder="Type your reply..." />
       <button id="sendBtn" type="button">Send</button>
     </div>
-
-    <div class="widget-privacy-note">
-      Fredi &middot; Powered by Mediahubink AI &middot; <a href="https://www.mediahubink.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
-    </div>
-
+    <div class="widget-privacy">Fredi &middot; Powered by Mediahubink AI &middot; <a href="https://www.mediahubink.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></div>
     <div id="statusBox" class="status-box"></div>
   </div>
 
@@ -1160,10 +696,8 @@
     const closeWidgetBtn = document.getElementById("closeWidgetBtn");
     const openDemoBtn = document.getElementById("openDemoBtn");
     const bookDemoBtn = document.getElementById("bookDemoBtn");
-
     const teaserBubble = document.getElementById("teaserBubble");
     const teaserClose = document.getElementById("teaserClose");
-
     const chatBody = document.getElementById("chatBody");
     const chatInput = document.getElementById("chatInput");
     const sendBtn = document.getElementById("sendBtn");
@@ -1173,388 +707,108 @@
     const widgetStateKey = "mediahubink_fredi_widget_state";
     const teaserDismissedKey = "mediahubink_fredi_teaser_dismissed";
 
-    let teaserShowTimer = null;
-    let teaserHideTimer = null;
-    let step = 0;
-    let isSubmitting = false;
-    let chatStarted = false;
+    let teaserShowTimer = null, teaserHideTimer = null;
+    let step = 0, isSubmitting = false, chatStarted = false;
 
-    const lead = {
-      business: "",
-      industry: "",
-      painPoints: "",
-      name: "",
-      email: "",
-      phone: "",
-      preferredCallback: "",
-      source: "Website AI",
-      bookingLinkOffered: "Yes",
-      transcript: ""
-    };
+    const lead = { business:"", industry:"", painPoints:"", name:"", email:"", phone:"", preferredCallback:"", source:"Website AI", bookingLinkOffered:"Yes", transcript:"" };
 
     const INDUSTRY_CONFIG = {
-      Trades: {
-        keywords: ["plumb", "plumbing", "electric", "electrical", "builder", "building", "joiner", "roofer", "roofing", "heating", "hvac", "gas engineer", "boiler", "trades"],
-        label: "Trades",
-        intro: "Got it. Trades businesses often deal with missed calls, quote requests, urgent jobs, and after-hours enquiries.",
-        question: "What's the biggest pressure point for you right now?",
-        quickReplies: ["Missed calls", "Quote requests", "Urgent jobs", "After-hours enquiries"]
-      },
-      Transport: {
-        keywords: ["transport", "logistics", "delivery", "courier", "haulage", "freight", "fleet"],
-        label: "Transport",
-        intro: "Got it. Transport and logistics businesses often deal with quote requests, urgent bookings, delivery queries, and after-hours messages.",
-        question: "What's the biggest pressure point for you right now?",
-        quickReplies: ["Quote requests", "Urgent bookings", "Delivery queries", "After-hours messages"]
-      },
-      Hospitality: {
-        keywords: ["restaurant", "cafe", "hotel", "hospitality", "bar", "venue", "guest house", "pub"],
-        label: "Hospitality",
-        intro: "Got it. Hospitality businesses often deal with booking questions, availability checks, event enquiries, and out-of-hours messages.",
-        question: "What's the biggest pressure point for you right now?",
-        quickReplies: ["Booking enquiries", "Availability questions", "Event leads", "After-hours messages"]
-      },
-      Fitness: {
-        keywords: ["gym", "fitness", "pt", "personal training", "studio", "wellness"],
-        label: "Fitness",
-        intro: "Got it. Fitness businesses often deal with membership questions, trial requests, class enquiries, and missed follow-up.",
-        question: "What's the biggest pressure point for you right now?",
-        quickReplies: ["Membership enquiries", "Trial requests", "Class questions", "Missed follow-up"]
-      },
-      "Commercial Property": {
-        keywords: ["property", "commercial property", "workspace", "office space", "serviced office", "tenant", "leasing", "lease", "viewing"],
-        label: "Commercial Property",
-        intro: "Got it. Commercial property teams often deal with viewing requests, availability questions, lease enquiries, and out-of-hours interest from potential tenants.",
-        question: "What's the biggest pressure point for you right now?",
-        quickReplies: ["Viewing requests", "Availability questions", "Lease enquiries", "After-hours interest"]
-      },
-      School: {
-        keywords: ["school", "academy", "college", "education", "nursery"],
-        label: "School",
-        intro: "Got it. Schools often deal with parent enquiries, admissions questions, visit requests, and admin follow-up.",
-        question: "What's the biggest pressure point for you right now?",
-        quickReplies: ["Admissions questions", "Parent enquiries", "Visit requests", "Admin overload"]
-      },
-      Church: {
-        keywords: ["church", "ministry", "parish", "fellowship"],
-        label: "Church",
-        intro: "Got it. Churches often deal with visitor questions, event enquiries, prayer requests, and follow-up after first contact.",
-        question: "What's the biggest pressure point for you right now?",
-        quickReplies: ["Visitor follow-up", "Event enquiries", "Prayer requests", "Admin overload"]
-      },
-      Legal: {
-        keywords: ["law", "legal", "solicitor", "solicitors", "firm", "attorney"],
-        label: "Legal",
-        intro: "Got it. Legal firms often deal with new case enquiries, urgent contact requests, consultation bookings, and slow follow-up.",
-        question: "What's the biggest pressure point for you right now?",
-        quickReplies: ["New case enquiries", "Urgent contact requests", "Consultation bookings", "Slow follow-up"]
-      },
-      General: {
-        keywords: [],
-        label: "General",
-        intro: "Got it. Businesses often lose strong enquiries because nobody responds quickly enough or the handover is messy.",
-        question: "What's the biggest pressure point for you right now when new enquiries come in?",
-        quickReplies: ["Missed enquiries", "Slow follow-up", "Admin overload", "After-hours messages"]
-      }
+      Trades:{ keywords:["plumb","electric","builder","joiner","roofer","heating","hvac","gas","boiler","trades"], label:"Trades", intro:"Got it. Trades businesses often deal with missed calls, quote requests, and urgent jobs.", question:"What's the biggest pressure point right now?", quickReplies:["Missed calls","Quote requests","Urgent jobs","After-hours enquiries"] },
+      Transport:{ keywords:["transport","logistics","delivery","courier","haulage","freight","fleet"], label:"Transport", intro:"Got it. Transport businesses often deal with quote requests, urgent bookings, and after-hours messages.", question:"What's the biggest pressure point right now?", quickReplies:["Quote requests","Urgent bookings","Delivery queries","After-hours messages"] },
+      Hospitality:{ keywords:["restaurant","cafe","hotel","hospitality","bar","venue","pub"], label:"Hospitality", intro:"Got it. Hospitality businesses often deal with booking questions, availability checks, and out-of-hours messages.", question:"What's the biggest pressure point right now?", quickReplies:["Booking enquiries","Availability questions","Event leads","After-hours messages"] },
+      Fitness:{ keywords:["gym","fitness","pt","personal training","studio","wellness"], label:"Fitness", intro:"Got it. Fitness businesses often deal with membership questions, trial requests, and missed follow-up.", question:"What's the biggest pressure point right now?", quickReplies:["Membership enquiries","Trial requests","Class questions","Missed follow-up"] },
+      "Commercial Property":{ keywords:["property","commercial","workspace","office space","serviced office","tenant","lease","viewing"], label:"Commercial Property", intro:"Got it. Commercial property teams often deal with viewing requests, availability questions, and out-of-hours interest.", question:"What's the biggest pressure point right now?", quickReplies:["Viewing requests","Availability questions","Lease enquiries","After-hours interest"] },
+      School:{ keywords:["school","academy","college","education","nursery"], label:"School", intro:"Got it. Schools often deal with parent enquiries, admissions questions, and visit requests.", question:"What's the biggest pressure point right now?", quickReplies:["Admissions questions","Parent enquiries","Visit requests","Admin overload"] },
+      Church:{ keywords:["church","ministry","parish","fellowship"], label:"Church", intro:"Got it. Churches often deal with visitor questions, event enquiries, and follow-up after first contact.", question:"What's the biggest pressure point right now?", quickReplies:["Visitor follow-up","Event enquiries","Prayer requests","Admin overload"] },
+      Legal:{ keywords:["law","legal","solicitor","firm","attorney"], label:"Legal", intro:"Got it. Legal firms often deal with new case enquiries, urgent contact requests, and consultation bookings.", question:"What's the biggest pressure point right now?", quickReplies:["New case enquiries","Consultation bookings","Urgent requests","Slow follow-up"] },
+      General:{ keywords:[], label:"General", intro:"Got it. Businesses often lose strong enquiries because nobody responds quickly enough.", question:"What's the biggest pressure point when new enquiries come in?", quickReplies:["Missed enquiries","Slow follow-up","Admin overload","After-hours messages"] }
     };
 
     const steps = [
-      {
-        key: "business",
-        ask: "Hi, I'm Fredi.\n\nI help businesses capture and respond to enquiries automatically.\n\nWhat kind of business are you running?",
-        quickReplies: [
-          "Plumbing business",
-          "Transport company",
-          "Restaurant",
-          "Gym",
-          "Commercial property",
-          "School",
-          "Church",
-          "Law firm"
-        ],
-        validate: (value) => value.trim().length > 1,
-        onSave: (value) => {
-          const trimmed = value.trim();
-          lead.business = trimmed;
-          lead.industry = inferIndustry(trimmed);
-        }
-      },
-      {
-        key: "painPoints",
-        ask: "",
-        quickReplies: [],
-        validate: (value) => value.trim().length > 2,
-        onSave: (value) => {
-          lead.painPoints = value.trim();
-        }
-      },
-      {
-        key: "name",
-        ask: "That helps.\n\nWhat's your full name?",
-        quickReplies: [],
-        validate: (value) => value.trim().length > 1,
-        onSave: (value) => {
-          lead.name = value.trim();
-        }
-      },
-      {
-        key: "email",
-        ask: "Thanks.\n\nWhat's your best email address?",
-        quickReplies: [],
-        validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
-        error: "Please enter a valid email address.",
-        onSave: (value) => {
-          lead.email = value.trim();
-        }
-      },
-      {
-        key: "phone",
-        ask: "And what's your phone number?",
-        quickReplies: [],
-        validate: (value) => value.replace(/[^\d+]/g, "").length >= 7,
-        error: "Please enter a valid phone number.",
-        onSave: (value) => {
-          lead.phone = value.trim();
-        }
-      },
-      {
-        key: "preferredCallback",
-        ask: "When would you like a response?",
-        quickReplies: ["As soon as possible", "Today", "This week"],
-        validate: (value) => value.trim().length > 1,
-        onSave: (value) => {
-          lead.preferredCallback = value.trim();
-        }
-      }
+      { key:"business", ask:"Hi, I'm Fredi.\n\nI help businesses capture and respond to enquiries automatically.\n\nWhat kind of business are you running?", quickReplies:["Plumbing business","Transport company","Restaurant","Gym","Commercial property","School","Church","Law firm"], validate:v=>v.trim().length>1, onSave:v=>{ lead.business=v.trim(); lead.industry=inferIndustry(v.trim()); } },
+      { key:"painPoints", ask:"", quickReplies:[], validate:v=>v.trim().length>2, onSave:v=>{ lead.painPoints=v.trim(); } },
+      { key:"name", ask:"That helps.\n\nWhat's your full name?", quickReplies:[], validate:v=>v.trim().length>1, onSave:v=>{ lead.name=v.trim(); } },
+      { key:"email", ask:"Thanks.\n\nWhat's your best email address?", quickReplies:[], validate:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), error:"Please enter a valid email address.", onSave:v=>{ lead.email=v.trim(); } },
+      { key:"phone", ask:"And your phone number?", quickReplies:[], validate:v=>v.replace(/[^\d+]/g,"").length>=7, error:"Please enter a valid phone number.", onSave:v=>{ lead.phone=v.trim(); } },
+      { key:"preferredCallback", ask:"When would you like a response?", quickReplies:["As soon as possible","Today","This week"], validate:v=>v.trim().length>1, onSave:v=>{ lead.preferredCallback=v.trim(); } }
     ];
 
-    function inferIndustry(value) {
-      const text = value.toLowerCase();
-      for (const [industryName, config] of Object.entries(INDUSTRY_CONFIG)) {
-        if (industryName === "General") continue;
-        const hasMatch = config.keywords.some((keyword) => text.includes(keyword));
-        if (hasMatch) return config.label;
-      }
-      return "General";
+    function inferIndustry(v){ const t=v.toLowerCase(); for(const[n,c] of Object.entries(INDUSTRY_CONFIG)){ if(n==="General")continue; if(c.keywords.some(k=>t.includes(k)))return c.label; } return "General"; }
+    function getIC(i){ return INDUSTRY_CONFIG[i]||INDUSTRY_CONFIG.General; }
+    function esc(s=""){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); }
+
+    function appendMsg(text,type="bot"){
+      const m=document.createElement("div"); m.className=`msg ${type}`; m.textContent=text;
+      chatBody.appendChild(m); chatBody.scrollTop=chatBody.scrollHeight;
+      lead.transcript+=`${type==="user"?"Lead":"Fredi"}: ${text}\n`;
     }
 
-    function getIndustryConfig(industry) {
-      return INDUSTRY_CONFIG[industry] || INDUSTRY_CONFIG.General;
+    function appendQR(opts){
+      if(!opts||!opts.length)return;
+      const row=document.createElement("div"); row.className="quick-replies";
+      opts.forEach(o=>{ const b=document.createElement("button"); b.type="button"; b.className="qr-btn"; b.textContent=o; b.addEventListener("click",()=>{ if(isSubmitting)return; chatInput.value=o; handleSend(); }); row.appendChild(b); });
+      chatBody.appendChild(row); chatBody.scrollTop=chatBody.scrollHeight;
     }
 
-    function escapeHtml(str = "") {
-      return str
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-    }
+    function showTyping(){ hideTyping(); const d=document.createElement("div"); d.className="typing-row"; d.id="typingRow"; d.innerHTML=`<div class="dots"><span></span><span></span><span></span></div><span>Fredi is typing...</span>`; chatBody.appendChild(d); chatBody.scrollTop=chatBody.scrollHeight; }
+    function hideTyping(){ const t=document.getElementById("typingRow"); if(t)t.remove(); }
 
-    function appendMessage(text, type = "bot") {
-      if (!chatBody) return;
-      const message = document.createElement("div");
-      message.className = `msg ${type}`;
-      message.textContent = text;
-      chatBody.appendChild(message);
-      chatBody.scrollTop = chatBody.scrollHeight;
-      updateTranscript(type, text);
-    }
+    function getStepPrompt(){ const c=steps[step]; if(!c)return{text:"",replies:[]}; if(c.key==="painPoints"){ const ic=getIC(lead.industry); return{text:`${ic.intro}\n\n${ic.question}`,replies:ic.quickReplies}; } return{text:c.ask,replies:c.quickReplies||[]}; }
 
-    function appendQuickReplies(options) {
-      if (!chatBody) return;
-      if (!options || !options.length) return;
-      const row = document.createElement("div");
-      row.className = "quick-replies";
-      options.forEach((option) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "quick-reply-btn";
-        btn.textContent = option;
-        btn.addEventListener("click", () => {
-          if (isSubmitting || !chatInput) return;
-          chatInput.value = option;
-          handleSend();
-        });
-        row.appendChild(btn);
-      });
-      chatBody.appendChild(row);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
+    function askStep(){ const c=steps[step]; if(!c)return; const p=getStepPrompt(); showTyping(); setTimeout(()=>{ hideTyping(); appendMsg(p.text,"bot"); appendQR(p.replies); },450); }
 
-    function updateTranscript(type, text) {
-      const prefix = type === "user" ? "Lead" : "Fredi";
-      lead.transcript += `${prefix}: ${text}\n`;
-    }
+    function resetLead(){ Object.assign(lead,{business:"",industry:"",painPoints:"",name:"",email:"",phone:"",preferredCallback:"",source:"Website AI",bookingLinkOffered:"Yes",transcript:""}); }
 
-    function showTyping() {
-      if (!chatBody) return;
-      hideTyping();
-      const typing = document.createElement("div");
-      typing.className = "typing-row";
-      typing.id = "typingRow";
-      typing.innerHTML = `<div class="typing-dots"><span></span><span></span><span></span></div><span>Fredi is typing...</span>`;
-      chatBody.appendChild(typing);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
+    function resetChat(){ chatBody.innerHTML=""; statusBox.style.display="none"; statusBox.innerHTML=""; chatInput.value=""; chatInput.disabled=false; sendBtn.disabled=false; resetLead(); step=0; isSubmitting=false; chatStarted=true; askStep(); }
 
-    function hideTyping() {
-      const typing = document.getElementById("typingRow");
-      if (typing) typing.remove();
-    }
-
-    function getCurrentStepPrompt() {
-      const current = steps[step];
-      if (!current) return { text: "", replies: [] };
-      if (current.key === "painPoints") {
-        const config = getIndustryConfig(lead.industry);
-        return { text: `${config.intro}\n\n${config.question}`, replies: config.quickReplies };
-      }
-      return { text: current.ask, replies: current.quickReplies || [] };
-    }
-
-    function askCurrentStep() {
-      const current = steps[step];
-      if (!current) return;
-      const prompt = getCurrentStepPrompt();
-      showTyping();
-      setTimeout(() => {
-        hideTyping();
-        appendMessage(prompt.text, "bot");
-        appendQuickReplies(prompt.replies);
-      }, 450);
-    }
-
-    function resetLead() {
-      lead.business = "";
-      lead.industry = "";
-      lead.painPoints = "";
-      lead.name = "";
-      lead.email = "";
-      lead.phone = "";
-      lead.preferredCallback = "";
-      lead.source = "Website AI";
-      lead.bookingLinkOffered = "Yes";
-      lead.transcript = "";
-    }
-
-    function resetChat() {
-      if (!chatBody || !statusBox || !chatInput || !sendBtn) return;
-      chatBody.innerHTML = "";
-      statusBox.style.display = "none";
-      statusBox.innerHTML = "";
-      chatInput.value = "";
-      chatInput.disabled = false;
-      sendBtn.disabled = false;
-      resetLead();
-      step = 0;
-      isSubmitting = false;
-      chatStarted = true;
-      askCurrentStep();
-    }
-
-    async function handleSend() {
-      if (isSubmitting || !chatInput) return;
-      const value = chatInput.value.trim();
-      if (!value) return;
-      const current = steps[step];
-      if (!current) return;
-      if (!current.validate(value)) {
-        appendMessage(current.error || "Please enter a valid response.", "bot");
-        return;
-      }
-      appendMessage(value, "user");
-      current.onSave(value);
-      chatInput.value = "";
-      step += 1;
-      if (step < steps.length) {
-        askCurrentStep();
-        return;
-      }
+    async function handleSend(){
+      if(isSubmitting)return;
+      const v=chatInput.value.trim(); if(!v)return;
+      const c=steps[step]; if(!c)return;
+      if(!c.validate(v)){ appendMsg(c.error||"Please enter a valid response.","bot"); return; }
+      appendMsg(v,"user"); c.onSave(v); chatInput.value=""; step++;
+      if(step<steps.length){ askStep(); return; }
       await submitLead();
     }
 
-    async function submitLead() {
-      if (!chatInput || !sendBtn || !statusBox) return;
-      isSubmitting = true;
-      chatInput.disabled = true;
-      sendBtn.disabled = true;
-      showTyping();
-      try {
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(lead)
-        });
-        const data = await response.json();
-        hideTyping();
-        if (!response.ok) throw new Error(data.error || "Something went wrong.");
-        appendMessage(
-          `Thanks, ${lead.name}.\n\nYour enquiry has been captured and passed on.\n\nIf you'd like, you can also book a demo here:\n${bookingLink}`,
-          "bot"
-        );
-        statusBox.style.display = "block";
-        statusBox.innerHTML = `
-          <h3>Lead captured</h3>
-          <p>Your enquiry has been sent successfully.</p>
-          <p><strong>Industry:</strong> ${escapeHtml(lead.industry)}</p>
-          <p><strong>Booking link:</strong><br><a href="${escapeHtml(bookingLink)}" target="_blank" rel="noopener noreferrer">${escapeHtml(bookingLink)}</a></p>
-        `;
-      } catch (error) {
-        hideTyping();
-        appendMessage("Sorry, something went wrong while sending your enquiry. Please try again.", "bot");
-        statusBox.style.display = "block";
-        statusBox.innerHTML = `<h3>Submission issue</h3><p>${escapeHtml(error.message)}</p>`;
-      } finally {
-        isSubmitting = false;
-        chatInput.disabled = false;
-        sendBtn.disabled = false;
-      }
+    async function submitLead(){
+      isSubmitting=true; chatInput.disabled=true; sendBtn.disabled=true; showTyping();
+      try{
+        const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(lead)});
+        const data=await res.json(); hideTyping();
+        if(!res.ok)throw new Error(data.error||"Something went wrong.");
+        appendMsg(`Thanks, ${lead.name}.\n\nYour enquiry has been captured and passed on.\n\nYou can also book a demo here:\n${bookingLink}`,"bot");
+        statusBox.style.display="block";
+        statusBox.innerHTML=`<h3>Lead captured</h3><p>Sent successfully.</p><p><strong>Industry:</strong> ${esc(lead.industry)}</p><p><strong>Book a demo:</strong><br><a href="${esc(bookingLink)}" target="_blank" rel="noopener">${esc(bookingLink)}</a></p>`;
+      }catch(e){
+        hideTyping(); appendMsg("Sorry, something went wrong. Please try again.","bot");
+        statusBox.style.display="block"; statusBox.innerHTML=`<h3>Issue</h3><p>${esc(e.message)}</p>`;
+      }finally{ isSubmitting=false; chatInput.disabled=false; sendBtn.disabled=false; }
     }
 
-    function openWidget() {
-      if (!widget) return;
-      widget.classList.add("open");
-      localStorage.setItem(widgetStateKey, "open");
-      hideTeaser();
-      if (!chatStarted) resetChat();
-      setTimeout(() => { if (chatInput) chatInput.focus(); }, 150);
-    }
+    function openWidget(){ widget.classList.add("open"); localStorage.setItem(widgetStateKey,"open"); hideTeaser(); if(!chatStarted)resetChat(); setTimeout(()=>chatInput.focus(),150); }
+    function closeWidget(){ widget.classList.remove("open"); localStorage.setItem(widgetStateKey,"closed"); }
+    function showTeaser(){ if(localStorage.getItem(teaserDismissedKey)==="true")return; if(widget.classList.contains("open"))return; teaserBubble.classList.add("show"); }
+    function hideTeaser(){ teaserBubble.classList.remove("show"); }
 
-    function closeWidget() {
-      if (!widget) return;
-      widget.classList.remove("open");
-      localStorage.setItem(widgetStateKey, "closed");
-    }
+    widgetToggle.addEventListener("click",()=>widget.classList.contains("open")?closeWidget():openWidget());
+    closeWidgetBtn.addEventListener("click",closeWidget);
+    openDemoBtn.addEventListener("click",openWidget);
+    bookDemoBtn.addEventListener("click",openWidget);
+    sendBtn.addEventListener("click",handleSend);
+    chatInput.addEventListener("keydown",e=>{ if(e.key==="Enter")handleSend(); });
+    teaserClose.addEventListener("click",()=>{ hideTeaser(); localStorage.setItem(teaserDismissedKey,"true"); });
 
-    function showTeaser() {
-      if (!teaserBubble) return;
-      if (localStorage.getItem(teaserDismissedKey) === "true") return;
-      if (widget && widget.classList.contains("open")) return;
-      teaserBubble.classList.add("show");
-    }
+    window.addEventListener("load",()=>{
+      if(localStorage.getItem(widgetStateKey)==="open"){ openWidget(); }
+      else{ teaserShowTimer=setTimeout(showTeaser,1800); teaserHideTimer=setTimeout(hideTeaser,9000); }
+    });
 
-    function hideTeaser() {
-      if (!teaserBubble) return;
-      teaserBubble.classList.remove("show");
-    }
-
-    if (widgetToggle) widgetToggle.addEventListener("click", () => { widget && widget.classList.contains("open") ? closeWidget() : openWidget(); });
-    if (closeWidgetBtn) closeWidgetBtn.addEventListener("click", closeWidget);
-    if (openDemoBtn) openDemoBtn.addEventListener("click", openWidget);
-    if (bookDemoBtn) bookDemoBtn.addEventListener("click", openWidget);
-    if (sendBtn) sendBtn.addEventListener("click", handleSend);
-    if (chatInput) chatInput.addEventListener("keydown", (e) => { if (e.key === "Enter") handleSend(); });
-    if (teaserClose) teaserClose.addEventListener("click", () => { hideTeaser(); localStorage.setItem(teaserDismissedKey, "true"); });
-
-    window.addEventListener("load", () => {
-      const widgetState = localStorage.getItem(widgetStateKey);
-      if (widgetState === "open") {
-        openWidget();
-      } else {
-        teaserShowTimer = setTimeout(showTeaser, 1800);
-        teaserHideTimer = setTimeout(hideTeaser, 9000);
-      }
+    // Compare toggle
+    document.getElementById("compareToggle").addEventListener("click",function(){
+      const w=document.getElementById("compareWrap");
+      const open=w.classList.toggle("open");
+      this.textContent=open?"▲ Hide comparison":"▼ See full feature comparison";
     });
   </script>
 </body>
