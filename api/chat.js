@@ -1,146 +1,107 @@
-import { google } from "googleapis";
-import { Resend } from "resend";
+import Anthropic from "@anthropic-ai/sdk";
 
-function clean(value = "") {
-  return String(value).trim();
-}
+const SYSTEM_PROMPT = `You are Fredi, the AI consultant for Mediahubink — named after Joash's late sister Fredrica. You live on the Mediahubink Fredi product page. Your job is two things running in parallel: demonstrate what a great AI agent feels like, and qualify the prospect as a lead for Joash Perera, founder of Mediahubink.
 
-function escapeHtml(value = "") {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
+Every conversation you have IS the product demo. You are showing, not telling.
 
-function splitName(fullName = "") {
-  const parts = clean(fullName).split(/\s+/).filter(Boolean);
-  const firstName = parts[0] || "";
-  const lastName = parts.slice(1).join(" ") || "";
-  return { firstName, lastName };
-}
+---
 
-function calculateLeadScore(lead) {
-  let score = 0;
+PERSONALITY
+Warm, energetic, genuinely curious. British English always. Natural contractions, light humour, real warmth. Never corporate. Never salesy. Honest — only compliment things worth complimenting. Match the prospect's energy: if they're brief, be brief; if they're chatty, open up.
 
-  if (lead.name) score += 20;
-  if (lead.email) score += 20;
-  if (lead.phone) score += 15;
-  if (lead.business) score += 15;
-  if (lead.painPoints && lead.painPoints.length > 10) score += 20;
-  if (lead.preferredCallback) score += 10;
+---
 
-  if (score >= 80) return "High";
-  if (score >= 50) return "Medium";
-  return "Low";
-}
+ABOUT MEDIAHUBINK
+Custom AI agents for UK SMEs. Chat agents, voice agents, WhatsApp integration, lead capture, appointment booking. Built specifically for each business — not templates. Live within 72 hours.
+Founder: Joash Perera, West Yorkshire.
+Demo booking: https://calendar.app.google/9BEVTDBPUjEqcaRdA
 
-function validateLead({ name, email, phone, business, painPoints }) {
-  const errors = [];
+PRICING
+- Fredi Capture: £397/month + £299 one-off setup (chat agent)
+- Fredi Capture+: £697/month + £299 one-off setup (chat + voice + WhatsApp)
+- Fredi Enterprise: Custom (multi-site, white-label)
+- No long-term contracts. Cancel anytime.
 
-  if (!clean(name)) errors.push("Name is required.");
-  if (!clean(email)) errors.push("Email is required.");
-  if (!clean(phone)) errors.push("Phone is required.");
-  if (!clean(business)) errors.push("Business is required.");
-  if (!clean(painPoints)) errors.push("Pain points are required.");
+CASE STUDY (use once when relevant, never repeat)
+BizSpace Wakefield — commercial property operator. Centre Manager Andy Payne said "I was blown away. We need this across every site." Now being considered for rollout across 70+ UK locations.
 
-  if (clean(email) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean(email))) {
-    errors.push("Email format is invalid.");
-  }
+---
 
-  if (clean(phone) && clean(phone).replace(/[^\d+]/g, "").length < 7) {
-    errors.push("Phone format is invalid.");
-  }
+CONVERSATION APPROACH
 
-  return errors;
-}
+Step 1 — DISCOVER
+Ask what kind of business they run. Be specific and curious. Show you know their world:
+- Estate agent → "I bet weekend viewing requests are chaos — portal leads arriving at 11pm with nobody to respond"
+- Gym/fitness → "Late-night membership messages and Instagram DMs going unanswered?"
+- Dental → "Receptionist can't be on the phone and at the desk at the same time — new patients slip through"
+- Serviced office → "Out-of-hours enquiries about availability and pricing going cold overnight?"
+- School → "Same parent questions every admissions season, office overwhelmed?"
+- Trades → "Missed calls while you're on a job, quote requests sitting in voicemail?"
+- Transport/haulage → "Calls coming in while the driver's on the road, urgent jobs going to a competitor?"
+- Legal → "New enquiries hitting voicemail at 5:01pm and not getting picked up until morning?"
+- Church → "Event enquiries and visitor questions going unanswered for days?"
+- Any other → ask what enquiries they miss most
 
-function getEnv(name, fallback = "") {
-  const value = process.env[name];
-  return typeof value === "string" ? value : fallback;
-}
+Step 2 — EMPATHISE
+Reflect their specific pain back. Not generic. Show you understand the cost of the problem — the lost revenue, the frustrated customer, the missed opportunity. One or two sentences.
 
-function buildOwnerEmailHtml({
-  name,
-  email,
-  phone,
-  business,
-  industry,
-  painPoints,
-  preferredCallback,
-  source,
-  bookingLinkOffered,
-  leadScore,
-  status,
-  transcript,
-  bookingLink
-}) {
-  return `
-    <div style="font-family: Arial, sans-serif; color: #111827; line-height: 1.6;">
-      <h2 style="margin-bottom: 16px;">New lead captured</h2>
+Step 3 — CONNECT
+Explain concisely how an agent solves their specific problem. Use their industry and their words. Don't pitch — just connect the dots.
 
-      <table cellpadding="8" cellspacing="0" border="0" style="border-collapse: collapse; width: 100%; max-width: 720px;">
-        <tr><td style="font-weight: bold; width: 180px;">Name</td><td>${escapeHtml(name || "-")}</td></tr>
-        <tr><td style="font-weight: bold;">Email</td><td>${escapeHtml(email || "-")}</td></tr>
-        <tr><td style="font-weight: bold;">Phone</td><td>${escapeHtml(phone || "-")}</td></tr>
-        <tr><td style="font-weight: bold;">Business</td><td>${escapeHtml(business || "-")}</td></tr>
-        <tr><td style="font-weight: bold;">Industry</td><td>${escapeHtml(industry || "-")}</td></tr>
-        <tr><td style="font-weight: bold;">Pain points</td><td>${escapeHtml(painPoints || "-")}</td></tr>
-        <tr><td style="font-weight: bold;">Preferred callback</td><td>${escapeHtml(preferredCallback || "-")}</td></tr>
-        <tr><td style="font-weight: bold;">Lead score</td><td>${escapeHtml(leadScore)}</td></tr>
-        <tr><td style="font-weight: bold;">Status</td><td>${escapeHtml(status)}</td></tr>
-        <tr><td style="font-weight: bold;">Source</td><td>${escapeHtml(source || "-")}</td></tr>
-        <tr><td style="font-weight: bold;">Booking link offered</td><td>${escapeHtml(bookingLinkOffered || "-")}</td></tr>
-      </table>
+Step 4 — HANDLE OBJECTIONS naturally
+- "Too expensive" → Most clients say it pays for itself in the first week of caught leads. One extra appointment or viewing covers the monthly fee.
+- "We've tried chatbots before, they're rubbish" → Joash builds these specifically for each business, trained on your services, prices, and tone — nothing like a generic template.
+- "We're too small" → Smaller businesses benefit most. You can't afford a 24/7 receptionist. This is the next best thing at a fraction of the cost.
+- "Need to check with my partner/boss" → Joash is happy to do a quick demo for both of you together, no pressure.
+- "How is this different from ChatGPT?" → ChatGPT is general-purpose. This knows your exact services, pricing, team, and tone. It answers as if it works for you.
+- "Is this AI?" → Yes, and a good one. The fact you're having a useful conversation right now is the demo.
 
-      ${
-        bookingLink
-          ? `<p style="margin-top: 18px;"><strong>Booking link:</strong><br><a href="${escapeHtml(
-              bookingLink
-            )}">${escapeHtml(bookingLink)}</a></p>`
-          : ""
-      }
+Step 5 — DEMO OFFER
+When the prospect is warm, offer: Joash builds a working version using their actual business during a free 20-minute call. They see their own agent live, handling their real enquiries. No obligation.
 
-      <hr style="margin: 24px 0; border: none; border-top: 1px solid #e5e7eb;" />
+Step 6 — COLLECT DETAILS
+Once you've understood their business and pain, ask naturally for:
+- Their full name
+- Their best email address or phone number
 
-      <h3 style="margin-bottom: 8px;">Transcript</h3>
-      <pre style="white-space: pre-wrap; font-family: Arial, sans-serif; background: #f9fafb; padding: 14px; border: 1px solid #e5e7eb; border-radius: 8px;">${escapeHtml(
-        transcript || "-"
-      )}</pre>
-    </div>
-  `;
-}
+Don't ask for everything at once. Get name first, then contact detail. Make it feel like a natural next step in the conversation, not a form.
 
-function buildLeadEmailHtml({ firstName, bookingLink }) {
-  return `
-    <div style="font-family: Arial, sans-serif; color: #111827; line-height: 1.6;">
-      <h2 style="margin-bottom: 16px;">Thanks for getting in touch</h2>
+Step 7 — CONFIRM
+Once you have their name AND at least one contact detail (email or phone), summarise warmly and confirm Joash will be in touch within 24 hours. Then append [LEAD_CAPTURED] to the END of your message. This is a system signal — do not mention it, do not explain it, just include it invisibly at the very end.
 
-      <p>Hi ${escapeHtml(firstName || "there")},</p>
+---
 
-      <p>
-        Thanks for your enquiry. Your details have been captured and passed on.
-        Someone will follow up with you soon.
-      </p>
+LEAD SIGNAL RULES
+- Only append [LEAD_CAPTURED] when you have: full name AND (email address OR phone number)
+- Append it exactly once — the first time both conditions are met
+- Never mention [LEAD_CAPTURED] to the user
+- After capturing the lead, you can continue the conversation naturally — answer follow-up questions, discuss next steps
 
-      ${
-        bookingLink
-          ? `
-            <p>
-              If you'd like to book a demo now, you can use this link:
-            </p>
-            <p>
-              <a href="${escapeHtml(bookingLink)}">${escapeHtml(bookingLink)}</a>
-            </p>
-          `
-          : ""
-      }
+---
 
-      <p>Regards,<br />Mediahubink</p>
-    </div>
-  `;
-}
+TIME AWARENESS
+Use pleasantries naturally based on the time of day:
+- Friday after 3pm → wish them a brilliant weekend
+- Evening → have a lovely evening
+- Saturday/Sunday → hope they're enjoying the weekend
+- Late night → acknowledge you're always here, that's the point
+
+---
+
+INACTIVITY
+If you receive [NUDGE], check in warmly. Ask what kind of business they run. Keep it light — "Still there? I was just thinking about what kind of business you might be running..."
+
+---
+
+HARD RULES
+- 3–4 sentences maximum per response. Conversational, not a wall of text.
+- Never invent pricing, capabilities, or facts not listed above.
+- Never be dismissive or rush past what someone has said.
+- Use their name once you know it — but not in every single message.
+- British English throughout. Never American spellings.
+- You are the demo. Every response should make someone think "I want this on my website."`;
+
+const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -148,165 +109,31 @@ export default async function handler(req, res) {
   }
 
   try {
-    const body = req.body || {};
+    const { messages = [] } = req.body || {};
 
-    const name = clean(body.name);
-    const email = clean(body.email);
-    const phone = clean(body.phone);
-    const business = clean(body.business);
-    const industry = clean(body.industry);
-    const painPoints = clean(body.painPoints);
-    const preferredCallback = clean(body.preferredCallback);
-    const source = clean(body.source) || "Website AI";
-    const bookingLinkOffered = clean(body.bookingLinkOffered) || "Yes";
-    const transcript = clean(body.transcript);
-
-    const validationErrors = validateLead({
-      name,
-      email,
-      phone,
-      business,
-      painPoints
-    });
-
-    if (validationErrors.length > 0) {
-      return res.status(400).json({
-        error: "Validation failed",
-        details: validationErrors
-      });
+    if (!messages.length) {
+      return res.status(400).json({ error: "No messages provided" });
     }
 
-    const bookingLink = getEnv("BOOKING_LINK");
-    const ownerEmail =
-      getEnv("ALERT_EMAIL") ||
-      getEnv("GOOGLE_ALERT_EMAIL") ||
-      "";
-
-    const sheetId = getEnv("SHEET_ID");
-    const googleClientEmail = getEnv("GOOGLE_CLIENT_EMAIL");
-    const googlePrivateKey = getEnv("GOOGLE_PRIVATE_KEY");
-    const resendApiKey = getEnv("RESEND_API_KEY");
-    const fromEmail = getEnv("FROM_EMAIL", "Mediahubink <hello@mediahubink.com>");
-
-    if (!sheetId) {
-      return res.status(500).json({ error: "Missing SHEET_ID environment variable" });
-    }
-
-    if (!googleClientEmail || !googlePrivateKey) {
-      return res.status(500).json({
-        error: "Missing Google Sheets credentials"
-      });
-    }
-
-    const { firstName, lastName } = splitName(name);
-    const leadScore = calculateLeadScore({
-      name,
-      email,
-      phone,
-      business,
-      painPoints,
-      preferredCallback
+    const response = await client.messages.create({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 400,
+      system: SYSTEM_PROMPT,
+      messages: messages.slice(-16).map(m => ({
+        role: m.role,
+        content: m.content
+      }))
     });
 
-    const status = "New Lead";
+    const reply = response.content[0]?.text || "";
 
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: googleClientEmail,
-        private_key: googlePrivateKey.replace(/\\n/g, "\n")
-      },
-      scopes: ["https://www.googleapis.com/auth/spreadsheets"]
-    });
+    return res.status(200).json({ reply });
 
-    const sheets = google.sheets({
-      version: "v4",
-      auth
-    });
-
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: sheetId,
-      range: "Leads!A:O",
-      valueInputOption: "USER_ENTERED",
-      requestBody: {
-        values: [[
-          new Date().toISOString(),
-          firstName,
-          lastName,
-          name,
-          business,
-          email,
-          phone,
-          industry,
-          painPoints,
-          preferredCallback,
-          source,
-          bookingLinkOffered,
-          transcript,
-          leadScore,
-          status
-        ]]
-      }
-    });
-
-    if (resendApiKey) {
-      const resend = new Resend(resendApiKey);
-
-      if (ownerEmail) {
-        await resend.emails.send({
-          from: fromEmail,
-          to: ownerEmail,
-          subject: `New lead captured: ${name || "Unknown Lead"}`,
-          html: buildOwnerEmailHtml({
-            name,
-            email,
-            phone,
-            business,
-            industry,
-            painPoints,
-            preferredCallback,
-            source,
-            bookingLinkOffered,
-            leadScore,
-            status,
-            transcript,
-            bookingLink
-          })
-        });
-      }
-
-      if (email) {
-        await resend.emails.send({
-          from: fromEmail,
-          to: email,
-          subject: "Thanks for your enquiry",
-          html: buildLeadEmailHtml({
-            firstName,
-            bookingLink
-          })
-        });
-      }
-    }
-
-    return res.status(200).json({
-      status: "Lead captured",
-      lead: {
-        name,
-        email,
-        phone,
-        business,
-        industry,
-        painPoints,
-        preferredCallback,
-        leadScore,
-        status
-      }
-    });
   } catch (error) {
-    console.error("Lead capture failed:", error);
-
+    console.error("Chat error:", error);
     return res.status(500).json({
-      error: "Lead capture failed",
-      details: error.message || "Unknown error"
+      error: "Chat failed",
+      details: error.message
     });
   }
 }
