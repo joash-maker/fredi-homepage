@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fredi | AI Lead Capture by Mediahubink</title>
-  <meta name="description" content="Fredi is Mediahubink's AI lead capture agent. Never miss another enquiry. Live in 72 hours.">
+  <title>Fredi — AI Lead Capture Agent by Mediahubink</title>
+  <meta name="description" content="Fredi answers your website enquiries 24/7, qualifies the lead, and logs it to a spreadsheet — so you finish work to a list of new jobs ready to quote. Live in 72 hours.">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -27,66 +27,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #0b0f14;
-      --panel: #11151c;
-      --line: #223044;
-      --line-soft: #1d2734;
-      --text: #ffffff;
-      --muted: #8a9ab0;
-      --blue: #0070f3;
-      --blue-2: #0a84ff;
-      --gold: #c9a84c;
-      --gold-light: #e8c96a;
-      --max: 1120px;
-      --radius: 14px;
+      --bg: #0b0f14; --panel: #11151c; --line: #223044; --line-soft: #1d2734;
+      --text: #ffffff; --muted: #8a9ab0; --blue: #0070f3; --blue-2: #0a84ff;
+      --gold: #c9a84c; --gold-light: #e8c96a; --max: 1120px; --radius: 14px;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
+    body { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 300; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 200;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 5vw;
-      background: rgba(11,15,20,0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1rem 5vw; background: rgba(11,15,20,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
     .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.03em; }
     .nav-logo span { color: var(--gold); }
-    .nav-back {
-      font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em;
-      border: 1px solid var(--line); padding: 0.38rem 0.85rem; border-radius: 4px;
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .nav-back { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; border: 1px solid var(--line); padding: 0.38rem 0.85rem; border-radius: 4px; transition: border-color 0.2s, color 0.2s; }
     .nav-back:hover { border-color: var(--gold); color: var(--gold); }
     .nav-back::before { content: '\2190  '; }
 
-    /* ── SHARED ── */
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 5vw; }
+    /* SHARED */
     .section { padding: 5.5rem 5vw; }
     .section-inner { max-width: var(--max); margin: 0 auto; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 12px; border: 1px solid var(--line);
-      border-radius: 999px; font-size: 12px; color: #8fb8d5;
-      background: rgba(17,21,28,0.7); backdrop-filter: blur(8px);
-      margin-bottom: 16px;
-    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; color: #8fb8d5; background: rgba(17,21,28,0.7); backdrop-filter: blur(8px); margin-bottom: 16px; }
     .tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
     .tag::before { content: ''; display: block; width: 18px; height: 1px; background: var(--gold); }
     h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.6rem); line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 18px; font-weight: 900; }
@@ -94,143 +55,71 @@
     h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3vw, 2.9rem); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 1rem; }
     h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.4rem; line-height: 1.3; }
     p { color: var(--muted); }
-
-    .btn-primary {
-      display: inline-block; background: var(--blue); color: #fff;
-      padding: 0.9rem 1.8rem; border-radius: var(--radius); border: none;
-      font-size: 0.88rem; font-weight: 500; cursor: pointer;
-      transition: transform 0.18s, opacity 0.18s; text-decoration: none;
-    }
+    .btn-primary { display: inline-block; background: var(--blue); color: #fff; padding: 0.9rem 1.8rem; border-radius: var(--radius); border: none; font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: transform 0.18s, opacity 0.18s; text-decoration: none; }
     .btn-primary:hover { transform: translateY(-2px); opacity: 0.92; }
-    .btn-ghost {
-      display: inline-block; background: transparent;
-      color: var(--muted); border: 1px solid var(--line);
-      padding: 0.9rem 1.8rem; border-radius: var(--radius);
-      font-size: 0.88rem; cursor: pointer;
-      transition: border-color 0.18s, color 0.18s; text-decoration: none;
-    }
+    .btn-ghost { display: inline-block; background: transparent; color: var(--muted); border: 1px solid var(--line); padding: 0.9rem 1.8rem; border-radius: var(--radius); font-size: 0.88rem; cursor: pointer; transition: border-color 0.18s, color 0.18s; text-decoration: none; }
     .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-    .btn-gold {
-      display: inline-block; background: var(--gold); color: #0a0a0f;
-      padding: 0.9rem 1.8rem; border-radius: var(--radius);
-      font-size: 0.88rem; font-weight: 600; cursor: pointer;
-      transition: background 0.18s, transform 0.18s; text-decoration: none;
-    }
+    .btn-gold { display: inline-block; background: var(--gold); color: #0a0a0f; padding: 0.9rem 1.8rem; border-radius: var(--radius); font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.18s; text-decoration: none; }
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero { padding: 3.5rem 5vw 5rem; }
-    .hero-grid {
-      max-width: var(--max); margin: 0 auto;
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem; align-items: center; min-height: 80vh;
-    }
+    .hero-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; min-height: 80vh; }
     .hero-copy { max-width: 640px; }
     .hero-sub { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.8; max-width: 480px; }
     .hero-sub strong { color: var(--text); font-weight: 500; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 1.4rem; }
     .trust-note { font-size: 0.72rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
     .trust-note::before { content: ''; display: block; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; box-shadow: 0 0 6px #4ade80; }
-
-    /* Hero card */
-    .hero-card {
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(17,21,28,0.95) 0%, rgba(14,18,24,0.98) 100%);
-      border-radius: 22px; padding: 22px;
-      box-shadow: 0 28px 70px rgba(0,0,0,0.45);
-    }
+    .hero-card { border: 1px solid var(--line); background: linear-gradient(180deg, rgba(17,21,28,0.95) 0%, rgba(14,18,24,0.98) 100%); border-radius: 22px; padding: 22px; box-shadow: 0 28px 70px rgba(0,0,0,0.45); }
     .hero-preview { border: 1px solid #273649; border-radius: 18px; overflow: hidden; background: #10151c; }
-    .preview-top {
-      display: flex; align-items: center; gap: 12px;
-      padding: 14px 16px; border-bottom: 1px solid var(--line-soft);
-      background: rgba(13,16,22,0.96);
-    }
-    .avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: linear-gradient(180deg, var(--blue-2), var(--blue));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; flex-shrink: 0;
-      box-shadow: 0 6px 16px rgba(0,112,243,0.28);
-    }
+    .preview-top { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--line-soft); background: rgba(13,16,22,0.96); }
+    .avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(180deg, var(--blue-2), var(--blue)); display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; box-shadow: 0 6px 16px rgba(0,112,243,0.28); }
     .preview-top strong { display: block; font-size: 15px; }
     .preview-top span { color: var(--muted); font-size: 11px; }
     .preview-body { padding: 22px 20px; background: #11151c; }
-    .preview-kicker {
-      display: inline-flex; align-items: center;
-      padding: 6px 11px; border-radius: 999px;
-      border: 1px solid rgba(10,132,255,0.25);
-      background: rgba(10,132,255,0.07);
-      color: #9fc9ff; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.01em; margin-bottom: 14px;
-    }
+    .preview-kicker { display: inline-flex; align-items: center; padding: 6px 11px; border-radius: 999px; border: 1px solid rgba(10,132,255,0.25); background: rgba(10,132,255,0.07); color: #9fc9ff; font-size: 11px; font-weight: 700; letter-spacing: 0.01em; margin-bottom: 14px; }
     .preview-body h3 { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--text); }
-    .preview-body p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 16px; }
     .preview-points { display: grid; gap: 10px; }
-    .preview-point {
-      display: flex; gap: 10px; align-items: flex-start;
-      padding: 12px 14px; border: 1px solid var(--line-soft);
-      border-radius: 14px; background: rgba(13,17,24,0.6);
-      color: #d6dfeb; font-size: 0.82rem; line-height: 1.5;
-    }
-    .tick {
-      width: 26px; height: 26px; border-radius: 50%;
-      background: rgba(10,132,255,0.1); border: 1px solid rgba(10,132,255,0.3);
-      color: #8fc2ff; display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; flex-shrink: 0;
-    }
+    .preview-point { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line-soft); border-radius: 14px; background: rgba(13,17,24,0.6); color: #d6dfeb; font-size: 0.82rem; line-height: 1.5; }
+    .tick { width: 26px; height: 26px; border-radius: 50%; background: rgba(10,132,255,0.1); border: 1px solid rgba(10,132,255,0.3); color: #8fc2ff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
     .mini-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 16px; }
-    .mini-stat {
-      border: 1px solid var(--line-soft); border-radius: 14px;
-      padding: 12px; background: rgba(15,20,27,0.75);
-    }
+    .mini-stat { border: 1px solid var(--line-soft); border-radius: 14px; padding: 12px; background: rgba(15,20,27,0.75); }
     .mini-stat strong { display: block; font-size: 13px; margin-bottom: 4px; }
     .mini-stat span { display: block; color: var(--muted); font-size: 11px; line-height: 1.5; }
 
-    /* ── PROBLEM + SOLUTION (combined) ── */
+    /* END OF DAY STRIP */
+    .eod-strip { background: rgba(201,168,76,0.05); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 2.5rem 5vw; }
+    .eod-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .eod-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .eod-text h3 { font-size: 1.15rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+    .eod-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 580px; }
+    .eod-text strong { color: var(--gold); }
+
+    /* PROBLEM + SOLUTION */
     .problem-solution-bg { background: rgba(17,21,28,0.7); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2.5rem; }
     .ps-col-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--line); }
     .ps-col-title.problem { color: #f87171; }
     .ps-col-title.solution { color: #4ade80; }
     .ps-list { list-style: none; display: grid; gap: 0.7rem; }
-    .ps-list li {
-      display: flex; gap: 10px; align-items: flex-start;
-      padding: 12px 14px; border: 1px solid var(--line-soft);
-      border-radius: 12px; background: rgba(13,17,24,0.5);
-      font-size: 0.85rem; color: #ccd5e0; line-height: 1.5;
-    }
+    .ps-list li { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line-soft); border-radius: 12px; background: rgba(13,17,24,0.5); font-size: 0.85rem; color: #ccd5e0; line-height: 1.5; }
     .ps-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
 
-    /* ── HOW IT WORKS ── */
+    /* HOW IT WORKS */
     .how-bg { background: rgba(17,21,28,0.6); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .steps-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; margin-top: 2.5rem; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-    .step-cell {
-      background: var(--bg); padding: 1.8rem 1.2rem;
-      border-right: 1px solid var(--line);
-      transition: background 0.25s; text-align: center;
-      position: relative;
-    }
+    .step-cell { background: var(--bg); padding: 1.8rem 1.2rem; border-right: 1px solid var(--line); transition: background 0.25s; text-align: center; }
     .step-cell:last-child { border-right: none; }
     .step-cell:hover { background: rgba(10,132,255,0.04); }
-    .step-num {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(10,132,255,0.08); border: 1px solid rgba(10,132,255,0.25);
-      color: #8fc2ff; font-size: 1.1rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1rem; font-family: 'Playfair Display', serif;
-      transition: background 0.25s, border-color 0.25s;
-    }
+    .step-num { width: 48px; height: 48px; border-radius: 50%; background: rgba(10,132,255,0.08); border: 1px solid rgba(10,132,255,0.25); color: #8fc2ff; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-family: 'Playfair Display', serif; transition: background 0.25s, border-color 0.25s; }
     .step-cell:hover .step-num { background: rgba(10,132,255,0.14); border-color: rgba(10,132,255,0.5); }
     .step-cell h3 { font-size: 0.88rem; margin-bottom: 0.4rem; }
     .step-cell p { font-size: 0.76rem; color: var(--muted); line-height: 1.6; }
 
-    /* ── FEATURES ── */
+    /* FEATURES */
     .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 2.5rem; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-    .f-cell {
-      background: var(--panel); padding: 1.6rem 1.4rem;
-      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      transition: background 0.22s; position: relative; overflow: hidden;
-    }
+    .f-cell { background: var(--panel); padding: 1.6rem 1.4rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.22s; position: relative; overflow: hidden; }
     .f-cell::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
     .f-cell:hover { background: rgba(10,132,255,0.04); }
     .f-cell:hover::before { transform: scaleX(1); }
@@ -238,34 +127,23 @@
     .f-cell h3 { font-size: 0.9rem; margin-bottom: 0.3rem; }
     .f-cell p { font-size: 0.78rem; line-height: 1.65; }
 
-    /* ── INDUSTRIES ── */
+    /* INDUSTRIES */
     .industry-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
-    .industry-pill {
-      padding: 10px 16px; border: 1px solid var(--line);
-      border-radius: 999px; font-size: 13px; color: #d0dcea;
-      background: rgba(17,21,28,0.8);
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .industry-pill { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: #d0dcea; background: rgba(17,21,28,0.8); transition: border-color 0.2s, color 0.2s; }
     .industry-pill:hover { border-color: var(--blue); color: #fff; }
 
-    /* ── CASE STUDY ── */
+    /* CASE STUDY */
     .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-top: 2.5rem; }
     .case-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.6rem; }
-    .quote-block {
-      border-left: 2px solid var(--gold); padding: 1rem 1.4rem;
-      background: rgba(201,168,76,0.04); border-radius: 0 8px 8px 0; margin-bottom: 1.4rem;
-    }
+    .quote-block { border-left: 2px solid var(--gold); padding: 1rem 1.4rem; background: rgba(201,168,76,0.04); border-radius: 0 8px 8px 0; margin-bottom: 1.4rem; }
     .quote-block blockquote { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--text); line-height: 1.65; margin-bottom: 0.4rem; }
     .quote-block cite { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; font-style: normal; }
     .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .result-card {
-      background: var(--panel); border: 1px solid var(--line);
-      border-radius: 10px; padding: 1.2rem;
-    }
+    .result-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 1.2rem; }
     .result-n { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 0.4rem; }
     .result-card p { font-size: 0.73rem; color: var(--muted); line-height: 1.5; }
 
-    /* ── PRICING ── */
+    /* PRICING */
     .pricing-bg { background: rgba(17,21,28,0.8); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .pricing-intro { font-size: 0.85rem; color: var(--muted); padding: 0.8rem 1rem; border-left: 2px solid var(--gold); background: rgba(201,168,76,0.04); border-radius: 0 4px 4px 0; margin-bottom: 2rem; max-width: 560px; }
     .pricing-intro strong { color: var(--text); }
@@ -288,7 +166,6 @@
     .p-cta-ghost { border: 1px solid var(--line); color: var(--muted); }
     .p-cta-gold { background: var(--gold); color: #0a0a0f; }
     .p-cta:hover { opacity: 0.85; }
-
     .compare-toggle { display: block; background: none; border: 1px solid var(--line); color: var(--muted); font-size: 0.75rem; padding: 0.55rem 1.1rem; border-radius: 4px; cursor: pointer; margin: 0 auto 1.5rem; transition: border-color 0.2s, color 0.2s; letter-spacing: 0.04em; }
     .compare-toggle:hover { border-color: var(--gold); color: var(--gold); }
     .compare-wrap { display: none; overflow-x: auto; }
@@ -302,68 +179,29 @@
     .compare-table .da { color: rgba(255,255,255,0.12); }
     .pricing-note { text-align: center; font-size: 0.76rem; color: var(--muted); margin-top: 1.2rem; }
 
-    /* ── CTA ── */
-    .cta-panel {
-      text-align: center; padding: 4rem 2rem;
-      border: 1px solid var(--line); border-radius: 22px;
-      background: radial-gradient(circle at top right, rgba(10,132,255,0.1), transparent 30%),
-                  linear-gradient(180deg, rgba(17,21,28,0.95), rgba(12,16,22,0.98));
-      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
-    }
+    /* CTA */
+    .cta-panel { text-align: center; padding: 4rem 2rem; border: 1px solid var(--line); border-radius: 22px; background: radial-gradient(circle at top right, rgba(10,132,255,0.1), transparent 30%), linear-gradient(180deg, rgba(17,21,28,0.95), rgba(12,16,22,0.98)); box-shadow: 0 24px 64px rgba(0,0,0,0.3); }
     .cta-panel h2 { margin-bottom: 0.8rem; }
     .cta-panel p { font-size: 0.92rem; max-width: 440px; margin: 0 auto 1.8rem; }
     .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-    /* ── FOOTER ── */
-    .footer-note {
-      color: var(--muted); font-size: 12px; text-align: center;
-      padding: 1.6rem 5vw; border-top: 1px solid var(--line);
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 0.3rem 1rem; line-height: 2;
-    }
+    /* FOOTER */
+    .footer-note { color: var(--muted); font-size: 12px; text-align: center; padding: 1.6rem 5vw; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3rem 1rem; line-height: 2; }
     .footer-note a { color: #7aa8d5; transition: color 0.2s; }
     .footer-note a:hover { color: var(--gold); }
     .footer-sep { color: var(--line); }
 
-    /* ── WIDGET ── */
-    .widget-toggle {
-      position: fixed; right: 22px; bottom: 22px;
-      width: 58px; height: 58px; border: 0; border-radius: 999px;
-      background: linear-gradient(180deg, var(--blue-2), var(--blue));
-      color: #fff; font-size: 20px; font-weight: 700;
-      cursor: pointer; box-shadow: 0 12px 32px rgba(0,112,243,0.38);
-      z-index: 1001; transition: transform 0.18s, box-shadow 0.18s;
-      display: flex; align-items: center; justify-content: center;
-    }
+    /* WIDGET */
+    .widget-toggle { position: fixed; right: 22px; bottom: 22px; width: 58px; height: 58px; border: 0; border-radius: 999px; background: linear-gradient(180deg, var(--blue-2), var(--blue)); color: #fff; font-size: 20px; font-weight: 700; cursor: pointer; box-shadow: 0 12px 32px rgba(0,112,243,0.38); z-index: 1001; transition: transform 0.18s, box-shadow 0.18s; display: flex; align-items: center; justify-content: center; }
     .widget-toggle:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(0,112,243,0.44); }
-    .teaser-bubble {
-      position: fixed; right: 22px; bottom: 92px;
-      max-width: 260px; background: rgba(17,21,28,0.96);
-      border: 1px solid var(--line); border-radius: 16px;
-      padding: 13px 15px; font-size: 12px; line-height: 1.55;
-      color: #d4dde8; box-shadow: 0 14px 32px rgba(0,0,0,0.38);
-      z-index: 1000; opacity: 0; transform: translateY(8px);
-      pointer-events: none; transition: opacity 0.3s, transform 0.3s;
-    }
+    .teaser-bubble { position: fixed; right: 22px; bottom: 92px; max-width: 260px; background: rgba(17,21,28,0.96); border: 1px solid var(--line); border-radius: 16px; padding: 13px 15px; font-size: 12px; line-height: 1.55; color: #d4dde8; box-shadow: 0 14px 32px rgba(0,0,0,0.38); z-index: 1000; opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity 0.3s, transform 0.3s; }
     .teaser-bubble.show { opacity: 1; transform: none; pointer-events: auto; }
     .teaser-bubble strong { display: block; margin-bottom: 4px; color: #fff; font-size: 13px; }
     .teaser-close { position: absolute; top: 7px; right: 8px; background: transparent; border: 0; color: #6a7a8a; cursor: pointer; font-size: 13px; }
-    .widget {
-      position: fixed; right: 22px; bottom: 92px;
-      width: 380px; max-width: calc(100vw - 22px);
-      height: 580px; max-height: calc(100vh - 130px);
-      background: #11151c; border: 1px solid var(--line);
-      border-radius: 18px; overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.52);
-      display: none; flex-direction: column; z-index: 1000;
-    }
+    .widget { position: fixed; right: 22px; bottom: 92px; width: 380px; max-width: calc(100vw - 22px); height: 580px; max-height: calc(100vh - 130px); background: #11151c; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.52); display: none; flex-direction: column; z-index: 1000; }
     .widget.open { display: flex; animation: wSlide 0.24s ease; }
     @keyframes wSlide { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
-    .chat-header {
-      padding: 14px 16px; border-bottom: 1px solid #202b39;
-      background: rgba(13,16,22,0.96);
-      display: flex; align-items: center; gap: 11px;
-    }
+    .chat-header { padding: 14px 16px; border-bottom: 1px solid #202b39; background: rgba(13,16,22,0.96); display: flex; align-items: center; gap: 11px; }
     .chat-header h1 { font-size: 16px; margin: 0; letter-spacing: 0; }
     .chat-header p { margin: 1px 0 0; font-size: 11px; color: var(--muted); }
     .chat-av { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(180deg, var(--blue-2), var(--blue)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,112,243,0.28); }
@@ -372,9 +210,6 @@
     .msg { max-width: 84%; padding: 11px 13px; border-radius: 15px; line-height: 1.55; font-size: 13px; white-space: pre-line; }
     .msg.bot { background: #1a2330; align-self: flex-start; border-bottom-left-radius: 5px; }
     .msg.user { background: linear-gradient(180deg, var(--blue-2), var(--blue)); align-self: flex-end; border-bottom-right-radius: 5px; }
-    .quick-replies { display: flex; flex-wrap: wrap; gap: 7px; margin-top: -3px; }
-    .qr-btn { border: 1px solid #2c394c; background: #141923; color: #d4dce8; padding: 7px 10px; border-radius: 999px; font-size: 11px; cursor: pointer; transition: border-color 0.18s, background 0.18s; }
-    .qr-btn:hover { border-color: var(--blue); background: #182131; color: #fff; }
     .typing-row { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
     .dots { display: inline-flex; gap: 3px; }
     .dots span { width: 5px; height: 5px; border-radius: 50%; background: #5a6a7a; animation: db 1.2s infinite; }
@@ -386,26 +221,19 @@
     .chat-input input::placeholder { color: #4a5a6a; }
     .chat-input button { padding: 11px 14px; border: 0; border-radius: 12px; background: linear-gradient(180deg, var(--blue-2), var(--blue)); color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
     .widget-privacy { text-align: center; font-size: 10px; color: #2a3a4a; padding: 5px; border-top: 1px solid rgba(255,255,255,0.04); background: #0d1016; }
-    .widget-privacy a { color: #3a5a7a; text-decoration: none; transition: color 0.2s; }
-    .widget-privacy a:hover { color: #7ab0d5; }
-    .status-box { margin: 0 16px 16px; background: #101923; border: 1px solid #243041; border-radius: 10px; padding: 13px; display: none; }
-    .status-box h3 { margin: 0 0 7px; font-size: 14px; }
-    .status-box p { margin: 5px 0; color: #c0cadc; font-size: 12px; line-height: 1.45; }
-    .status-box a { color: #7db7ff; word-break: break-word; }
+    .widget-privacy a { color: #3a5a7a; text-decoration: none; }
 
-
-    /* ── BACK TO TOP ── */
+    /* BACK TO TOP */
     #back-to-top { position: fixed; bottom: 22px; left: 22px; width: 42px; height: 42px; border-radius: 50%; background: var(--panel); border: 1px solid var(--line); color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s; pointer-events: none; }
     #back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
     #back-to-top:hover { border-color: var(--blue); color: var(--blue); }
     #back-to-top svg { width: 15px; height: 15px; fill: currentColor; }
 
-    /* ── SCROLL REVEAL ── */
+    /* SCROLL REVEAL */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── PS COLUMNS MOBILE FIX ── */
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media(max-width:980px){
       .hero-grid { grid-template-columns: 1fr; min-height: auto; }
       .hero { padding-top: 2.5rem; }
@@ -414,32 +242,28 @@
       .features-grid { grid-template-columns: 1fr 1fr; }
       .case-grid { grid-template-columns: 1fr; }
       .pricing-cards { grid-template-columns: 1fr; }
+      .eod-inner { flex-direction: column; gap: 1rem; }
     }
     @media(max-width:640px){
-      .ps-grid { gap: 2rem; }
-      .ps-col-title { margin-top: 0.5rem; }
       .section { padding: 3.5rem 5vw; }
       .hero { padding: 2rem 5vw 3.5rem; }
       .steps-row { grid-template-columns: 1fr 1fr; }
       .features-grid { grid-template-columns: 1fr; }
       .mini-stats { grid-template-columns: 1fr; }
       .results-grid { grid-template-columns: 1fr 1fr; }
-      .widget { right: 10px; bottom: 80px; width: calc(100vw - 20px); height: calc(100svh - 160px); max-height: calc(100svh - 160px); }
+      .widget { right: 10px; bottom: 80px; width: calc(100vw - 20px); height: calc(100svh - 160px); }
       #back-to-top { bottom: 12px; left: 12px; }
       .widget-toggle { right: 12px; bottom: 12px; }
       .teaser-bubble { right: 12px; bottom: 80px; max-width: calc(100vw - 85px); }
     }
-    @media(max-width:480px){
-      .steps-row { grid-template-columns: 1fr; }
-    }
+    @media(max-width:480px){ .steps-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="https://www.mediahubink.com" class="nav-logo">Media<span>hub</span>ink</a>
-    <a href="https://www.mediahubink.com" class="nav-back">Back to Shopfront</a>
+    <a href="https://www.mediahubink.com" class="nav-back">Back to main site</a>
   </nav>
 
   <!-- HERO -->
@@ -448,41 +272,48 @@
       <div class="hero-copy">
         <div class="eyebrow">AI Lead Capture Agent by Mediahubink</div>
         <h1>Fredi.<br>Your 24/7<br><em>Lead Machine.</em></h1>
-        <p class="hero-sub">Never miss another serious enquiry. Fredi handles the first response so your team can <strong>focus on closing</strong> — not chasing.</p>
+        <p class="hero-sub">You're on the job all day. Fredi answers every website enquiry, qualifies the lead, and logs it to a spreadsheet — so you finish work to a <strong>list of new jobs ready to quote.</strong></p>
         <div class="hero-actions">
           <button id="openDemoBtn" class="btn-primary" type="button">Try Fredi Live</button>
           <a class="btn-ghost" href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer">Book a Demo</a>
         </div>
-        <div class="trust-note">Trusted by commercial property teams in Yorkshire &bull; Live in 72 hours</div>
+        <div class="trust-note">Built for West Yorkshire businesses &bull; Deployed and handling real enquiries</div>
       </div>
-
       <div class="hero-card">
         <div class="hero-preview">
           <div class="preview-top">
             <div class="avatar">F</div>
-            <div>
-              <strong>Fredi</strong>
-              <span>AI lead capture &middot; Mediahubink</span>
-            </div>
+            <div><strong>Fredi</strong><span>AI lead capture &middot; Mediahubink</span></div>
           </div>
           <div class="preview-body">
-            <div class="preview-kicker">One widget. One clear next step.</div>
-            <h3>Handles the first response so your team can focus on the real work.</h3>
+            <div class="preview-kicker">Working while you work.</div>
+            <h3>Handles every enquiry so you come home to a full job sheet.</h3>
             <div class="preview-points">
-              <div class="preview-point"><span class="tick">&#10003;</span><span>Captures enquiries before they go cold</span></div>
-              <div class="preview-point"><span class="tick">&#10003;</span><span>Qualifies and logs the right details automatically</span></div>
-              <div class="preview-point"><span class="tick">&#10003;</span><span>Offers a clear next step — even at 2am</span></div>
+              <div class="preview-point"><span class="tick">&#10003;</span><span>Captures enquiries the moment they land — day or night</span></div>
+              <div class="preview-point"><span class="tick">&#10003;</span><span>Qualifies the job and logs contact details automatically</span></div>
+              <div class="preview-point"><span class="tick">&#10003;</span><span>Spreadsheet ready for you to review at end of day</span></div>
             </div>
           </div>
         </div>
         <div class="mini-stats">
           <div class="mini-stat"><strong>Captures leads</strong><span>Key details collected before interest goes cold.</span></div>
-          <div class="mini-stat"><strong>Alerts your team</strong><span>Cleaner handover for proper follow-up.</span></div>
-          <div class="mini-stat"><strong>Offers next step</strong><span>Shares a booking link when you're not free.</span></div>
+          <div class="mini-stat"><strong>Alerts you instantly</strong><span>Email notification the moment a lead comes in.</span></div>
+          <div class="mini-stat"><strong>Logs to spreadsheet</strong><span>Every lead waiting for you at end of day.</span></div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- END OF DAY STRIP -->
+  <div class="eod-strip">
+    <div class="eod-inner">
+      <div class="eod-icon">📋</div>
+      <div class="eod-text">
+        <h3>Finish work. Open your spreadsheet. See every lead that came in today.</h3>
+        <p>Most tradespeople and owner-operators miss enquiries because they're doing the work — not sitting at a desk. Fredi captures every website visitor who wanted a quote, so <strong>nothing slips through while you're on the job.</strong></p>
+      </div>
+    </div>
+  </div>
 
   <!-- PROBLEM + SOLUTION -->
   <section class="section problem-solution-bg reveal">
@@ -493,10 +324,10 @@
         <div>
           <div class="ps-col-title problem">&#10005; Without Fredi</div>
           <ul class="ps-list">
-            <li><span class="ps-icon">&#128222;</span>Missed calls while the team is busy</li>
-            <li><span class="ps-icon">&#128337;</span>Messages arriving after hours, unanswered</li>
-            <li><span class="ps-icon">&#128187;</span>Website enquiries sitting untouched</li>
-            <li><span class="ps-icon">&#128196;</span>Slow follow-up and admin overload</li>
+            <li><span class="ps-icon">&#128222;</span>Missed calls while you're on the job</li>
+            <li><span class="ps-icon">&#128337;</span>Enquiries arriving after hours, unanswered</li>
+            <li><span class="ps-icon">&#128187;</span>Website visitors browsing and leaving without a response</li>
+            <li><span class="ps-icon">&#128196;</span>Chasing up enquiries eating into your evenings</li>
             <li><span class="ps-icon">&#10052;</span>Warm leads going cold before anyone replies</li>
           </ul>
         </div>
@@ -506,8 +337,8 @@
             <li><span class="ps-icon">&#9889;</span>Every enquiry gets an instant first response</li>
             <li><span class="ps-icon">&#127760;</span>24/7 cover — evenings, weekends, bank holidays</li>
             <li><span class="ps-icon">&#128203;</span>Lead details captured and logged automatically</li>
-            <li><span class="ps-icon">&#128276;</span>Your team notified the moment a lead comes in</li>
-            <li><span class="ps-icon">&#128197;</span>Booking link offered — warm leads stay warm</li>
+            <li><span class="ps-icon">&#128276;</span>You're notified the moment a lead comes in</li>
+            <li><span class="ps-icon">&#128197;</span>End-of-day spreadsheet — every lead ready to quote</li>
           </ul>
         </div>
       </div>
@@ -518,13 +349,13 @@
   <section class="section how-bg reveal" id="how-it-works">
     <div class="section-inner">
       <div class="tag">How It Works</div>
-      <h2>From enquiry to next step<br>in five moves.</h2>
+      <h2>From enquiry to your spreadsheet<br>in five moves.</h2>
       <div class="steps-row">
         <div class="step-cell"><div class="step-num">1</div><h3>Starts the conversation</h3><p>Greets the visitor and gets the exchange moving immediately.</p></div>
-        <div class="step-cell"><div class="step-num">2</div><h3>Qualifies the lead</h3><p>Asks practical questions shaped around your type of enquiry.</p></div>
+        <div class="step-cell"><div class="step-num">2</div><h3>Qualifies the job</h3><p>Asks practical questions shaped around your type of work.</p></div>
         <div class="step-cell"><div class="step-num">3</div><h3>Captures contact details</h3><p>Collects name, email, phone while interest is still warm.</p></div>
-        <div class="step-cell"><div class="step-num">4</div><h3>Alerts your team</h3><p>Logs the lead and sends you an instant email notification.</p></div>
-        <div class="step-cell"><div class="step-num">5</div><h3>Offers the next step</h3><p>Shares your booking link or directs to the right action.</p></div>
+        <div class="step-cell"><div class="step-num">4</div><h3>Notifies you instantly</h3><p>Logs the lead and sends an email notification straight away.</p></div>
+        <div class="step-cell"><div class="step-num">5</div><h3>Spreadsheet updated</h3><p>Every lead in your Google Sheet, ready to review and quote.</p></div>
       </div>
     </div>
   </section>
@@ -535,12 +366,12 @@
       <div class="tag">What Fredi Does</div>
       <h2>Six ways Fredi<br>earns its keep.</h2>
       <div class="features-grid">
-        <div class="f-cell"><span class="f-icon">&#127919;</span><h3>Qualify visitors</h3><p>Sort serious enquiries from vague browsing before they reach your team.</p></div>
-        <div class="f-cell"><span class="f-icon">&#128222;</span><h3>Capture lead details</h3><p>Name, email, phone, and business context — collected in one natural flow.</p></div>
+        <div class="f-cell"><span class="f-icon">&#127919;</span><h3>Qualify visitors</h3><p>Sort serious enquiries from vague browsing before they reach you.</p></div>
+        <div class="f-cell"><span class="f-icon">&#128222;</span><h3>Capture lead details</h3><p>Name, email, phone, and job context — collected in one natural flow.</p></div>
         <div class="f-cell"><span class="f-icon">&#128203;</span><h3>Log leads automatically</h3><p>Every lead written to your Google Sheet within seconds. Zero admin.</p></div>
-        <div class="f-cell"><span class="f-icon">&#128276;</span><h3>Alert your team</h3><p>Instant email notification so the right person knows immediately.</p></div>
-        <div class="f-cell"><span class="f-icon">&#9989;</span><h3>Send confirmation emails</h3><p>The enquirer gets a proper acknowledgement straight away.</p></div>
-        <div class="f-cell"><span class="f-icon">&#128197;</span><h3>Offer a booking link</h3><p>Move the conversation forward even when nobody is available live.</p></div>
+        <div class="f-cell"><span class="f-icon">&#128276;</span><h3>Alert you instantly</h3><p>Email notification the moment a lead is captured — even at 11pm.</p></div>
+        <div class="f-cell"><span class="f-icon">&#9989;</span><h3>Confirm to the enquirer</h3><p>The person who enquired gets a proper acknowledgement straight away.</p></div>
+        <div class="f-cell"><span class="f-icon">&#128197;</span><h3>Offer a booking link</h3><p>Move the conversation forward even when you're not available.</p></div>
       </div>
     </div>
   </section>
@@ -549,18 +380,21 @@
   <section class="section" style="background:rgba(17,21,28,0.5);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="section-inner">
       <div class="tag">Industry Fit</div>
-      <h2>Shaped around<br>how your industry works.</h2>
-      <p style="max-width:600px;margin-bottom:0.5rem;">Fredi can be tailored to your sector, your lead flow, and the questions your business actually gets asked.</p>
+      <h2>Built for people too busy<br>working to answer the phone.</h2>
+      <p style="max-width:600px;margin-bottom:0.5rem;">Fredi is tailored to your sector, your lead flow, and the questions your customers actually ask.</p>
       <div class="industry-wrap">
-        <div class="industry-pill">Trades</div>
-        <div class="industry-pill">Church</div>
-        <div class="industry-pill">Commercial Property</div>
-        <div class="industry-pill">School</div>
-        <div class="industry-pill">Legal</div>
-        <div class="industry-pill">Hospitality</div>
-        <div class="industry-pill">Fitness</div>
-        <div class="industry-pill">Transport</div>
-        <div class="industry-pill">General</div>
+        <div class="industry-pill">&#9889; Electricians</div>
+        <div class="industry-pill">&#128295; Plumbers</div>
+        <div class="industry-pill">&#129706; Joiners &amp; Carpenters</div>
+        <div class="industry-pill">&#127859; Kitchen Fitters</div>
+        <div class="industry-pill">&#128703; Bathroom Installers</div>
+        <div class="industry-pill">&#128666; Couriers &amp; Haulage</div>
+        <div class="industry-pill">&#127968; Estate Agents</div>
+        <div class="industry-pill">&#127970; Serviced Offices</div>
+        <div class="industry-pill">&#129463; Dental Practices</div>
+        <div class="industry-pill">&#128170; Gyms &amp; Fitness</div>
+        <div class="industry-pill">&#127979; Schools</div>
+        <div class="industry-pill">+ Your industry</div>
       </div>
     </div>
   </section>
@@ -569,21 +403,20 @@
   <section class="section">
     <div class="section-inner">
       <div class="tag">Proven in the Field</div>
-      <h2>Built for commercial property.<br>Proven in Yorkshire.</h2>
+      <h2>Deployed in Yorkshire.<br>Handling real enquiries now.</h2>
       <div class="case-grid">
         <div>
-          <p class="case-desc">A commercial property operator in Yorkshire needed 24/7 lead cover without adding headcount. We deployed a custom AI agent in 72 hours — it now handles every out-of-hours enquiry and logs leads to a live Google Sheet.</p>
+          <p class="case-desc">A Yorkshire workspace operator needed 24/7 lead cover without adding headcount. We deployed a custom AI agent in 72 hours — it now handles every out-of-hours enquiry and logs leads to a live Google Sheet.</p>
           <div class="quote-block">
             <blockquote>"I was blown away. This is exactly what we've needed. I'm taking this straight to senior management — we need this across every site."</blockquote>
             <cite>&mdash; Centre Manager, Yorkshire</cite>
           </div>
-          <p style="font-size:0.85rem;margin-bottom:1.4rem;">Following deployment, escalated to senior stakeholders for rollout across their <strong style="color:#fff;">70+ UK locations.</strong></p>
           <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="btn-gold">See It In Action &rarr;</a>
         </div>
         <div class="results-grid">
           <div class="result-card"><div class="result-n">24/7</div><p>Enquiry handling including evenings &amp; weekends</p></div>
           <div class="result-card"><div class="result-n">100%</div><p>Leads automatically logged to Google Sheets</p></div>
-          <div class="result-card"><div class="result-n">70+</div><p>UK locations under consideration for rollout</p></div>
+          <div class="result-card"><div class="result-n">Live</div><p>Handling real enquiries now</p></div>
           <div class="result-card"><div class="result-n">72h</div><p>From brief to full live deployment</p></div>
         </div>
       </div>
@@ -595,8 +428,7 @@
     <div class="section-inner">
       <div class="tag">Transparent Pricing</div>
       <h2>One lead pays for<br>a month of Fredi.</h2>
-      <p class="pricing-intro">Most clients recapture their monthly fee within the first week. <strong>Live in 72 hours. No contracts. No extra staff.</strong></p>
-
+      <p class="pricing-intro">Most clients recapture their monthly fee within the first week. <strong>Live in 72 hours. No long-term contracts. No extra staff.</strong></p>
       <div class="pricing-cards">
         <div class="p-card">
           <div class="p-tier">Fredi Capture</div>
@@ -612,7 +444,6 @@
           </ul>
           <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-ghost">Book a Demo</a>
         </div>
-
         <div class="p-card featured">
           <div class="p-badge">Most Popular</div>
           <div class="p-tier">Fredi Capture+</div>
@@ -628,7 +459,6 @@
           </ul>
           <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-blue">Book a Demo</a>
         </div>
-
         <div class="p-card">
           <div class="p-tier">Fredi Enterprise</div>
           <div class="p-price" style="font-size:1.7rem;">Custom</div>
@@ -644,13 +474,10 @@
           <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-gold">Let's Talk</a>
         </div>
       </div>
-
       <button class="compare-toggle" id="compareToggle">&#9660; See full feature comparison</button>
       <div class="compare-wrap" id="compareWrap">
         <table class="compare-table">
-          <thead>
-            <tr><th>Feature</th><th>Capture</th><th>Capture+</th><th>Enterprise</th></tr>
-          </thead>
+          <thead><tr><th>Feature</th><th>Capture</th><th>Capture+</th><th>Enterprise</th></tr></thead>
           <tbody>
             <tr><td>AI website widget</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
             <tr><td>Tailored questions</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
@@ -666,7 +493,7 @@
           </tbody>
         </table>
       </div>
-      <p class="pricing-note">72-hour deployment &bull; No contracts &bull; Cancel anytime</p>
+      <p class="pricing-note">72-hour deployment &bull; No long-term contracts &bull; Cancel with 30 days written notice</p>
     </div>
   </section>
 
@@ -685,7 +512,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <div class="footer-note">
     <span>&copy; 2026 Mediahubink</span>
     <span class="footer-sep">&bull;</span>
@@ -698,22 +524,18 @@
     <a href="https://www.mediahubink.com/terms">Terms &amp; Conditions</a>
   </div>
 
-  <!-- BACK TO TOP -->
   <button id="back-to-top" aria-label="Back to top">
     <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
   </button>
 
-  <!-- TEASER -->
   <div id="teaserBubble" class="teaser-bubble">
     <button id="teaserClose" class="teaser-close" aria-label="Close">&times;</button>
-    <strong>Never miss another enquiry</strong>
-    I'm Fredi. Let me show you how this works for your business.
+    <strong>See how Fredi works for your business</strong>
+    Tell me what you do — I'll show you what Fredi would capture.
   </div>
 
-  <!-- WIDGET TOGGLE -->
   <button id="widgetToggle" class="widget-toggle" aria-label="Open chat">F</button>
 
-  <!-- WIDGET -->
   <div id="widget" class="widget">
     <div class="chat-header">
       <div class="chat-av">F</div>
@@ -730,283 +552,92 @@
   </div>
 
   <script>
-    // ── ELEMENTS ──
-    const widget       = document.getElementById("widget");
-    const widgetToggle = document.getElementById("widgetToggle");
-    const closeWidgetBtn = document.getElementById("closeWidgetBtn");
-    const openDemoBtn  = document.getElementById("openDemoBtn");
-    const bookDemoBtn  = document.getElementById("bookDemoBtn");
-    const teaserBubble = document.getElementById("teaserBubble");
-    const teaserClose  = document.getElementById("teaserClose");
-    const chatBody     = document.getElementById("chatBody");
-    const chatInput    = document.getElementById("chatInput");
-    const sendBtn      = document.getElementById("sendBtn");
-    const statusBox    = document.getElementById("statusBox");
+    const widget=document.getElementById("widget"),widgetToggle=document.getElementById("widgetToggle"),closeWidgetBtn=document.getElementById("closeWidgetBtn"),openDemoBtn=document.getElementById("openDemoBtn"),bookDemoBtn=document.getElementById("bookDemoBtn"),teaserBubble=document.getElementById("teaserBubble"),teaserClose=document.getElementById("teaserClose"),chatBody=document.getElementById("chatBody"),chatInput=document.getElementById("chatInput"),sendBtn=document.getElementById("sendBtn");
+    const WIDGET_STATE_KEY="mhi_fredi_widget_state",TEASER_KEY="mhi_fredi_teaser_dismissed";
+    let messages=[],isTyping=false,isOpen=false,chatStarted=false,leadCaptured=false,nudgeTimer=null,nudgeCount=0,transcript="";
+    let leadData={name:"",email:"",phone:"",business:"",industry:"",painPoints:"",preferredCallback:""};
 
-    // ── STATE ──
-    const BOOKING_LINK      = "https://calendar.app.google/9BEVTDBPUjEqcaRdA";
-    const WIDGET_STATE_KEY  = "mhi_fredi_widget_state";
-    const TEASER_KEY        = "mhi_fredi_teaser_dismissed";
+    function esc(s=""){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 
-    let messages      = [];   // full conversation history for /api/chat
-    let isTyping      = false;
-    let isOpen        = false;
-    let chatStarted   = false;
-    let leadCaptured  = false;
-    let nudgeTimer    = null;
-    let nudgeCount    = 0;
-    let transcript    = "";   // running transcript for /api/lead
-
-    // Lead data — populated by Claude extraction when [LEAD_CAPTURED] fires
-    let leadData = { name:"", email:"", phone:"", business:"", industry:"", painPoints:"", preferredCallback:"" };
-
-    // ── RENDERING ──
-    function esc(s = "") {
-      return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-    }
-
-    function addMsg(text, role) {
-      const d = document.createElement("div");
-      d.className = "msg " + role;
-      if (role === "bot") {
-        // Render **bold** and strip [LEAD_CAPTURED] signal
-        const clean = text.replace(/\[LEAD_CAPTURED\]/g, "").trim();
-        d.innerHTML = esc(clean).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-      } else {
-        d.textContent = text;
-      }
-      chatBody.appendChild(d);
-      chatBody.scrollTop = chatBody.scrollHeight;
-      // Build transcript
-      transcript += (role === "user" ? "Visitor" : "Fredi") + ": " + text.replace(/\[LEAD_CAPTURED\]/g,"").trim() + "\n";
+    function addMsg(text,role){
+      const d=document.createElement("div");d.className="msg "+role;
+      if(role==="bot"){const clean=text.replace(/\[LEAD_CAPTURED\]/g,"").trim();d.innerHTML=esc(clean).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");}
+      else{d.textContent=text;}
+      chatBody.appendChild(d);chatBody.scrollTop=chatBody.scrollHeight;
+      transcript+=(role==="user"?"Visitor":"Fredi")+": "+text.replace(/\[LEAD_CAPTURED\]/g,"").trim()+"\n";
       return d;
     }
 
-    function showTypingIndicator() {
-      hideTypingIndicator();
-      const d = document.createElement("div");
-      d.className = "typing-row"; d.id = "typingRow";
-      d.innerHTML = '<div class="dots"><span></span><span></span><span></span></div><span>Fredi is typing...</span>';
-      chatBody.appendChild(d);
-      chatBody.scrollTop = chatBody.scrollHeight;
+    function showTyping(){hideTyping();const d=document.createElement("div");d.className="typing-row";d.id="typingRow";d.innerHTML='<div class="dots"><span></span><span></span><span></span></div><span>Fredi is typing...</span>';chatBody.appendChild(d);chatBody.scrollTop=chatBody.scrollHeight;}
+    function hideTyping(){const t=document.getElementById("typingRow");if(t)t.remove();}
+
+    function showLeadBanner(){
+      if(document.getElementById("leadBanner"))return;
+      const now=new Date(),time=now.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+      const b=document.createElement("div");b.id="leadBanner";
+      b.style.cssText="margin:0 0 6px;background:rgba(74,222,128,0.07);border:1px solid rgba(74,222,128,0.2);border-radius:8px;padding:6px 10px;font-size:11px;color:#4ade80;display:flex;align-items:center;gap:6px;";
+      b.innerHTML="&#10004; Lead captured &mdash; "+time;
+      widget.insertBefore(b,chatBody.nextSibling);
     }
 
-    function hideTypingIndicator() {
-      const t = document.getElementById("typingRow");
-      if (t) t.remove();
+    async function submitLead(data){
+      try{await fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...data,source:"Fredi Homepage AI",transcript})});}
+      catch(e){console.error("Lead submission failed:",e);}
     }
 
-    function showLeadBanner() {
-      if (document.getElementById("leadBanner")) return;
-      const now  = new Date();
-      const time = now.toLocaleTimeString("en-GB", { hour:"2-digit", minute:"2-digit" });
-      const b = document.createElement("div");
-      b.id = "leadBanner";
-      b.style.cssText = "margin:0 0 6px;background:rgba(74,222,128,0.07);border:1px solid rgba(74,222,128,0.2);border-radius:8px;padding:6px 10px;font-size:11px;color:#4ade80;display:flex;align-items:center;gap:6px;";
-      b.innerHTML = "&#10004; Lead captured &mdash; " + time;
-      widget.insertBefore(b, document.getElementById("mhi-input-area") || chatBody.nextSibling);
+    function resetNudge(){
+      if(nudgeTimer)clearTimeout(nudgeTimer);
+      nudgeTimer=setTimeout(()=>{if(nudgeCount<1&&messages.length>0&&!leadCaptured){nudgeCount++;sendMessage("[NUDGE]");}},65000);
     }
 
-    // ── LEAD SUBMISSION ──
-    async function submitLead(data) {
-      try {
-        await fetch("/api/lead", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name:              data.name || "",
-            email:             data.email || "",
-            phone:             data.phone || "",
-            business:          data.business || "",
-            industry:          data.industry || "",
-            painPoints:        data.painPoints || "",
-            preferredCallback: data.preferredCallback || "",
-            source:            "Fredi Homepage AI",
-            transcript:        transcript
-          })
-        });
-      } catch (e) {
-        console.error("Lead submission failed:", e);
-      }
+    async function sendMessage(userText){
+      if(isTyping)return;isTyping=true;
+      const isNudge=userText==="[NUDGE]";
+      messages.push({role:"user",content:userText});
+      if(!isNudge){addMsg(userText,"user");chatInput.value="";}
+      chatInput.disabled=true;sendBtn.disabled=true;showTyping();
+      try{
+        const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:messages.slice(-18)})});
+        const data=await res.json();hideTyping();
+        if(data.reply){
+          messages.push({role:"assistant",content:data.reply});addMsg(data.reply,"bot");resetNudge();
+          if(!leadCaptured&&data.leadCaptured&&data.leadData){leadData=data.leadData;leadCaptured=true;showLeadBanner();submitLead(leadData);}
+        }else{addMsg("Something went wrong — please email hello@mediahubink.com and Joash will be in touch within 24 hours.","bot");}
+      }catch(e){hideTyping();addMsg("Something went wrong. Please email hello@mediahubink.com.","bot");}
+      isTyping=false;chatInput.disabled=false;sendBtn.disabled=false;
+      if(!isNudge){try{chatInput.focus();}catch(e){}}
     }
 
-    // ── NUDGE TIMER ──
-    function resetNudge() {
-      if (nudgeTimer) clearTimeout(nudgeTimer);
-      nudgeTimer = setTimeout(() => {
-        if (nudgeCount < 1 && messages.length > 0 && !leadCaptured) {
-          nudgeCount++;
-          sendMessage("[NUDGE]");
-        }
-      }, 65000);
+    function openWidget(){
+      isOpen=true;widget.classList.add("open");localStorage.setItem(WIDGET_STATE_KEY,"open");hideTeaser();
+      if(!chatStarted){chatStarted=true;setTimeout(()=>{showTyping();setTimeout(()=>{hideTyping();const g="Hey! 👋 I'm Fredi, Mediahubink's AI consultant. What kind of business are you running?";addMsg(g,"bot");messages.push({role:"assistant",content:g});resetNudge();},950);},350);}
+      setTimeout(()=>{try{chatInput.focus();}catch(e){}},350);
     }
 
-    // ── CORE SEND ──
-    async function sendMessage(userText) {
-      if (isTyping) return;
-      isTyping = true;
-      const isNudge = userText === "[NUDGE]";
+    function closeWidget(){isOpen=false;widget.classList.remove("open");localStorage.setItem(WIDGET_STATE_KEY,"closed");}
+    function showTeaser(){if(localStorage.getItem(TEASER_KEY)==="true")return;if(isOpen)return;teaserBubble.classList.add("show");}
+    function hideTeaser(){teaserBubble.classList.remove("show");}
 
-      // Add to conversation history
-      messages.push({ role: "user", content: userText });
+    widgetToggle.addEventListener("click",()=>isOpen?closeWidget():openWidget());
+    closeWidgetBtn.addEventListener("click",closeWidget);
+    openDemoBtn.addEventListener("click",openWidget);
+    bookDemoBtn.addEventListener("click",openWidget);
+    sendBtn.addEventListener("click",()=>{const t=chatInput.value.trim();if(t)sendMessage(t);});
+    chatInput.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();const t=chatInput.value.trim();if(t)sendMessage(t);}});
+    teaserClose.addEventListener("click",()=>{hideTeaser();localStorage.setItem(TEASER_KEY,"true");});
 
-      if (!isNudge) {
-        addMsg(userText, "user");
-        chatInput.value = "";
-      }
-
-      chatInput.disabled = true;
-      sendBtn.disabled   = true;
-      showTypingIndicator();
-
-      try {
-        const res  = await fetch("/api/chat", {
-          method:  "POST",
-          headers: { "Content-Type": "application/json" },
-          body:    JSON.stringify({ messages: messages.slice(-18) })
-        });
-        const data = await res.json();
-        hideTypingIndicator();
-
-        if (data.reply) {
-          const reply = data.reply;
-          messages.push({ role: "assistant", content: reply });
-          addMsg(reply, "bot");
-          resetNudge();
-
-          // Use Claude-extracted structured lead data from backend
-          if (!leadCaptured && data.leadCaptured && data.leadData) {
-            leadData = data.leadData;
-            leadCaptured = true;
-            showLeadBanner();
-            submitLead(leadData);
-          }
-
-        } else {
-          addMsg("Something went wrong at my end — please email hello@mediahubink.com and Joash will be in touch within 24 hours.", "bot");
-        }
-
-      } catch (e) {
-        hideTypingIndicator();
-        addMsg("Something went wrong. Please email hello@mediahubink.com.", "bot");
-      }
-
-      isTyping = false;
-      chatInput.disabled = false;
-      sendBtn.disabled   = false;
-      if (!isNudge) input_focus();
-    }
-
-    function input_focus() {
-      try { chatInput.focus(); } catch(e) {}
-    }
-
-    // ── WIDGET OPEN / CLOSE ──
-    function openWidget() {
-      isOpen = true;
-      widget.classList.add("open");
-      localStorage.setItem(WIDGET_STATE_KEY, "open");
-      hideTeaser();
-
-      if (!chatStarted) {
-        chatStarted = true;
-        // Trigger opening greeting from Fredi
-        setTimeout(() => {
-          showTypingIndicator();
-          setTimeout(() => {
-            hideTypingIndicator();
-            const greeting = "Hey! 👋 I'm Fredi, Mediahubink's AI consultant. What kind of business are you running?";
-            addMsg(greeting, "bot");
-            messages.push({ role: "assistant", content: greeting });
-            resetNudge();
-          }, 950);
-        }, 350);
-      }
-
-      setTimeout(input_focus, 350);
-    }
-
-    function closeWidget() {
-      isOpen = false;
-      widget.classList.remove("open");
-      localStorage.setItem(WIDGET_STATE_KEY, "closed");
-    }
-
-    // ── TEASER ──
-    function showTeaser() {
-      if (localStorage.getItem(TEASER_KEY) === "true") return;
-      if (isOpen) return;
-      teaserBubble.classList.add("show");
-    }
-
-    function hideTeaser() {
-      teaserBubble.classList.remove("show");
-    }
-
-    // ── EVENT LISTENERS ──
-    widgetToggle.addEventListener("click",  () => isOpen ? closeWidget() : openWidget());
-    closeWidgetBtn.addEventListener("click", closeWidget);
-    openDemoBtn.addEventListener("click",    openWidget);
-    bookDemoBtn.addEventListener("click",    openWidget);
-
-    sendBtn.addEventListener("click", () => {
-      const t = chatInput.value.trim();
-      if (t) sendMessage(t);
+    window.addEventListener("load",()=>{
+      if(localStorage.getItem(WIDGET_STATE_KEY)==="open"){openWidget();}
+      else{setTimeout(showTeaser,1800);setTimeout(hideTeaser,9000);}
     });
 
-    chatInput.addEventListener("keydown", e => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        const t = chatInput.value.trim();
-        if (t) sendMessage(t);
-      }
+    document.getElementById("compareToggle").addEventListener("click",function(){
+      const w=document.getElementById("compareWrap"),open=w.classList.toggle("open");
+      this.textContent=open?"▲ Hide comparison":"▼ See full feature comparison";
     });
 
-    teaserClose.addEventListener("click", () => {
-      hideTeaser();
-      localStorage.setItem(TEASER_KEY, "true");
-    });
-
-    // ── ON LOAD ──
-    window.addEventListener("load", () => {
-      if (localStorage.getItem(WIDGET_STATE_KEY) === "open") {
-        openWidget();
-      } else {
-        setTimeout(showTeaser, 1800);
-        setTimeout(hideTeaser, 9000);
-      }
-    });
-
-    // ── COMPARE TOGGLE ──
-    document.getElementById("compareToggle").addEventListener("click", function() {
-      const w = document.getElementById("compareWrap");
-      const open = w.classList.toggle("open");
-      this.textContent = open ? "▲ Hide comparison" : "▼ See full feature comparison";
-    });
-
-    // ── BACK TO TOP ──
-    (function(){
-      const btn = document.getElementById("back-to-top");
-      if (!btn) return;
-      window.addEventListener("scroll", () => {
-        btn.classList.toggle("visible", window.scrollY > 400);
-      }, { passive: true });
-      btn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    })();
-
-    // ── SCROLL REVEAL ──
-    (function(){
-      const els = document.querySelectorAll(".reveal");
-      if (!els.length) return;
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.08 });
-      els.forEach(el => io.observe(el));
-    })();
+    (function(){const btn=document.getElementById("back-to-top");if(!btn)return;window.addEventListener("scroll",()=>{btn.classList.toggle("visible",window.scrollY>400);},{passive:true});btn.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"});});})();
+    (function(){const els=document.querySelectorAll(".reveal");if(!els.length)return;const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:0.08});els.forEach(el=>io.observe(el));})();
   </script>
 </body>
 </html>
