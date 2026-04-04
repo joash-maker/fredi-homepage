@@ -690,8 +690,19 @@
     }
     document.getElementById('email-form').style.display = 'none';
     document.getElementById('thank-you').classList.add('visible');
-    // TODO: connect to Make.com webhook for email capture
-    // fetch('https://hook.eu1.make.com/iiif3bvkfloydss9x18u3i3q1o4jexls', { method: 'POST', body: JSON.stringify({ email: email }), headers: { 'Content-Type': 'application/json' } });
+    fetch('https://hook.eu1.make.com/iiif3bvkfloydss9x18u3i3q1o4jexls', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        missed: document.getElementById('missed').value,
+        jobValue: jobValue,
+        conversion: document.getElementById('conversion').value,
+        weeklyLoss: document.getElementById('weekly-number').textContent,
+        monthlyLoss: document.getElementById('monthly-stat').textContent,
+        annualLoss: document.getElementById('annual-stat').textContent
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
   calc();
