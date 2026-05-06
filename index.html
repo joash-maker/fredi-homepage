@@ -35,16 +35,12 @@
     html { scroll-behavior: smooth; }
     body { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 300; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
-
-    /* NAV */
     nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1rem 5vw; background: rgba(11,15,20,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
     .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.03em; }
     .nav-logo span { color: var(--gold); }
     .nav-back { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; border: 1px solid var(--line); padding: 0.38rem 0.85rem; border-radius: 4px; transition: border-color 0.2s, color 0.2s; }
     .nav-back:hover { border-color: var(--gold); color: var(--gold); }
     .nav-back::before { content: '\2190  '; }
-
-    /* SHARED */
     .section { padding: 5.5rem 5vw; }
     .section-inner { max-width: var(--max); margin: 0 auto; }
     .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; color: #8fb8d5; background: rgba(17,21,28,0.7); backdrop-filter: blur(8px); margin-bottom: 16px; }
@@ -61,8 +57,6 @@
     .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
     .btn-gold { display: inline-block; background: var(--gold); color: #0a0a0f; padding: 0.9rem 1.8rem; border-radius: var(--radius); font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: background 0.18s, transform 0.18s; text-decoration: none; }
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-    /* HERO */
     .hero { padding: 3.5rem 5vw 5rem; }
     .hero-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; min-height: 80vh; }
     .hero-copy { max-width: 640px; }
@@ -87,16 +81,12 @@
     .mini-stat { border: 1px solid var(--line-soft); border-radius: 14px; padding: 12px; background: rgba(15,20,27,0.75); }
     .mini-stat strong { display: block; font-size: 13px; margin-bottom: 4px; }
     .mini-stat span { display: block; color: var(--muted); font-size: 11px; line-height: 1.5; }
-
-    /* END OF DAY STRIP */
     .eod-strip { background: rgba(201,168,76,0.05); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 2.5rem 5vw; }
     .eod-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
     .eod-icon { font-size: 2.5rem; flex-shrink: 0; }
     .eod-text h3 { font-size: 1.15rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
     .eod-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 580px; }
     .eod-text strong { color: var(--gold); }
-
-    /* PROBLEM + SOLUTION */
     .problem-solution-bg { background: rgba(17,21,28,0.7); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2.5rem; }
     .ps-col-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--line); }
@@ -105,8 +95,6 @@
     .ps-list { list-style: none; display: grid; gap: 0.7rem; }
     .ps-list li { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line-soft); border-radius: 12px; background: rgba(13,17,24,0.5); font-size: 0.85rem; color: #ccd5e0; line-height: 1.5; }
     .ps-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
-
-    /* HOW IT WORKS */
     .how-bg { background: rgba(17,21,28,0.6); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .steps-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; margin-top: 2.5rem; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
     .step-cell { background: var(--bg); padding: 1.8rem 1.2rem; border-right: 1px solid var(--line); transition: background 0.25s; text-align: center; }
@@ -116,8 +104,6 @@
     .step-cell:hover .step-num { background: rgba(10,132,255,0.14); border-color: rgba(10,132,255,0.5); }
     .step-cell h3 { font-size: 0.88rem; margin-bottom: 0.4rem; }
     .step-cell p { font-size: 0.76rem; color: var(--muted); line-height: 1.6; }
-
-    /* FEATURES */
     .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 2.5rem; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
     .f-cell { background: var(--panel); padding: 1.6rem 1.4rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.22s; position: relative; overflow: hidden; }
     .f-cell::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
@@ -126,13 +112,9 @@
     .f-icon { font-size: 1.5rem; margin-bottom: 0.7rem; display: block; }
     .f-cell h3 { font-size: 0.9rem; margin-bottom: 0.3rem; }
     .f-cell p { font-size: 0.78rem; line-height: 1.65; }
-
-    /* INDUSTRIES */
     .industry-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
     .industry-pill { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: #d0dcea; background: rgba(17,21,28,0.8); transition: border-color 0.2s, color 0.2s; }
     .industry-pill:hover { border-color: var(--blue); color: #fff; }
-
-    /* CASE STUDY */
     .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-top: 2.5rem; }
     .case-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.6rem; }
     .quote-block { border-left: 2px solid var(--gold); padding: 1rem 1.4rem; background: rgba(201,168,76,0.04); border-radius: 0 8px 8px 0; margin-bottom: 1.4rem; }
@@ -142,13 +124,11 @@
     .result-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 1.2rem; }
     .result-n { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 0.4rem; }
     .result-card p { font-size: 0.73rem; color: var(--muted); line-height: 1.5; }
-
-    /* PRICING */
     .pricing-bg { background: rgba(17,21,28,0.8); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .pricing-intro { font-size: 0.85rem; color: var(--muted); padding: 0.8rem 1rem; border-left: 2px solid var(--gold); background: rgba(201,168,76,0.04); border-radius: 0 4px 4px 0; margin-bottom: 2rem; max-width: 560px; }
     .pricing-intro strong { color: var(--text); }
-    .pricing-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 1.2rem; }
-    .p-card { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 1.8rem 1.5rem; position: relative; transition: transform 0.22s; }
+    .pricing-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 1.2rem; align-items: start; }
+    .p-card { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 1.8rem 1.5rem; position: relative; transition: transform 0.22s; display: flex; flex-direction: column; }
     .p-card.featured { border-color: var(--blue); background: linear-gradient(135deg, rgba(10,132,255,0.06), var(--bg)); }
     .p-card:hover { transform: translateY(-4px); }
     .p-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #0a0a0f; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 20px; white-space: nowrap; }
@@ -157,11 +137,11 @@
     .p-price small { font-size: 0.85rem; color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 300; }
     .p-setup { font-size: 0.72rem; color: var(--muted); margin-bottom: 1.2rem; }
     .p-divider { border: none; border-top: 1px solid var(--line); margin: 1rem 0; }
-    .p-features { list-style: none; margin-bottom: 1.5rem; }
-    .p-features li { font-size: 0.78rem; color: var(--muted); padding: 0.32rem 0; display: flex; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .p-features { list-style: none; margin-bottom: 1.5rem; flex: 1; }
+    .p-features li { font-size: 0.78rem; color: var(--muted); padding: 0.32rem 0; display: flex; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: flex-start; }
     .p-features li:last-child { border-bottom: none; }
-    .p-features li::before { content: '✓'; color: var(--blue); flex-shrink: 0; font-size: 0.72rem; }
-    .p-cta { display: block; text-align: center; padding: 0.75rem; border-radius: 8px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+    .p-features li::before { content: '✓'; color: var(--blue); flex-shrink: 0; font-size: 0.72rem; margin-top: 0.15rem; }
+    .p-cta { display: block; text-align: center; padding: 0.75rem; border-radius: 8px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; margin-top: auto; }
     .p-cta-blue { background: var(--blue); color: #fff; }
     .p-cta-ghost { border: 1px solid var(--line); color: var(--muted); }
     .p-cta-gold { background: var(--gold); color: #0a0a0f; }
@@ -178,20 +158,14 @@
     .compare-table .ck { color: var(--blue); }
     .compare-table .da { color: rgba(255,255,255,0.12); }
     .pricing-note { text-align: center; font-size: 0.76rem; color: var(--muted); margin-top: 1.2rem; }
-
-    /* CTA */
     .cta-panel { text-align: center; padding: 4rem 2rem; border: 1px solid var(--line); border-radius: 22px; background: radial-gradient(circle at top right, rgba(10,132,255,0.1), transparent 30%), linear-gradient(180deg, rgba(17,21,28,0.95), rgba(12,16,22,0.98)); box-shadow: 0 24px 64px rgba(0,0,0,0.3); }
     .cta-panel h2 { margin-bottom: 0.8rem; }
     .cta-panel p { font-size: 0.92rem; max-width: 440px; margin: 0 auto 1.8rem; }
     .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    /* FOOTER */
     .footer-note { color: var(--muted); font-size: 12px; text-align: center; padding: 1.6rem 5vw; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3rem 1rem; line-height: 2; }
     .footer-note a { color: #7aa8d5; transition: color 0.2s; }
     .footer-note a:hover { color: var(--gold); }
     .footer-sep { color: var(--line); }
-
-    /* WIDGET */
     .widget-toggle { position: fixed; right: 22px; bottom: 22px; width: 58px; height: 58px; border: 0; border-radius: 999px; background: linear-gradient(180deg, var(--blue-2), var(--blue)); color: #fff; font-size: 20px; font-weight: 700; cursor: pointer; box-shadow: 0 12px 32px rgba(0,112,243,0.38); z-index: 1001; transition: transform 0.18s, box-shadow 0.18s; display: flex; align-items: center; justify-content: center; }
     .widget-toggle:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(0,112,243,0.44); }
     .teaser-bubble { position: fixed; right: 22px; bottom: 92px; max-width: 260px; background: rgba(17,21,28,0.96); border: 1px solid var(--line); border-radius: 16px; padding: 13px 15px; font-size: 12px; line-height: 1.55; color: #d4dde8; box-shadow: 0 14px 32px rgba(0,0,0,0.38); z-index: 1000; opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity 0.3s, transform 0.3s; }
@@ -222,18 +196,12 @@
     .chat-input button { padding: 11px 14px; border: 0; border-radius: 12px; background: linear-gradient(180deg, var(--blue-2), var(--blue)); color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
     .widget-privacy { text-align: center; font-size: 10px; color: #2a3a4a; padding: 5px; border-top: 1px solid rgba(255,255,255,0.04); background: #0d1016; }
     .widget-privacy a { color: #3a5a7a; text-decoration: none; }
-
-    /* BACK TO TOP */
     #back-to-top { position: fixed; bottom: 22px; left: 22px; width: 42px; height: 42px; border-radius: 50%; background: var(--panel); border: 1px solid var(--line); color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s; pointer-events: none; }
     #back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
     #back-to-top:hover { border-color: var(--blue); color: var(--blue); }
     #back-to-top svg { width: 15px; height: 15px; fill: currentColor; }
-
-    /* SCROLL REVEAL */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
-
-    /* RESPONSIVE */
     @media(max-width:980px){
       .hero-grid { grid-template-columns: 1fr; min-height: auto; }
       .hero { padding-top: 2.5rem; }
@@ -266,7 +234,6 @@
     <a href="https://www.mediahubink.com" class="nav-back">Back to main site</a>
   </nav>
 
-  <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero-grid">
       <div class="hero-copy">
@@ -304,7 +271,6 @@
     </div>
   </section>
 
-  <!-- END OF DAY STRIP -->
   <div class="eod-strip">
     <div class="eod-inner">
       <div class="eod-icon">📋</div>
@@ -315,7 +281,6 @@
     </div>
   </div>
 
-  <!-- PROBLEM + SOLUTION -->
   <section class="section problem-solution-bg reveal">
     <div class="section-inner">
       <div class="tag">The Problem &amp; The Fix</div>
@@ -345,7 +310,6 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section class="section how-bg reveal" id="how-it-works">
     <div class="section-inner">
       <div class="tag">How It Works</div>
@@ -360,7 +324,6 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
   <section class="section">
     <div class="section-inner">
       <div class="tag">What Fredi Does</div>
@@ -376,7 +339,6 @@
     </div>
   </section>
 
-  <!-- INDUSTRIES -->
   <section class="section" style="background:rgba(17,21,28,0.5);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="section-inner">
       <div class="tag">Industry Fit</div>
@@ -399,7 +361,6 @@
     </div>
   </section>
 
-  <!-- CASE STUDY -->
   <section class="section">
     <div class="section-inner">
       <div class="tag">Proven in the Field</div>
@@ -430,20 +391,24 @@
       <h2>One lead pays for<br>a month of Fredi.</h2>
       <p class="pricing-intro">Most clients recapture their monthly fee within the first week. <strong>Live in 72 hours. No long-term contracts. No extra staff.</strong></p>
       <div class="pricing-cards">
+
+        <!-- CAPTURE -->
         <div class="p-card">
           <div class="p-tier">Fredi Capture</div>
           <div class="p-price">£397<small>/mo</small></div>
-          <div class="p-setup">+ £299 one-off setup</div>
+          <div class="p-setup">No setup fee</div>
           <hr class="p-divider">
           <ul class="p-features">
             <li>AI website chat widget</li>
             <li>Tailored qualification questions</li>
             <li>Lead logging to Google Sheets</li>
             <li>Email alerts on every lead</li>
-            <li>Booking link integration</li>
+            <li>Booking link integration — send prospects straight to your booking page from the chat</li>
           </ul>
           <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-ghost">Book a Demo</a>
         </div>
+
+        <!-- CAPTURE+ -->
         <div class="p-card featured">
           <div class="p-badge">Most Popular</div>
           <div class="p-tier">Fredi Capture+</div>
@@ -452,13 +417,17 @@
           <hr class="p-divider">
           <ul class="p-features">
             <li>Everything in Capture</li>
-            <li>AI voice agent (inbound calls)</li>
+            <li>AI voice agent for inbound calls</li>
+            <li>Includes 500 voice minutes/month — 40p/min thereafter</li>
             <li>WhatsApp integration</li>
-            <li>Advanced booking integration</li>
+            <li>Direct calendar booking — prospects book straight into your calendar without leaving the chat</li>
+            <li>Works with Google Calendar, Calendly, Cal.com and most major booking systems</li>
             <li>Priority support</li>
           </ul>
           <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-blue">Book a Demo</a>
         </div>
+
+        <!-- ENTERPRISE -->
         <div class="p-card">
           <div class="p-tier">Fredi Enterprise</div>
           <div class="p-price" style="font-size:1.7rem;">Custom</div>
@@ -470,9 +439,11 @@
             <li>White-label option</li>
             <li>Dedicated account manager</li>
             <li>Custom integrations</li>
+            <li>Bespoke voice minute allocations</li>
           </ul>
           <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-gold">Let's Talk</a>
         </div>
+
       </div>
       <button class="compare-toggle" id="compareToggle">&#9660; See full feature comparison</button>
       <div class="compare-wrap" id="compareWrap">
@@ -485,8 +456,9 @@
             <tr><td>Email alerts</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
             <tr><td>Booking link integration</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
             <tr><td>AI voice agent</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>500 voice minutes/month</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
             <tr><td>WhatsApp integration</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>Advanced booking</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
+            <tr><td>Direct calendar booking</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
             <tr><td>Priority support</td><td class="da">—</td><td class="ck">✓</td><td class="ck">✓</td></tr>
             <tr><td>Multi-site / white-label</td><td class="da">—</td><td class="da">—</td><td class="ck">✓</td></tr>
             <tr><td>Dedicated account manager</td><td class="da">—</td><td class="da">—</td><td class="ck">✓</td></tr>
@@ -497,7 +469,6 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
   <section class="section">
     <div class="section-inner">
       <div class="cta-panel">
@@ -556,9 +527,7 @@
     const WIDGET_STATE_KEY="mhi_fredi_widget_state",TEASER_KEY="mhi_fredi_teaser_dismissed";
     let messages=[],isTyping=false,isOpen=false,chatStarted=false,leadCaptured=false,nudgeTimer=null,nudgeCount=0,transcript="";
     let leadData={name:"",email:"",phone:"",business:"",industry:"",painPoints:"",preferredCallback:""};
-
     function esc(s=""){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-
     function addMsg(text,role){
       const d=document.createElement("div");d.className="msg "+role;
       if(role==="bot"){const clean=text.replace(/\[LEAD_CAPTURED\]/g,"").trim();d.innerHTML=esc(clean).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");}
@@ -567,10 +536,8 @@
       transcript+=(role==="user"?"Visitor":"Fredi")+": "+text.replace(/\[LEAD_CAPTURED\]/g,"").trim()+"\n";
       return d;
     }
-
     function showTyping(){hideTyping();const d=document.createElement("div");d.className="typing-row";d.id="typingRow";d.innerHTML='<div class="dots"><span></span><span></span><span></span></div><span>Fredi is typing...</span>';chatBody.appendChild(d);chatBody.scrollTop=chatBody.scrollHeight;}
     function hideTyping(){const t=document.getElementById("typingRow");if(t)t.remove();}
-
     function showLeadBanner(){
       if(document.getElementById("leadBanner"))return;
       const now=new Date(),time=now.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
@@ -579,17 +546,14 @@
       b.innerHTML="&#10004; Lead captured &mdash; "+time;
       widget.insertBefore(b,chatBody.nextSibling);
     }
-
     async function submitLead(data){
       try{await fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...data,source:"Fredi Homepage AI",transcript})});}
       catch(e){console.error("Lead submission failed:",e);}
     }
-
     function resetNudge(){
       if(nudgeTimer)clearTimeout(nudgeTimer);
       nudgeTimer=setTimeout(()=>{if(nudgeCount<1&&messages.length>0&&!leadCaptured){nudgeCount++;sendMessage("[NUDGE]");}},65000);
     }
-
     async function sendMessage(userText){
       if(isTyping)return;isTyping=true;
       const isNudge=userText==="[NUDGE]";
@@ -607,17 +571,14 @@
       isTyping=false;chatInput.disabled=false;sendBtn.disabled=false;
       if(!isNudge){try{chatInput.focus();}catch(e){}}
     }
-
     function openWidget(){
       isOpen=true;widget.classList.add("open");localStorage.setItem(WIDGET_STATE_KEY,"open");hideTeaser();
       if(!chatStarted){chatStarted=true;setTimeout(()=>{showTyping();setTimeout(()=>{hideTyping();const g="Hey! 👋 I'm Fredi, Mediahubink's AI consultant. What kind of business are you running?";addMsg(g,"bot");messages.push({role:"assistant",content:g});resetNudge();},950);},350);}
       setTimeout(()=>{try{chatInput.focus();}catch(e){}},350);
     }
-
     function closeWidget(){isOpen=false;widget.classList.remove("open");localStorage.setItem(WIDGET_STATE_KEY,"closed");}
     function showTeaser(){if(localStorage.getItem(TEASER_KEY)==="true")return;if(isOpen)return;teaserBubble.classList.add("show");}
     function hideTeaser(){teaserBubble.classList.remove("show");}
-
     widgetToggle.addEventListener("click",()=>isOpen?closeWidget():openWidget());
     closeWidgetBtn.addEventListener("click",closeWidget);
     openDemoBtn.addEventListener("click",openWidget);
@@ -625,17 +586,14 @@
     sendBtn.addEventListener("click",()=>{const t=chatInput.value.trim();if(t)sendMessage(t);});
     chatInput.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();const t=chatInput.value.trim();if(t)sendMessage(t);}});
     teaserClose.addEventListener("click",()=>{hideTeaser();localStorage.setItem(TEASER_KEY,"true");});
-
     window.addEventListener("load",()=>{
       if(localStorage.getItem(WIDGET_STATE_KEY)==="open"){openWidget();}
       else{setTimeout(showTeaser,1800);setTimeout(hideTeaser,9000);}
     });
-
     document.getElementById("compareToggle").addEventListener("click",function(){
       const w=document.getElementById("compareWrap"),open=w.classList.toggle("open");
       this.textContent=open?"▲ Hide comparison":"▼ See full feature comparison";
     });
-
     (function(){const btn=document.getElementById("back-to-top");if(!btn)return;window.addEventListener("scroll",()=>{btn.classList.toggle("visible",window.scrollY>400);},{passive:true});btn.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"});});})();
     (function(){const els=document.querySelectorAll(".reveal");if(!els.length)return;const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:0.08});els.forEach(el=>io.observe(el));})();
   </script>
