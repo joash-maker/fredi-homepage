@@ -245,6 +245,32 @@
     color: var(--black);
   }
 
+  /* Plan interest pills (smaller variant) */
+  .pill-sm {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    color: var(--mid);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .pill-sm:hover {
+    border-color: var(--amber);
+    color: var(--amber-dark);
+  }
+
+  .pill-sm.active {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--black);
+  }
+
   /* ── RESULT PANEL ── */
   .result-panel {
     background: var(--black);
@@ -347,6 +373,135 @@
     color: var(--amber);
   }
 
+  .result-callout .fredi-line {
+    display: block;
+    margin-top: 0.6rem;
+    color: #AAAAAA;
+  }
+
+  .estimate-note {
+    display: block;
+    margin-top: 0.75rem;
+    color: #777777;
+    font-size: 0.75rem;
+  }
+
+  /* ── FREDI "WITH FREDI" SCENARIO PANEL ── */
+  .fredi-panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    display: none;
+  }
+
+  .fredi-panel.visible {
+    display: block;
+    animation: fadeUp 0.4s ease 0.1s both;
+  }
+
+  .fredi-panel-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+
+  .fredi-assumption {
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+  }
+
+  .fredi-assumption.tight {
+    margin-top: -0.4rem;
+  }
+
+  .fredi-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.1rem;
+  }
+
+  .fredi-stat {
+    background: var(--amber-light);
+    border-radius: 4px;
+    padding: 0.85rem 0.75rem;
+    text-align: center;
+  }
+
+  .fredi-stat-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--amber-dark);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .fredi-stat-label {
+    font-size: 11.5px;
+    color: var(--mid);
+    line-height: 1.3;
+  }
+
+  .fredi-gain-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .fredi-gain-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.1rem;
+  }
+
+  .fredi-gain {
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    padding: 0.75rem;
+  }
+
+  .fredi-gain-plan {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  .fredi-gain-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .fredi-gain-value.positive { color: var(--green); }
+  .fredi-gain-value.negative { color: var(--red); }
+
+  .fredi-breakeven {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  .fredi-breakeven strong {
+    color: var(--dark);
+  }
+
   /* ── CTA CARD ── */
   .cta-card {
     background: var(--white);
@@ -375,6 +530,20 @@
     color: var(--muted);
     margin-bottom: 1.25rem;
     line-height: 1.5;
+  }
+
+  .plan-select-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--mid);
+    margin-bottom: 0.5rem;
+  }
+
+  .plan-select-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.1rem;
   }
 
   .email-row {
@@ -406,6 +575,17 @@
     color: #BBBBBB;
   }
 
+  .email-error {
+    display: none;
+    font-size: 12px;
+    color: var(--red);
+    margin-top: 6px;
+  }
+
+  .email-error.visible {
+    display: block;
+  }
+
   .cta-btn {
     height: 46px;
     padding: 0 20px;
@@ -431,6 +611,12 @@
     font-size: 11px;
     color: #BBBBBB;
     margin-top: 0.6rem;
+  }
+
+  .cta-trust {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 0.5rem;
   }
 
   .thank-you {
@@ -465,6 +651,7 @@
     border-radius: var(--radius);
     padding: 1.25rem 1.5rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     display: none;
   }
 
@@ -507,10 +694,38 @@
   /* ── FOOTER ── */
   footer {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2.25rem 1rem 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+    margin-bottom: 0.9rem;
+  }
+
+  .footer-tagline .tagline-sub {
+    display: inline-block;
+    margin-top: 2px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--amber-dark);
+  }
+
+  .footer-legal {
     font-size: 12px;
     color: #AAAAAA;
-    border-top: 1px solid var(--border);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links {
+    font-size: 12px;
+    color: #AAAAAA;
   }
 
   footer a {
@@ -522,11 +737,28 @@
     color: var(--amber-dark);
   }
 
+  /* ── FOCUS STYLES ── */
+  input[type="range"]:focus,
+  .pill:focus,
+  .pill-sm:focus,
+  .cta-btn:focus,
+  .email-input:focus,
+  .fredi-link:focus,
+  footer a:focus {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+  }
+
   /* ── MOBILE ── */
   @media (max-width: 420px) {
     .hero { padding: 2rem 1rem 2rem; }
     .result-stats { grid-template-columns: repeat(3, 1fr); }
     .result-stat-value { font-size: 1.2rem; }
+    .fredi-panel { padding: 1.25rem; }
+    .fredi-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .fredi-gain-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .fredi-stat-value { font-size: 1.35rem; }
+    .fredi-gain-value { font-size: 1.15rem; }
   }
 </style>
 </head>
@@ -541,8 +773,8 @@
 <!-- HERO -->
 <div class="hero">
   <p class="hero-eyebrow">Free tool for trades businesses</p>
-  <h1>Find out how much you lost <em>last week</em></h1>
-  <p class="hero-sub">Three questions. Thirty seconds. One number that might surprise you.</p>
+  <h1>Find out how much your trades business <em>could be losing</em></h1>
+  <p class="hero-sub">Three questions. Thirty seconds. Get a realistic estimate of the jobs missed when enquiries go unanswered.</p>
 </div>
 
 <!-- CALCULATOR -->
@@ -551,25 +783,25 @@
   <!-- STEP 1 -->
   <div class="step-card">
     <p class="step-label">Question 1 of 3</p>
-    <p class="step-question">How many calls or messages do you miss in a typical week — including people who just don't leave a voicemail?</p>
+    <p class="step-question">How many calls or messages do you miss in a typical week, including people who just don't leave a voicemail?</p>
     <div class="slider-row">
-      <input type="range" id="missed" min="1" max="20" value="5" step="1">
+      <input type="range" id="missed" min="1" max="20" value="5" step="1" aria-label="Number of missed calls or messages per week">
       <div class="slider-value" id="missed-val">5</div>
     </div>
-    <p class="slider-hint">Most trades owners say 3–7. Be honest — count the ones you suspect went quiet too.</p>
+    <p class="slider-hint">Most trades owners say 1 to 10. Be honest, and count the ones you suspect went quiet too.</p>
   </div>
 
   <!-- STEP 2 -->
   <div class="step-card">
     <p class="step-label">Question 2 of 3</p>
-    <p class="step-question">What's a typical job worth to you — not the big ones, a standard callout or installation?</p>
-    <div class="pill-group" id="job-value-group">
-      <button class="pill" data-value="150">£150</button>
-      <button class="pill" data-value="250">£250</button>
-      <button class="pill active" data-value="300">£300</button>
-      <button class="pill" data-value="500">£500</button>
-      <button class="pill" data-value="750">£750</button>
-      <button class="pill" data-value="1000">£1,000+</button>
+    <p class="step-question">What's a typical job worth to you? Not the big ones, a standard callout or installation.</p>
+    <div class="pill-group" id="job-value-group" role="radiogroup" aria-label="Typical job value">
+      <button type="button" class="pill" data-value="150" role="radio" aria-checked="false">£150</button>
+      <button type="button" class="pill" data-value="250" role="radio" aria-checked="false">£250</button>
+      <button type="button" class="pill active" data-value="300" role="radio" aria-checked="true">£300</button>
+      <button type="button" class="pill" data-value="500" role="radio" aria-checked="false">£500</button>
+      <button type="button" class="pill" data-value="750" role="radio" aria-checked="false">£750</button>
+      <button type="button" class="pill" data-value="1000" role="radio" aria-checked="false">£1,000+</button>
     </div>
   </div>
 
@@ -578,86 +810,199 @@
     <p class="step-label">Question 3 of 3</p>
     <p class="step-question">Of those missed enquiries, what percentage do you think go on to book with a competitor instead of waiting?</p>
     <div class="slider-row">
-      <input type="range" id="conversion" min="10" max="80" value="40" step="5">
+      <input type="range" id="conversion" min="10" max="80" value="40" step="5" aria-label="Percentage of missed enquiries that book with a competitor">
       <div class="slider-value" id="conv-val">40%</div>
     </div>
-    <p class="slider-hint">Industry average is around 40–50%. If you're in a competitive area, it's probably higher.</p>
+    <p class="slider-hint">Industry average is around 40 to 50%. If you're in a competitive area, it's probably higher.</p>
   </div>
 
   <!-- RESULT -->
   <div class="result-panel" id="result-panel">
-    <p class="result-eyebrow">Your missed revenue estimate</p>
-    <p class="result-headline">Last week, your business likely lost</p>
-    <div class="result-number" id="weekly-number">£600</div>
+    <p class="result-eyebrow">Your estimated missed opportunity</p>
+    <p class="result-headline">Based on your answers, your trades business may have missed approximately</p>
+    <div class="result-number" id="weekly-number" aria-live="polite">£600</div>
     <p class="result-period">per week</p>
 
     <div class="result-stats">
       <div class="result-stat">
-        <span class="result-stat-value" id="monthly-stat">£2,400</span>
+        <span class="result-stat-value" id="monthly-stat" aria-live="polite">£2,400</span>
         <span class="result-stat-label">per month</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-value" id="annual-stat">£28,800</span>
+        <span class="result-stat-value" id="annual-stat" aria-live="polite">£28,800</span>
         <span class="result-stat-label">per year</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-value" id="jobs-stat">8</span>
-        <span class="result-stat-label">jobs to competitors</span>
+        <span class="result-stat-value" id="jobs-stat" aria-live="polite">~8</span>
+        <span class="result-stat-label">estimated jobs lost/month</span>
       </div>
     </div>
 
     <p class="result-callout">
       This isn't a leads problem. It's a response problem.<br>
-      <strong>The enquiries are already coming in — they're just not being answered.</strong>
+      <strong>The enquiries are already coming in, they're just not being answered.</strong>
+      <span class="fredi-line">Fredi captures and qualifies those enquiries 24/7, so you stop losing jobs to slow or missed responses.</span>
+      <span class="estimate-note">This is an estimate based on the figures you entered, not a guaranteed result.</span>
+    </p>
+  </div>
+
+  <!-- WITH FREDI SCENARIO -->
+  <div class="fredi-panel" id="fredi-panel">
+    <p class="fredi-panel-title">If Fredi captured 70% of these missed enquiries</p>
+    <p class="fredi-assumption tight">Illustrative estimate based on the figures you entered, before job-delivery costs.</p>
+
+    <div class="fredi-stats">
+      <div class="fredi-stat">
+        <span class="fredi-stat-value" id="jobs-recovered-stat" aria-live="polite">~4</span>
+        <span class="fredi-stat-label">jobs recovered per month</span>
+      </div>
+      <div class="fredi-stat">
+        <span class="fredi-stat-value" id="revenue-recovered-stat" aria-live="polite">~£1,200</span>
+        <span class="fredi-stat-label">extra revenue per month</span>
+      </div>
+    </div>
+
+    <p class="fredi-gain-title">Estimated recovered revenue after Fredi fee</p>
+    <div class="fredi-gain-row">
+      <div class="fredi-gain">
+        <p class="fredi-gain-plan">With Capture (£397)</p>
+        <p class="fredi-gain-value positive" id="net-gain-397" aria-live="polite">~£803/mo</p>
+      </div>
+      <div class="fredi-gain">
+        <p class="fredi-gain-plan">With Capture+ (£697)</p>
+        <p class="fredi-gain-value positive" id="net-gain-697" aria-live="polite">~£503/mo</p>
+      </div>
+    </div>
+    <p class="fredi-assumption">Before labour, materials, tax, and other job-delivery costs.</p>
+
+    <p class="fredi-breakeven">
+      At <strong id="breakeven-jobvalue">£300</strong> per job, you only need to recover ~<strong id="breakeven-397">2</strong> jobs a month to cover Fredi Capture (£397).<br>
+      For Capture+ (£697), that's ~<strong id="breakeven-697">3</strong> jobs a month.
     </p>
   </div>
 
   <!-- COMPARISON -->
   <div class="comparison-strip" id="comparison-strip">
-    <p>Fredi Capture starts at <strong>£397/month</strong> — a 24/7 AI agent that captures, qualifies, and logs every enquiry while you're on site. For most trades businesses, it pays for itself the moment it recovers two jobs you'd have otherwise lost.</p>
-    <a href="https://trades-demo.mediahubink.com" class="fredi-link" target="_blank">See the live demo — no email needed &rarr;</a>
+    <p><strong>Fredi Capture</strong> starts at £397/month. Capture+, with AI voice and WhatsApp, is £697/month. Recovering one or two additional jobs may cover the monthly fee. Live on your site within 72 hours, with no long-term contract.</p>
+    <a href="https://trades-demo.mediahubink.com" class="fredi-link" target="_blank" rel="noopener">See Fredi handle a real enquiry &rarr;</a>
   </div>
 
   <!-- EMAIL CTA -->
   <div class="cta-card" id="cta-card">
-    <p class="cta-title">Want to know exactly how to fix this?</p>
-    <p class="cta-sub">We'll send you a short, plain-English guide on how West Yorkshire trades businesses are solving this — no jargon, no hard sell.</p>
-    <div class="email-row" id="email-form">
-      <input type="email" class="email-input" id="email-input" placeholder="your@email.com">
-      <button class="cta-btn" onclick="submitEmail()">Send me the guide</button>
+    <p class="cta-title">Want a simple plan to stop losing these jobs?</p>
+    <p class="cta-sub">We'll send you a short, plain-English guide showing how West Yorkshire trades businesses are using Fredi to capture missed enquiries, with real numbers and no jargon.</p>
+
+    <div id="pre-submit-content">
+      <p class="plan-select-label">Which plan are you most interested in?</p>
+      <div class="plan-select-group" id="plan-select-group" role="radiogroup" aria-label="Plan interest">
+        <button type="button" class="pill-sm active" data-plan="unsure" role="radio" aria-checked="true">Not sure yet</button>
+        <button type="button" class="pill-sm" data-plan="capture" role="radio" aria-checked="false">Capture (£397/mo)</button>
+        <button type="button" class="pill-sm" data-plan="capture_plus" role="radio" aria-checked="false">Capture+ (£697/mo)</button>
+      </div>
+
+      <div class="email-row" id="email-form">
+        <input type="email" class="email-input" id="email-input" placeholder="your@email.com" aria-label="Email address">
+        <button class="cta-btn" id="cta-submit-btn" onclick="submitEmail()">Send me the guide</button>
+      </div>
+      <p class="email-error" id="email-error" role="alert">Please enter a valid email address.</p>
+      <p class="cta-note">No spam. One email. Unsubscribe anytime.</p>
+      <p class="cta-trust">Used by UK trades and SMEs &bull; Live in 72 hours &bull; Cancel with 30 days' notice</p>
     </div>
+
     <div class="thank-you" id="thank-you">
       <p class="thank-you-icon">&#10003;</p>
-      <p><strong>On its way.</strong> Check your inbox in the next few minutes. While you're here — the live Fredi demo is at <a href="https://trades-demo.mediahubink.com" style="color: var(--amber-dark);">trades-demo.mediahubink.com</a>.</p>
+      <p><strong>On its way.</strong> Check your inbox in the next few minutes. While you're here, the live Fredi demo is at <a href="https://trades-demo.mediahubink.com" target="_blank" rel="noopener" style="color: var(--amber-dark);">trades-demo.mediahubink.com</a>.</p>
     </div>
-    <p class="cta-note">No spam. One email. Unsubscribe anytime.</p>
   </div>
 
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <p><a href="https://mediahubink.com">Mediahubink</a> &middot; West Yorkshire &middot; <a href="https://mediahubink.com/privacy">Privacy Policy</a></p>
+  <p class="footer-tagline">
+    Mediahubink<br>
+    <span class="tagline-sub">LET'S BUILD SOMETHING SMART</span>
+  </p>
+  <p class="footer-legal">
+    Mediahubink Limited &middot; Co. No. 17218602 &middot; 7 Tileyard North, Wakefield, WF1 5FY
+  </p>
+  <p class="footer-links">
+    <a href="https://mediahubink.com">Home</a>
+    &middot;
+    <a href="https://mediahubink.com/privacy">Privacy Policy</a>
+    &middot;
+    <a href="https://mediahubink.com/terms">Terms &amp; Conditions</a>
+  </p>
 </footer>
 
 <script>
   var jobValue = 300;
+  var planInterest = 'unsure'; // 'unsure' | 'capture' | 'capture_plus', set explicitly by the plan pills, sent in the webhook payload
+  var RECOVERY_RATE = 0.7; // assumed share of missed enquiries Fredi recovers
+
+  // Formats a number as UK currency, e.g. 1200 -> "£1,200". Handles negatives as "-£120".
+  function formatGBP(value) {
+    var rounded = Math.round(value);
+    var sign = rounded < 0 ? '-' : '';
+    return sign + '£' + Math.abs(rounded).toLocaleString('en-GB');
+  }
+
+  // Same as formatGBP but with a leading "~" to signal an estimate, e.g. 1200 -> "~£1,200",
+  // -355 -> "-~£355". Keeps the minus sign in front so negative estimates read correctly
+  // instead of colliding with the tilde (avoids the "~-£355" formatting bug).
+  function formatApproxGBP(value) {
+    var rounded = Math.round(value);
+    var sign = rounded < 0 ? '-' : '';
+    return sign + '~£' + Math.abs(rounded).toLocaleString('en-GB');
+  }
 
   function calc() {
-    var missed = parseInt(document.getElementById('missed').value);
-    var conv = parseInt(document.getElementById('conversion').value) / 100;
-    var jobsLost = missed * conv;
-    var weekly = Math.round(jobsLost * jobValue);
+    var missed = parseInt(document.getElementById('missed').value, 10) || 0;
+    var conv = (parseInt(document.getElementById('conversion').value, 10) || 0) / 100;
+    var safeJobValue = jobValue > 0 ? jobValue : 1;
+
+    // Missed revenue (the problem)
+    var jobsLostPerWeek = missed * conv;
+    var jobsLostPerMonth = jobsLostPerWeek * 4;
+    var weekly = Math.round(jobsLostPerWeek * safeJobValue);
     var monthly = weekly * 4;
     var annual = weekly * 52;
-    var jobs = Math.round(jobsLost * 4);
+    var jobsStat = Math.round(jobsLostPerWeek * 4);
 
-    document.getElementById('weekly-number').textContent = '£' + weekly.toLocaleString('en-GB');
-    document.getElementById('monthly-stat').textContent = '£' + monthly.toLocaleString('en-GB');
-    document.getElementById('annual-stat').textContent = '£' + annual.toLocaleString('en-GB');
-    document.getElementById('jobs-stat').textContent = jobs;
+    document.getElementById('weekly-number').textContent = formatGBP(weekly);
+    document.getElementById('monthly-stat').textContent = formatGBP(monthly);
+    document.getElementById('annual-stat').textContent = formatGBP(annual);
+    document.getElementById('jobs-stat').textContent = '~' + jobsStat;
+
+    // With Fredi (recovered revenue)
+    var jobsRecoveredPerMonth = jobsLostPerMonth * RECOVERY_RATE;
+    var revenueRecoveredPerMonth = jobsRecoveredPerMonth * safeJobValue;
+    var netGain397 = revenueRecoveredPerMonth - 397;
+    var netGain697 = revenueRecoveredPerMonth - 697;
+
+    document.getElementById('jobs-recovered-stat').textContent = '~' + jobsRecoveredPerMonth.toFixed(1);
+    document.getElementById('revenue-recovered-stat').textContent = '~' + formatGBP(revenueRecoveredPerMonth) + '/mo';
+
+    var gain397El = document.getElementById('net-gain-397');
+    gain397El.textContent = formatApproxGBP(netGain397) + '/mo';
+    gain397El.classList.toggle('positive', netGain397 >= 0);
+    gain397El.classList.toggle('negative', netGain397 < 0);
+
+    var gain697El = document.getElementById('net-gain-697');
+    gain697El.textContent = formatApproxGBP(netGain697) + '/mo';
+    gain697El.classList.toggle('positive', netGain697 >= 0);
+    gain697El.classList.toggle('negative', netGain697 < 0);
+
+    // Break-even framing
+    var jobsToBreakEven397 = Math.ceil(397 / safeJobValue);
+    var jobsToBreakEven697 = Math.ceil(697 / safeJobValue);
+
+    document.getElementById('breakeven-jobvalue').textContent = formatGBP(safeJobValue);
+    document.getElementById('breakeven-397').textContent = jobsToBreakEven397;
+    document.getElementById('breakeven-697').textContent = jobsToBreakEven697;
 
     document.getElementById('result-panel').classList.add('visible');
+    document.getElementById('fredi-panel').classList.add('visible');
     document.getElementById('cta-card').classList.add('visible');
     document.getElementById('comparison-strip').classList.add('visible');
   }
@@ -672,40 +1017,98 @@
     calc();
   });
 
-  document.querySelectorAll('.pill').forEach(function(pill) {
+  document.querySelectorAll('#job-value-group .pill').forEach(function(pill) {
     pill.addEventListener('click', function() {
-      document.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('active'); });
+      document.querySelectorAll('#job-value-group .pill').forEach(function(p) {
+        p.classList.remove('active');
+        p.setAttribute('aria-checked', 'false');
+      });
       this.classList.add('active');
-      jobValue = parseInt(this.dataset.value);
+      this.setAttribute('aria-checked', 'true');
+      jobValue = parseInt(this.dataset.value, 10);
       calc();
     });
   });
 
-  function submitEmail() {
-    var email = document.getElementById('email-input').value;
-    if (!email || !email.includes('@')) {
-      document.getElementById('email-input').focus();
-      document.getElementById('email-input').style.borderColor = '#C0392B';
-      return;
-    }
-    document.getElementById('email-form').style.display = 'none';
-    document.getElementById('thank-you').classList.add('visible');
-    fetch('https://hook.eu1.make.com/iiif3bvkfloydss9x18u3i3q1o4jexls', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: email,
-        missed: document.getElementById('missed').value,
-        jobValue: jobValue,
-        conversion: document.getElementById('conversion').value,
-        weeklyLoss: document.getElementById('weekly-number').textContent,
-        monthlyLoss: document.getElementById('monthly-stat').textContent,
-        annualLoss: document.getElementById('annual-stat').textContent
-      }),
-      headers: { 'Content-Type': 'application/json' }
+  document.querySelectorAll('#plan-select-group .pill-sm').forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      document.querySelectorAll('#plan-select-group .pill-sm').forEach(function(p) {
+        p.classList.remove('active');
+        p.setAttribute('aria-checked', 'false');
+      });
+      this.classList.add('active');
+      this.setAttribute('aria-checked', 'true');
+      planInterest = this.dataset.plan;
     });
+  });
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  calc();
+  async function submitEmail() {
+    var emailInput = document.getElementById('email-input');
+    var errorEl = document.getElementById('email-error');
+    var submitBtn = document.getElementById('cta-submit-btn');
+    var email = emailInput.value.trim();
+
+    if (!isValidEmail(email)) {
+      emailInput.style.borderColor = 'var(--red)';
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.classList.add('visible');
+      emailInput.focus();
+      return;
+    }
+
+    emailInput.style.borderColor = '';
+    errorEl.classList.remove('visible');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    var payload = {
+      email: email,
+      missed: document.getElementById('missed').value,
+      jobValue: jobValue,
+      conversion: document.getElementById('conversion').value,
+      planInterest: planInterest,
+      weeklyLoss: document.getElementById('weekly-number').textContent,
+      monthlyLoss: document.getElementById('monthly-stat').textContent,
+      annualLoss: document.getElementById('annual-stat').textContent,
+      jobsRecoveredPerMonth: document.getElementById('jobs-recovered-stat').textContent,
+      revenueRecoveredPerMonth: document.getElementById('revenue-recovered-stat').textContent,
+      netGain397: document.getElementById('net-gain-397').textContent,
+      netGain697: document.getElementById('net-gain-697').textContent
+    };
+
+    try {
+      var response = await fetch('https://hook.eu1.make.com/iiif3bvkfloydss9x18u3i3q1o4jexls', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (!response.ok) {
+        throw new Error('Webhook responded with status ' + response.status);
+      }
+
+      document.getElementById('pre-submit-content').style.display = 'none';
+      document.getElementById('thank-you').classList.add('visible');
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send me the guide';
+      errorEl.textContent = 'Something went wrong. Please try again or use the live demo instead.';
+      errorEl.classList.add('visible');
+    }
+  }
+
+  // Only updates the labels and pill states that are visible before the person
+  // interacts with anything. The result panels stay hidden until calc() runs.
+  function updateDisplayedValues() {
+    document.getElementById('missed-val').textContent = document.getElementById('missed').value;
+    document.getElementById('conv-val').textContent = document.getElementById('conversion').value + '%';
+  }
+
+  updateDisplayedValues();
 </script>
 </body>
 </html>
