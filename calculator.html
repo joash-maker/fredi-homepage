@@ -1081,16 +1081,19 @@
     };
 
     try {
-      var response = await fetch('https://hook.eu1.make.com/iiif3bvkfloydss9x18u3i3q1o4jexls', {
+      await fetch('https://script.google.com/macros/s/AKfycbwWMi2uGrman5aQdzNYTNYCgpK-c96fHJ0oSV4MsCjVhsWk0coHTV4bdApLHWqA5HO4bw/exec', {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }
       });
 
-      if (!response.ok) {
-        throw new Error('Webhook responded with status ' + response.status);
-      }
-
+      // Apps Script doesn't send CORS headers back on doPost responses (a
+      // known platform limitation), so with mode: 'no-cors' the response is
+      // "opaque" and we can't read its status. A fetch that resolves without
+      // throwing means the request reached Google; we treat that as success.
+      // Genuine failures (offline, DNS, connection refused) still throw and
+      // land in the catch block below.
       document.getElementById('pre-submit-content').style.display = 'none';
       document.getElementById('thank-you').classList.add('visible');
     } catch (err) {
