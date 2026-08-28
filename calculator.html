@@ -245,30 +245,25 @@
     color: var(--black);
   }
 
-  /* Plan interest pills (smaller variant) */
-  .pill-sm {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 7px 12px;
-    border-radius: var(--radius);
-    border: 1.5px solid var(--border);
+  /* Secondary CTA (lighter-weight alternative to the primary amber button) */
+  .cta-btn-secondary {
+    height: 46px;
+    padding: 0 20px;
     background: var(--white);
-    color: var(--mid);
-    cursor: pointer;
-    transition: all 0.15s;
-    user-select: none;
-  }
-
-  .pill-sm:hover {
-    border-color: var(--amber);
+    border: 1.5px solid var(--amber-dark);
+    border-radius: var(--radius);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--amber-dark);
+    cursor: pointer;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    transition: background 0.15s, color 0.15s;
   }
 
-  .pill-sm.active {
-    background: var(--amber);
-    border-color: var(--amber);
-    color: var(--black);
+  .cta-btn-secondary:hover {
+    background: var(--amber-light);
   }
 
   /* ── RESULT PANEL ── */
@@ -373,12 +368,6 @@
     color: var(--amber);
   }
 
-  .result-callout .fredi-line {
-    display: block;
-    margin-top: 0.6rem;
-    color: #AAAAAA;
-  }
-
   .estimate-note {
     display: block;
     margin-top: 0.75rem;
@@ -386,8 +375,8 @@
     font-size: 0.75rem;
   }
 
-  /* ── FREDI "WITH FREDI" SCENARIO PANEL ── */
-  .fredi-panel {
+  /* ── INFO PANEL (used for the "what this can't tell you" and audit sections) ── */
+  .info-panel {
     background: var(--white);
     border: 1px solid var(--border);
     border-top: 3px solid var(--amber);
@@ -397,109 +386,94 @@
     display: none;
   }
 
-  .fredi-panel.visible {
+  .info-panel.visible {
     display: block;
     animation: fadeUp 0.4s ease 0.1s both;
   }
 
-  .fredi-panel-title {
+  .info-panel-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--dark);
     line-height: 1.25;
-    margin-bottom: 0.4rem;
-  }
-
-  .fredi-assumption {
-    color: var(--muted);
-    font-size: 0.78rem;
-    line-height: 1.45;
-    margin-bottom: 1rem;
-  }
-
-  .fredi-assumption.tight {
-    margin-top: -0.4rem;
-  }
-
-  .fredi-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 1.1rem;
-  }
-
-  .fredi-stat {
-    background: var(--amber-light);
-    border-radius: 4px;
-    padding: 0.85rem 0.75rem;
-    text-align: center;
-  }
-
-  .fredi-stat-value {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--amber-dark);
-    display: block;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .fredi-stat-label {
-    font-size: 11.5px;
-    color: var(--mid);
-    line-height: 1.3;
-  }
-
-  .fredi-gain-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
     margin-bottom: 0.6rem;
   }
 
-  .fredi-gain-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 1.1rem;
+  .info-panel p {
+    font-size: 0.92rem;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 1rem;
   }
 
-  .fredi-gain {
-    border: 1.5px solid var(--border);
-    border-radius: 4px;
-    padding: 0.75rem;
+  .info-panel-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.25rem 0;
   }
 
-  .fredi-gain-plan {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 2px;
-  }
-
-  .fredi-gain-value {
+  .audit-subtitle {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--amber-dark);
+    margin-bottom: 0.6rem;
+  }
+
+  .audit-list {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+
+  .audit-list li {
+    font-size: 0.9rem;
+    color: var(--mid);
+    line-height: 1.5;
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+
+  .audit-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+
+  .audit-deliverable {
+    font-size: 0.92rem;
+    color: var(--dark);
+    line-height: 1.6;
+    background: var(--amber-light);
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .audit-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 0.25rem;
+  }
+
+  .audit-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
     font-weight: 800;
+    color: var(--dark);
     line-height: 1;
   }
 
-  .fredi-gain-value.positive { color: var(--green); }
-  .fredi-gain-value.negative { color: var(--red); }
-
-  .fredi-breakeven {
+  .audit-price-note {
     font-size: 0.85rem;
-    color: var(--mid);
-    line-height: 1.6;
-    border-top: 1px solid var(--border);
-    padding-top: 1rem;
-  }
-
-  .fredi-breakeven strong {
-    color: var(--dark);
+    color: var(--muted);
   }
 
   /* ── CTA CARD ── */
@@ -532,21 +506,14 @@
     line-height: 1.5;
   }
 
-  .plan-select-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--mid);
-    margin-bottom: 0.5rem;
-  }
-
-  .plan-select-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 1.1rem;
-  }
-
   .email-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .cta-buttons {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
@@ -740,8 +707,8 @@
   /* ── FOCUS STYLES ── */
   input[type="range"]:focus,
   .pill:focus,
-  .pill-sm:focus,
   .cta-btn:focus,
+  .cta-btn-secondary:focus,
   .email-input:focus,
   .fredi-link:focus,
   footer a:focus {
@@ -754,11 +721,10 @@
     .hero { padding: 2rem 1rem 2rem; }
     .result-stats { grid-template-columns: repeat(3, 1fr); }
     .result-stat-value { font-size: 1.2rem; }
-    .fredi-panel { padding: 1.25rem; }
-    .fredi-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .fredi-gain-row { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .fredi-stat-value { font-size: 1.35rem; }
-    .fredi-gain-value { font-size: 1.15rem; }
+    .info-panel { padding: 1.25rem; }
+    .cta-buttons { flex-direction: column; }
+    .cta-buttons .cta-btn,
+    .cta-buttons .cta-btn-secondary { width: 100%; }
   }
 </style>
 </head>
@@ -818,8 +784,8 @@
 
   <!-- RESULT -->
   <div class="result-panel" id="result-panel">
-    <p class="result-eyebrow">Your estimated missed opportunity</p>
-    <p class="result-headline">Based on your answers, your trades business may have missed approximately</p>
+    <p class="result-eyebrow">Your estimated enquiry opportunity</p>
+    <p class="result-headline">Based on the assumptions you've entered, your business may be missing approximately</p>
     <div class="result-number" id="weekly-number" aria-live="polite">£600</div>
     <p class="result-period">per week</p>
 
@@ -841,77 +807,78 @@
     <p class="result-callout">
       This isn't a leads problem. It's a response problem.<br>
       <strong>The enquiries are already coming in, they're just not being answered.</strong>
-      <span class="fredi-line">Fredi captures and qualifies those enquiries 24/7, so you stop losing jobs to slow or missed responses.</span>
-      <span class="estimate-note">This is an estimate based on the figures you entered, not a guaranteed result.</span>
+      <span class="estimate-note">This is an estimate based on the assumptions you entered, not a guaranteed result.</span>
     </p>
   </div>
 
-  <!-- WITH FREDI SCENARIO -->
-  <div class="fredi-panel" id="fredi-panel">
-    <p class="fredi-panel-title">If Fredi captured 70% of these missed enquiries</p>
-    <p class="fredi-assumption tight">Illustrative estimate based on the figures you entered, before job-delivery costs.</p>
+  <!-- WHAT THIS CAN'T TELL YOU + THE AUDIT -->
+  <div class="info-panel" id="info-panel">
+    <p class="info-panel-title">But this only shows the size of the problem</p>
+    <p>This calculator works from three numbers you gave it. It can't see which enquiries you're actually
+      losing, why they're going unanswered, or where in your process things break down. Missed calls are
+      rarely the whole story. Slow follow-up, unclear quoting, or enquiries falling between channels can
+      matter just as much.</p>
 
-    <div class="fredi-stats">
-      <div class="fredi-stat">
-        <span class="fredi-stat-value" id="jobs-recovered-stat" aria-live="polite">~4</span>
-        <span class="fredi-stat-label">jobs recovered per month</span>
-      </div>
-      <div class="fredi-stat">
-        <span class="fredi-stat-value" id="revenue-recovered-stat" aria-live="polite">~£1,200</span>
-        <span class="fredi-stat-label">extra revenue per month</span>
-      </div>
+    <hr class="info-panel-divider">
+
+    <p class="audit-subtitle">The £495 Missed Enquiry Revenue Audit</p>
+    <p>A proper look at where enquiries actually go missing in your business, and what to do about it. We
+      review:</p>
+    <ul class="audit-list">
+      <li>Enquiry channels (phone, web, WhatsApp, social)</li>
+      <li>Response handling and speed</li>
+      <li>How enquiries get qualified once you pick them up</li>
+      <li>Your quoting process</li>
+      <li>Follow-up and chase-up</li>
+      <li>Where enquiry details actually end up (your data flow)</li>
+      <li>Automation opportunities suited to your business</li>
+      <li>Basic AI and privacy risk check</li>
+    </ul>
+
+    <div class="audit-deliverable">
+      You get a <strong>30-day action plan</strong>: a clear, prioritised list of what to fix first, second,
+      and third, that you, a VA, or an agency can start on straight away.
     </div>
 
-    <p class="fredi-gain-title">Estimated recovered revenue after Fredi fee</p>
-    <div class="fredi-gain-row">
-      <div class="fredi-gain">
-        <p class="fredi-gain-plan">With Capture (£397)</p>
-        <p class="fredi-gain-value positive" id="net-gain-397" aria-live="polite">~£803/mo</p>
-      </div>
-      <div class="fredi-gain">
-        <p class="fredi-gain-plan">With Capture+ (£697)</p>
-        <p class="fredi-gain-value positive" id="net-gain-697" aria-live="polite">~£503/mo</p>
-      </div>
+    <div class="audit-price-row">
+      <span class="audit-price">£495</span>
+      <span class="audit-price-note">fixed fee, no ongoing commitment</span>
     </div>
-    <p class="fredi-assumption">Before labour, materials, tax, and other job-delivery costs.</p>
-
-    <p class="fredi-breakeven">
-      At <strong id="breakeven-jobvalue">£300</strong> per job, you only need to recover ~<strong id="breakeven-397">2</strong> jobs a month to cover Fredi Capture (£397).<br>
-      For Capture+ (£697), that's ~<strong id="breakeven-697">3</strong> jobs a month.
-    </p>
   </div>
 
-  <!-- COMPARISON -->
-  <div class="comparison-strip" id="comparison-strip">
-    <p><strong>Fredi Capture</strong> starts at £397/month. Capture+, with AI voice and WhatsApp, is £697/month. Recovering one or two additional jobs may cover the monthly fee. Live on your site within 72 hours, with no long-term contract.</p>
-    <a href="https://trades-demo.mediahubink.com" class="fredi-link" target="_blank" rel="noopener">See Fredi handle a real enquiry &rarr;</a>
+  <!-- OPTIONAL FREDI MENTION (low-key, not the primary offer) -->
+  <div class="comparison-strip" id="fredi-mention">
+    <p>If the audit finds that automation is part of the fix, <strong>Fredi</strong> is one way we can
+      implement it afterwards. That's a separate decision, made after the audit, not before it.</p>
+    <a href="https://trades-demo.mediahubink.com" class="fredi-link" target="_blank" rel="noopener">See how Fredi works &rarr;</a>
   </div>
 
   <!-- EMAIL CTA -->
   <div class="cta-card" id="cta-card">
-    <p class="cta-title">Want a simple plan to stop losing these jobs?</p>
-    <p class="cta-sub">We'll send you a short, plain-English guide showing how West Yorkshire trades businesses are using Fredi to capture missed enquiries, with real numbers and no jargon.</p>
+    <p class="cta-title">Ready to find out exactly where it's happening?</p>
+    <p class="cta-sub">The audit gives you a full breakdown and a 30-day action plan. Not ready for that yet? We can just email you the numbers from this calculator instead.</p>
 
     <div id="pre-submit-content">
-      <p class="plan-select-label">Which plan are you most interested in?</p>
-      <div class="plan-select-group" id="plan-select-group" role="radiogroup" aria-label="Plan interest">
-        <button type="button" class="pill-sm active" data-plan="unsure" role="radio" aria-checked="true">Not sure yet</button>
-        <button type="button" class="pill-sm" data-plan="capture" role="radio" aria-checked="false">Capture (£397/mo)</button>
-        <button type="button" class="pill-sm" data-plan="capture_plus" role="radio" aria-checked="false">Capture+ (£697/mo)</button>
-      </div>
+      <!-- Honeypot: hidden from real users, left blank by them. Bots that auto-fill every
+           field tend to fill this in, which the server treats as a signal to reject. -->
+      <input type="text" id="hp-field" name="company_website" tabindex="-1" autocomplete="off"
+        aria-hidden="true" style="position:absolute; left:-9999px; top:-9999px; height:0; width:0; opacity:0;">
 
       <div class="email-row" id="email-form">
         <input type="email" class="email-input" id="email-input" placeholder="your@email.com" aria-label="Email address">
-        <button class="cta-btn" id="cta-submit-btn" onclick="submitEmail()">Send me the guide</button>
+      </div>
+      <div class="cta-buttons">
+        <button class="cta-btn" id="cta-audit-btn" onclick="submitLead('audit_request')">Get my £495 audit</button>
+        <button class="cta-btn-secondary" id="cta-results-btn" onclick="submitLead('email_results')">Email me my results</button>
       </div>
       <p class="email-error" id="email-error" role="alert">Please enter a valid email address.</p>
-      <p class="cta-note">No spam. One email. Unsubscribe anytime.</p>
-      <p class="cta-trust">Used by UK trades and SMEs &bull; Live in 72 hours &bull; Cancel with 30 days' notice</p>
+      <p class="cta-note">No spam. Used only to follow up on what you've asked for.</p>
+      <p class="cta-trust">Trusted by UK trades and SMEs &bull; Fixed £495 fee &bull; No obligation to go further</p>
     </div>
 
     <div class="thank-you" id="thank-you">
       <p class="thank-you-icon">&#10003;</p>
-      <p><strong>On its way.</strong> Check your inbox in the next few minutes. While you're here, the live Fredi demo is at <a href="https://trades-demo.mediahubink.com" target="_blank" rel="noopener" style="color: var(--amber-dark);">trades-demo.mediahubink.com</a>.</p>
+      <p id="thank-you-message"><strong>Got it.</strong> Check your inbox for your numbers.</p>
     </div>
   </div>
 
@@ -937,8 +904,7 @@
 
 <script>
   var jobValue = 300;
-  var planInterest = 'unsure'; // 'unsure' | 'capture' | 'capture_plus', set explicitly by the plan pills, sent in the webhook payload
-  var RECOVERY_RATE = 0.7; // assumed share of missed enquiries Fredi recovers
+  var PAGE_LOADED_AT = Date.now(); // sent with the payload for a lightweight server-side anti-bot timing check
 
   // Formats a number as UK currency, e.g. 1200 -> "£1,200". Handles negatives as "-£120".
   function formatGBP(value) {
@@ -947,13 +913,13 @@
     return sign + '£' + Math.abs(rounded).toLocaleString('en-GB');
   }
 
-  // Same as formatGBP but with a leading "~" to signal an estimate, e.g. 1200 -> "~£1,200",
-  // -355 -> "-~£355". Keeps the minus sign in front so negative estimates read correctly
-  // instead of colliding with the tilde (avoids the "~-£355" formatting bug).
-  function formatApproxGBP(value) {
-    var rounded = Math.round(value);
-    var sign = rounded < 0 ? '-' : '';
-    return sign + '~£' + Math.abs(rounded).toLocaleString('en-GB');
+  // Formats jobs-lost-per-month to one decimal place, but without a trailing
+  // ".0" on whole numbers, e.g. 0.43 -> "0.4", 1.73 -> "1.7", 8.0 -> "8".
+  // Mirrors formatJobsLost() in the Apps Script so browser and email/sheet
+  // figures always agree.
+  function formatJobsLost(value) {
+    var rounded = Math.round(value * 10) / 10;
+    return rounded % 1 === 0 ? String(rounded) : rounded.toFixed(1);
   }
 
   function calc() {
@@ -961,50 +927,23 @@
     var conv = (parseInt(document.getElementById('conversion').value, 10) || 0) / 100;
     var safeJobValue = jobValue > 0 ? jobValue : 1;
 
-    // Missed revenue (the problem)
     var jobsLostPerWeek = missed * conv;
-    var jobsLostPerMonth = jobsLostPerWeek * 4;
     var weekly = Math.round(jobsLostPerWeek * safeJobValue);
-    var monthly = weekly * 4;
+    // Average weeks per month (52/12), not a flat x4, so monthly and annual
+    // stay consistent with each other. Annual is unchanged (weekly * 52).
+    var monthly = Math.round(weekly * 52 / 12);
     var annual = weekly * 52;
-    var jobsStat = Math.round(jobsLostPerWeek * 4);
+    var jobsLostPerMonth = jobsLostPerWeek * 52 / 12;
 
     document.getElementById('weekly-number').textContent = formatGBP(weekly);
     document.getElementById('monthly-stat').textContent = formatGBP(monthly);
     document.getElementById('annual-stat').textContent = formatGBP(annual);
-    document.getElementById('jobs-stat').textContent = '~' + jobsStat;
-
-    // With Fredi (recovered revenue)
-    var jobsRecoveredPerMonth = jobsLostPerMonth * RECOVERY_RATE;
-    var revenueRecoveredPerMonth = jobsRecoveredPerMonth * safeJobValue;
-    var netGain397 = revenueRecoveredPerMonth - 397;
-    var netGain697 = revenueRecoveredPerMonth - 697;
-
-    document.getElementById('jobs-recovered-stat').textContent = '~' + jobsRecoveredPerMonth.toFixed(1);
-    document.getElementById('revenue-recovered-stat').textContent = '~' + formatGBP(revenueRecoveredPerMonth) + '/mo';
-
-    var gain397El = document.getElementById('net-gain-397');
-    gain397El.textContent = formatApproxGBP(netGain397) + '/mo';
-    gain397El.classList.toggle('positive', netGain397 >= 0);
-    gain397El.classList.toggle('negative', netGain397 < 0);
-
-    var gain697El = document.getElementById('net-gain-697');
-    gain697El.textContent = formatApproxGBP(netGain697) + '/mo';
-    gain697El.classList.toggle('positive', netGain697 >= 0);
-    gain697El.classList.toggle('negative', netGain697 < 0);
-
-    // Break-even framing
-    var jobsToBreakEven397 = Math.ceil(397 / safeJobValue);
-    var jobsToBreakEven697 = Math.ceil(697 / safeJobValue);
-
-    document.getElementById('breakeven-jobvalue').textContent = formatGBP(safeJobValue);
-    document.getElementById('breakeven-397').textContent = jobsToBreakEven397;
-    document.getElementById('breakeven-697').textContent = jobsToBreakEven697;
+    document.getElementById('jobs-stat').textContent = '~' + formatJobsLost(jobsLostPerMonth);
 
     document.getElementById('result-panel').classList.add('visible');
-    document.getElementById('fredi-panel').classList.add('visible');
+    document.getElementById('info-panel').classList.add('visible');
+    document.getElementById('fredi-mention').classList.add('visible');
     document.getElementById('cta-card').classList.add('visible');
-    document.getElementById('comparison-strip').classList.add('visible');
   }
 
   document.getElementById('missed').addEventListener('input', function() {
@@ -1030,26 +969,30 @@
     });
   });
 
-  document.querySelectorAll('#plan-select-group .pill-sm').forEach(function(pill) {
-    pill.addEventListener('click', function() {
-      document.querySelectorAll('#plan-select-group .pill-sm').forEach(function(p) {
-        p.classList.remove('active');
-        p.setAttribute('aria-checked', 'false');
-      });
-      this.classList.add('active');
-      this.setAttribute('aria-checked', 'true');
-      planInterest = this.dataset.plan;
-    });
-  });
-
   function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  async function submitEmail() {
+  var THANK_YOU_MESSAGES = {
+    audit_request: '<strong>Got it.</strong> We\'ll be in touch by email shortly to arrange your audit. ' +
+      'If you want a look at Fredi in the meantime, the demo is at ' +
+      '<a href="https://trades-demo.mediahubink.com" target="_blank" rel="noopener" ' +
+      'style="color: var(--amber-dark);">trades-demo.mediahubink.com</a>.',
+    email_results: '<strong>On its way.</strong> Check your inbox for your numbers. If you\'d rather have ' +
+      'someone find out exactly where it\'s happening, the £495 audit is one email away.'
+  };
+
+  var BUTTON_LABELS = {
+    audit_request: 'Get my £495 audit',
+    email_results: 'Email me my results'
+  };
+
+  // ctaType is 'audit_request' or 'email_results', set by which button was clicked.
+  async function submitLead(ctaType) {
     var emailInput = document.getElementById('email-input');
     var errorEl = document.getElementById('email-error');
-    var submitBtn = document.getElementById('cta-submit-btn');
+    var auditBtn = document.getElementById('cta-audit-btn');
+    var resultsBtn = document.getElementById('cta-results-btn');
     var email = emailInput.value.trim();
 
     if (!isValidEmail(email)) {
@@ -1060,26 +1003,53 @@
       return;
     }
 
+    // Honeypot: real users never see this field, so it should always be empty.
+    // A filled value means something auto-filled every field on the form, most
+    // likely a bot. We drop the submission quietly rather than showing an error,
+    // since telling a script exactly why it failed only helps it adapt.
+    var honeypot = document.getElementById('hp-field').value;
+    if (honeypot) {
+      return;
+    }
+
     emailInput.style.borderColor = '';
     errorEl.classList.remove('visible');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
 
+    var clickedBtn = ctaType === 'audit_request' ? auditBtn : resultsBtn;
+    var clickedLabel = BUTTON_LABELS[ctaType];
+    auditBtn.disabled = true;
+    resultsBtn.disabled = true;
+    clickedBtn.textContent = 'Sending…';
+
+    // The server recalculates every financial figure itself from these raw
+    // inputs. We deliberately don't send any pre-computed loss figures from
+    // the browser, since those can't be trusted.
     var payload = {
       email: email,
       missed: document.getElementById('missed').value,
       jobValue: jobValue,
       conversion: document.getElementById('conversion').value,
-      planInterest: planInterest,
-      weeklyLoss: document.getElementById('weekly-number').textContent,
-      monthlyLoss: document.getElementById('monthly-stat').textContent,
-      annualLoss: document.getElementById('annual-stat').textContent,
-      jobsRecoveredPerMonth: document.getElementById('jobs-recovered-stat').textContent,
-      revenueRecoveredPerMonth: document.getElementById('revenue-recovered-stat').textContent,
-      netGain397: document.getElementById('net-gain-397').textContent,
-      netGain697: document.getElementById('net-gain-697').textContent
+      ctaType: ctaType,
+      hp: honeypot,
+      pageLoadedAt: PAGE_LOADED_AT
     };
 
+    // IMPORTANT — no-CORS limitation, read before reusing this pattern elsewhere:
+    // Apps Script doesn't send CORS headers back on doPost responses (a known
+    // platform limitation), so this request uses mode: 'no-cors'. That means:
+    //   - The response is "opaque": we cannot read its status, body, or
+    //     whether the Apps Script business logic (validation, sheet write,
+    //     email send) actually succeeded. A resolved fetch only proves the
+    //     request reached Google's servers, nothing more.
+    //   - This is an acceptable trade-off for this free lead-intake
+    //     calculator, where the worst case of a false "success" is a missed
+    //     follow-up email, not a financial loss.
+    //   - This mechanism must NOT be reused to confirm payment or any other
+    //     financial transaction. A resolved no-cors fetch is not proof that
+    //     money moved or that a booking was created.
+    //   - When the £495 audit gets real payment collection, that
+    //     confirmation must come from the checkout/payment provider's own
+    //     response or webhook, not from this fetch resolving.
     try {
       await fetch('https://script.google.com/macros/s/AKfycbwWMi2uGrman5aQdzNYTNYCgpK-c96fHJ0oSV4MsCjVhsWk0coHTV4bdApLHWqA5HO4bw/exec', {
         method: 'POST',
@@ -1088,17 +1058,17 @@
         headers: { 'Content-Type': 'text/plain;charset=utf-8' }
       });
 
-      // Apps Script doesn't send CORS headers back on doPost responses (a
-      // known platform limitation), so with mode: 'no-cors' the response is
-      // "opaque" and we can't read its status. A fetch that resolves without
-      // throwing means the request reached Google; we treat that as success.
-      // Genuine failures (offline, DNS, connection refused) still throw and
-      // land in the catch block below.
+      // A fetch that resolves without throwing means the request reached
+      // Google; we treat that as success for this free-tool purpose only
+      // (see the note above). Genuine failures (offline, DNS, connection
+      // refused) still throw and land in the catch block below.
       document.getElementById('pre-submit-content').style.display = 'none';
+      document.getElementById('thank-you-message').innerHTML = THANK_YOU_MESSAGES[ctaType];
       document.getElementById('thank-you').classList.add('visible');
     } catch (err) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send me the guide';
+      auditBtn.disabled = false;
+      resultsBtn.disabled = false;
+      clickedBtn.textContent = clickedLabel;
       errorEl.textContent = 'Something went wrong. Please try again or use the live demo instead.';
       errorEl.classList.add('visible');
     }
