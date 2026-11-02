@@ -1,5 +1,32 @@
 {
   "rewrites": [
-    { "source": "/calculator", "destination": "/calculator.html" }
+    {
+      "source": "/calculator",
+      "destination": "/calculator.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "fredi-homepage.vercel.app"
+        }
+      ],
+      "destination": "https://fredi.mediahubink.com/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/fredi-homepage-final/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }
