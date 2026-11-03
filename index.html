@@ -265,6 +265,61 @@
   gtag('js', new Date());
   gtag('config', 'G-6K93P2PT63');
 </script>
+<style>
+/* ── CHAT-FIRST LAYOUT ── */
+.cf-hero { padding: 2.5rem 5vw 4rem; }
+.cf-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; min-height: 78vh; }
+.cf-copy h1 em { color: var(--gold); font-style: italic; }
+.cf-steps { list-style: none; padding: 0; margin: 0 0 1.8rem; display: grid; gap: 0.6rem; }
+.cf-steps li { display: flex; gap: 0.8rem; align-items: center; font-size: 0.9rem; color: var(--muted); }
+.cf-steps span { flex: 0 0 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); color: var(--gold); font-size: 0.78rem; display: flex; align-items: center; justify-content: center; }
+.cf-archer { font-size: 0.8rem; color: var(--muted); margin-top: 0.7rem; }
+.cf-archer a { color: var(--gold-light); border-bottom: 1px solid rgba(198,164,108,0.35); text-decoration: none; }
+.cf-chat { position: relative; }
+.cf-chat .widget { position: relative; right: auto; bottom: auto; width: 100%; max-width: none; height: 600px; max-height: 78vh; display: flex; z-index: 1; animation: none; box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(198,164,108,0.08); }
+.cf-chat #closeWidgetBtn { display: none; }
+body.cf-ready #widgetToggle, body.cf-ready #teaserBubble { display: none !important; }
+.cf-lead { max-width: 620px; margin-bottom: 2.2rem; }
+.cf-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.cf-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 1.4rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.cf-card p { font-size: 0.85rem; margin: 0; }
+.cf-card-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.cf-bubble { background: #1a2330; border-radius: 14px 14px 14px 4px; padding: 0.8rem 0.95rem; font-size: 0.85rem; line-height: 1.55; color: var(--text); flex: 1; }
+.cf-alert { background: #0d0d12; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; flex: 1; }
+.cf-alert-head { display: flex; align-items: center; gap: 0.55rem; padding: 0.6rem 0.8rem; background: rgba(198,164,108,0.06); border-bottom: 1px solid var(--line); font-size: 0.78rem; }
+.cf-alert-head strong { font-weight: 500; }
+.cf-alert-head em { margin-left: auto; font-style: normal; color: var(--muted); font-size: 0.7rem; }
+.cf-av { width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--ink); font-family: var(--serif); font-weight: 700; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; }
+.cf-alert dl { margin: 0; padding: 0.4rem 0.8rem 0.6rem; }
+.cf-alert dl div { display: grid; grid-template-columns: 72px 1fr; padding: 0.25rem 0; border-bottom: 1px solid rgba(198,164,108,0.08); font-size: 0.76rem; }
+.cf-alert dl div:last-child { border-bottom: none; }
+.cf-alert dt { color: var(--muted); }
+.cf-alert dd { margin: 0; color: var(--text); }
+.cf-sheet { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 0.74rem; flex: 1; background: #0d0d12; }
+.cf-row { display: grid; grid-template-columns: 0.8fr 1.3fr 1.4fr 0.9fr; gap: 0.4rem; padding: 0.5rem 0.7rem; border-bottom: 1px solid rgba(198,164,108,0.08); color: var(--muted); }
+.cf-row:last-child { border-bottom: none; }
+.cf-head { color: var(--gold); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(198,164,108,0.05); }
+.cf-new { color: var(--text); background: rgba(74,222,128,0.06); }
+.cf-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.6rem 0 1rem; }
+.cf-plan { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; background: var(--panel); }
+.cf-plan-plus { border-color: rgba(198,164,108,0.4); background: linear-gradient(135deg, rgba(198,164,108,0.07), var(--panel)); }
+.cf-plan-name { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.cf-plan-price { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--text); line-height: 1.1; margin-bottom: 0.6rem; }
+.cf-plan-price span { font-family: var(--sans); font-size: 0.8rem; font-weight: 300; color: var(--muted); }
+.cf-plan p { font-size: 0.88rem; margin: 0; }
+.cf-small { font-size: 0.8rem; color: var(--muted); }
+.cf-small a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(198,164,108,0.35); }
+@media (max-width: 980px) {
+  .cf-grid { grid-template-columns: 1fr; min-height: auto; gap: 2rem; }
+  .cf-chat .widget { height: 70vh; max-height: 620px; }
+  .cf-grid3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .cf-hero { padding: 1.5rem 16px 3rem; }
+  .cf-plans { grid-template-columns: 1fr; }
+  .cf-steps { display: none; }
+}
+</style>
 </head>
 <body>
 
@@ -273,248 +328,96 @@
     <a href="https://www.mediahubink.com" class="nav-back">Back to main site</a>
   </nav>
 
-  <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow">Lead Capture, Built by Mediahubink</div>
-        <h1>Fredi.<br>Every enquiry,<br><em>answered.</em></h1>
-        <p class="hero-sub">Every enquiry answered the moment it lands. Fredi qualifies the lead, captures the details, and logs it <strong>ready for you to follow up.</strong> Whether you're on the tools, in surgery, or on the gym floor.</p>
+  <section class="hero cf-hero" id="top">
+    <div class="cf-grid">
+      <div class="cf-copy">
+        <div class="eyebrow">Live demo · no sign-up</div>
+        <h1>Fredi.<br>Try it <em>right here.</em></h1>
+        <p class="hero-sub">Tell Fredi what you do, then message it the way one of your customers would. <strong>What you see is exactly what they'd get at 9pm</strong>, while you're on the tools, in surgery or on the gym floor.</p>
+        <ol class="cf-steps">
+          <li><span>1</span>Pick your type of business, or just say what you do.</li>
+          <li><span>2</span>Ask it something a customer would ask.</li>
+          <li><span>3</span>See how it answers, qualifies and captures the details.</li>
+        </ol>
         <div class="hero-actions">
-          <button id="openDemoBtn" class="btn-primary" type="button">Try Fredi Live</button>
-          <a class="btn-ghost" href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer">Book a Scoping Call</a>
+          <button id="openDemoBtn" class="btn-primary cf-start" type="button">Start chatting &rarr;</button>
+          <a class="btn-ghost" href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer">Book a call with Joash</a>
         </div>
-        <div class="trust-note">Built for West Yorkshire businesses &bull; Built and run from Wakefield &bull; Live in 72 hours from &pound;397/mo</div>
-        <p style="font-size:0.78rem;color:var(--muted);margin-top:0.7rem;">Prefer they call instead of typing? <a href="https://voice-demo.mediahubink.com" target="_blank" rel="noopener" style="color:var(--gold-light);border-bottom:1px solid rgba(198,164,108,0.35);text-decoration:none;">Meet Archer, Fredi's voice counterpart &rarr;</a></p>
+        <div class="trust-note">From &pound;397/month &bull; Live within 72 hours &bull; Built and run from Wakefield</div>
+        <p class="cf-archer">Prefer they call instead? <a href="https://voice-demo.mediahubink.com" target="_blank" rel="noopener">Hear Archer, Fredi's voice counterpart &rarr;</a></p>
       </div>
-      <div class="hero-card">
-        <div class="hero-preview">
-          <div class="preview-top">
-            <div class="avatar">F</div>
-            <div><strong>Fredi</strong><span>Fredi &middot; Mediahubink</span></div>
+      <div class="cf-chat" id="heroChatSlot" aria-label="Live Fredi demo chat"></div>
+    </div>
+  </section>
+
+  <section class="section cf-gets reveal" id="what-you-get">
+    <div class="section-inner">
+      <div class="tag">What lands with you</div>
+      <h2>Your customer gets an answer.<br><em>You get the lead.</em></h2>
+      <p class="cf-lead">Every conversation that ends with contact details reaches you two ways, within seconds. These are examples of what you'd receive.</p>
+      <div class="cf-grid3">
+        <div class="cf-card">
+          <div class="cf-card-label">1 · Your customer</div>
+          <div class="cf-bubble bot">Thanks Dave. A leaking combi in WF2 is usually a same-day job. I've passed your details on, and you'll get a call to confirm a time.</div>
+          <p>An instant, specific reply, in your business's name, at any hour.</p>
+        </div>
+        <div class="cf-card">
+          <div class="cf-card-label">2 · Your inbox</div>
+          <div class="cf-alert">
+            <div class="cf-alert-head"><span class="cf-av">F</span><strong>New lead: Dave Smith</strong><em>21:07</em></div>
+            <dl>
+              <div><dt>Job</dt><dd>Combi boiler leaking</dd></div>
+              <div><dt>Area</dt><dd>WF2</dd></div>
+              <div><dt>Phone</dt><dd>07700 900123</dd></div>
+              <div><dt>Callback</dt><dd>Before 8am</dd></div>
+            </dl>
           </div>
-          <div class="preview-body">
-            <div class="preview-kicker">Working while you work.</div>
-            <h3>Handles every enquiry so you come home to a full job sheet.</h3>
-            <div class="preview-points">
-              <div class="preview-point"><span class="tick">&#10003;</span><span>Captures enquiries the moment they land, day or night</span></div>
-              <div class="preview-point"><span class="tick">&#10003;</span><span>Qualifies the job and logs contact details automatically</span></div>
-              <div class="preview-point"><span class="tick">&#10003;</span><span>Spreadsheet ready for you to review at end of day</span></div>
-            </div>
+          <p>An email alert with the details and the full conversation.</p>
+        </div>
+        <div class="cf-card">
+          <div class="cf-card-label">3 · Your spreadsheet</div>
+          <div class="cf-sheet" role="table" aria-label="Example Google Sheet row">
+            <div class="cf-row cf-head" role="row"><span>Time</span><span>Name</span><span>Job</span><span>Status</span></div>
+            <div class="cf-row cf-new" role="row"><span>21:07</span><span>Dave Smith</span><span>Boiler leak</span><span>New</span></div>
+            <div class="cf-row" role="row"><span>18:42</span><span>Priya K.</span><span>Bathroom quote</span><span>Called</span></div>
           </div>
-        </div>
-        <div class="mini-stats">
-          <div class="mini-stat"><strong>Captures leads</strong><span>Key details collected before interest goes cold.</span></div>
-          <div class="mini-stat"><strong>Alerts you instantly</strong><span>Email notification the moment a lead comes in.</span></div>
-          <div class="mini-stat"><strong>Logs to spreadsheet</strong><span>Every lead waiting for you at end of day.</span></div>
+          <p>Newest at the top of your Google Sheet, ready to follow up.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="eod-strip">
-    <div class="eod-inner">
-      <div class="eod-icon">📋</div>
-      <div class="eod-text">
-        <h3>Finish work. Open your spreadsheet. See every lead that came in today.</h3>
-        <p>Most owner-operators miss enquiries because they're busy doing the work, not sitting at a desk. Fredi captures every website visitor who wanted to enquire, so <strong>nothing slips through while you're occupied.</strong></p>
-      </div>
-    </div>
-  </div>
-
-  <section class="section problem-solution-bg reveal">
+  <section class="section cf-price reveal" id="pricing">
     <div class="section-inner">
-      <div class="tag">The Problem &amp; The Fix</div>
-      <h2>Strong enquiries go cold.<br>Fredi stops that.</h2>
-      <div class="ps-grid">
-        <div>
-          <div class="ps-col-title problem">&#10005; Without Fredi</div>
-          <ul class="ps-list">
-            <li><span class="ps-icon">&#128222;</span>Missed calls while you're on the job</li>
-            <li><span class="ps-icon">&#128337;</span>Enquiries arriving after hours, unanswered</li>
-            <li><span class="ps-icon">&#128187;</span>Website visitors browsing and leaving without a response</li>
-            <li><span class="ps-icon">&#128196;</span>Chasing up enquiries eating into your evenings</li>
-            <li><span class="ps-icon">&#10052;</span>Warm leads going cold before anyone replies</li>
-          </ul>
+      <div class="tag">Two ways to start</div>
+      <h2>Simple, monthly, <em>no lock-in.</em></h2>
+      <div class="cf-plans">
+        <div class="cf-plan">
+          <div class="cf-plan-name">Fredi Capture</div>
+          <div class="cf-plan-price">&pound;397<span>/month · no setup fee</span></div>
+          <p>Fredi on your website: answers, qualifies, emails you every lead and logs it to your Sheet.</p>
         </div>
-        <div>
-          <div class="ps-col-title solution">&#10003; With Fredi</div>
-          <ul class="ps-list">
-            <li><span class="ps-icon">&#9889;</span>Every enquiry gets an instant first response</li>
-            <li><span class="ps-icon">&#127760;</span>24/7 cover: evenings, weekends, bank holidays</li>
-            <li><span class="ps-icon">&#128203;</span>Lead details captured and logged automatically</li>
-            <li><span class="ps-icon">&#128276;</span>You're notified the moment a lead comes in</li>
-            <li><span class="ps-icon">&#128197;</span>End-of-day spreadsheet, every lead ready to follow up</li>
-          </ul>
+        <div class="cf-plan cf-plan-plus">
+          <div class="cf-plan-name">Fredi Capture+</div>
+          <div class="cf-plan-price">&pound;697<span>/month · &pound;299 setup</span></div>
+          <p>Everything in Capture, plus Archer answering your phone, WhatsApp, and direct calendar booking.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section how-bg reveal" id="how-it-works">
-    <div class="section-inner">
-      <div class="tag">How It Works</div>
-      <h2>From enquiry to your spreadsheet<br>in five moves.</h2>
-      <div class="steps-row">
-        <div class="step-cell"><div class="step-num">1</div><h3>Starts the conversation</h3><p>Greets the visitor and gets the exchange moving immediately.</p></div>
-        <div class="step-cell"><div class="step-num">2</div><h3>Qualifies the job</h3><p>Asks practical questions shaped around your type of work.</p></div>
-        <div class="step-cell"><div class="step-num">3</div><h3>Captures contact details</h3><p>Collects name, email, phone while interest is still warm.</p></div>
-        <div class="step-cell"><div class="step-num">4</div><h3>Notifies you instantly</h3><p>Logs the lead and sends an email notification straight away.</p></div>
-        <div class="step-cell"><div class="step-num">5</div><h3>Spreadsheet updated</h3><p>Every lead in your Google Sheet, ready to review and follow up.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-inner">
-      <div class="tag">What Fredi Does</div>
-      <h2>Six ways Fredi<br>earns its keep.</h2>
-      <div class="features-grid">
-        <div class="f-cell"><div class="f-num">1</div><h3>Qualify visitors</h3><p>Sort serious enquiries from vague browsing before they reach you.</p></div>
-        <div class="f-cell"><div class="f-num">2</div><h3>Capture lead details</h3><p>Name, email, phone and job context, collected in one natural flow.</p></div>
-        <div class="f-cell"><div class="f-num">3</div><h3>Log leads automatically</h3><p>Every lead written to your Google Sheet within seconds. Zero admin.</p></div>
-        <div class="f-cell"><div class="f-num">4</div><h3>Alert you instantly</h3><p>Email notification the moment a lead is captured, even at 11pm.</p></div>
-        <div class="f-cell"><div class="f-num">5</div><h3>Confirm to the enquirer</h3><p>The person who enquired gets a proper acknowledgement straight away.</p></div>
-        <div class="f-cell"><div class="f-num">6</div><h3>Offer a booking link</h3><p>Move the conversation forward even when you're not available.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background:rgba(17,21,28,0.5);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
-    <div class="section-inner">
-      <div class="tag">Industry Fit</div>
-      <h2>Built for people too busy<br>working to answer the phone.</h2>
-      <p style="max-width:600px;margin-bottom:0.5rem;">Fredi is tailored to your sector, your lead flow, and the questions your customers actually ask.</p>
-      <div class="industry-wrap">
-        <div class="industry-pill">&#128295; Trades &amp; Construction</div>
-        <div class="industry-pill">&#129463; Dental Practices</div>
-        <div class="industry-pill">&#128170; Gyms &amp; Fitness</div>
-        <div class="industry-pill">&#127968; Estate Agents</div>
-        <div class="industry-pill">&#127979; Schools</div>
-        <div class="industry-pill">&#127970; Serviced Offices</div>
-        <div class="industry-pill">+ Your industry</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-inner">
-      <div class="tag">Proven in the Field</div>
-      <h2>Trialled in Yorkshire.<br>Escalated to Germany.</h2>
-      <div class="case-grid">
-        <div>
-          <p class="case-desc">A Yorkshire workspace operator trialled a custom AI agent built by Mediahubink. Within two weeks the Centre Manager escalated it to senior management and the parent company in Germany, for consideration across their UK portfolio. The decision on a wider rollout sat above branch level, where a corporate programme was already underway at group level.</p>
-          <div class="quote-block">
-            <blockquote>"I was blown away. This is exactly what we've needed. I'm taking this straight to senior management. We need this across every site."</blockquote>
-            <cite>&mdash; Centre Manager, BizSpace Wakefield</cite>
-          </div>
-          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="btn-gold">Book a Scoping Call</a>
-        </div>
-        <div class="results-grid">
-          <div class="result-card"><div class="result-n">72h</div><p>From brief to fully live demo deployment</p></div>
-          <div class="result-card"><div class="result-n">2 wks</div><p>Trial period: handled every out-of-hours enquiry</p></div>
-          <div class="result-card"><div class="result-n">24/7</div><p>Enquiry coverage throughout the trial</p></div>
-          <div class="result-card"><div class="result-n" style="font-size:1.3rem;">Escalated</div><p>Raised to group management in Germany for portfolio rollout</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="section pricing-bg reveal" id="pricing">
-    <div class="section-inner">
-      <div class="tag">Transparent Pricing</div>
-      <h2>One lead pays for<br>a month of Fredi.</h2>
-      <p class="pricing-intro">One extra job or booking a month typically covers it. <strong>Live in 72 hours. No long-term contracts. No extra staff.</strong></p>
-      <div class="pricing-cards">
-
-        <!-- CAPTURE -->
-        <div class="p-card">
-          <div class="p-tier">Fredi Capture</div>
-          <div class="p-price">£397<small>/mo</small></div>
-          <div class="p-setup">No setup fee</div>
-          <hr class="p-divider">
-          <ul class="p-features">
-            <li>AI website chat widget</li>
-            <li>Tailored qualification questions</li>
-            <li>Lead logging to Google Sheets</li>
-            <li>Email alerts on every lead</li>
-            <li>Booking link integration: send prospects straight to your booking page from the chat</li>
-          </ul>
-          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-ghost">Book a Scoping Call</a>
-        </div>
-
-        <!-- CAPTURE+ -->
-        <div class="p-card featured">
-          <div class="p-badge">Recommended</div>
-          <div class="p-tier">Fredi Capture+</div>
-          <div class="p-price">£697<small>/mo</small></div>
-          <div class="p-setup">+ £299 one-off setup</div>
-          <hr class="p-divider">
-          <ul class="p-features">
-            <li>Everything in Capture</li>
-            <li>AI voice agent for inbound calls</li>
-            <li>Includes 500 voice minutes/month, then 40p/min</li>
-            <li>WhatsApp integration</li>
-            <li>Direct calendar booking: prospects book straight into your calendar without leaving the chat</li>
-            <li>Works with Google Calendar, Calendly, Cal.com and most major booking systems</li>
-            <li>Priority support</li>
-          </ul>
-          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-blue">Book a Scoping Call</a>
-          <a href="https://voice-demo.mediahubink.com" target="_blank" rel="noopener" class="p-cta p-cta-archer">🎙 Hear Archer Live &rarr;</a>
-        </div>
-
-        <!-- ENTERPRISE -->
-        <div class="p-card">
-          <div class="p-tier">Fredi Enterprise</div>
-          <div class="p-price" style="font-size:1.7rem;">Custom</div>
-          <div class="p-setup">Multi-site pricing available</div>
-          <hr class="p-divider">
-          <ul class="p-features">
-            <li>Multi-site rollout</li>
-            <li>Volume pricing per location</li>
-            <li>White-label option</li>
-            <li>Dedicated account manager</li>
-            <li>Custom integrations</li>
-            <li>Bespoke voice minute allocations</li>
-          </ul>
-          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener" class="p-cta p-cta-gold">Book a Scoping Call</a>
-        </div>
-
-      </div>
-      <button class="compare-toggle" id="compareToggle">&#9660; See full feature comparison</button>
-      <div class="compare-wrap" id="compareWrap">
-        <table class="compare-table">
-          <thead><tr><th>Feature</th><th>Capture</th><th>Capture+</th><th>Enterprise</th></tr></thead>
-          <tbody>
-            <tr><td>AI website widget</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>Tailored questions</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>Google Sheets logging</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>Email alerts</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>Booking link integration</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>AI voice agent</td><td class="da" aria-label="Not included">·</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>500 voice minutes/month</td><td class="da" aria-label="Not included">·</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>WhatsApp integration</td><td class="da" aria-label="Not included">·</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>Direct calendar booking</td><td class="da" aria-label="Not included">·</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>Priority support</td><td class="da" aria-label="Not included">·</td><td class="ck">✓</td><td class="ck">✓</td></tr>
-            <tr><td>Multi-site / white-label</td><td class="da" aria-label="Not included">·</td><td class="da" aria-label="Not included">·</td><td class="ck">✓</td></tr>
-            <tr><td>Dedicated account manager</td><td class="da" aria-label="Not included">·</td><td class="da" aria-label="Not included">·</td><td class="ck">✓</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="pricing-note">72-hour deployment &bull; No long-term contracts &bull; Cancel with 30 days written notice</p>
+      <p class="cf-small">Prices exclude VAT. Month to month, cancel with 30 days' written notice. <a href="https://www.mediahubink.com/#pricing">Full comparison and multi-site pricing &rarr;</a></p>
     </div>
   </section>
 
   <section class="section">
     <div class="section-inner">
       <div class="cta-panel">
-        <div class="eyebrow">Ready?</div>
-        <h2>Stop losing leads.<br><em>Start with Fredi.</em></h2>
-        <p>Try Fredi now, or book a call to see what it would look like on your website.</p>
+        <div class="eyebrow">Next step</div>
+        <h2>See it built for <em>your</em> business.</h2>
+        <p>A free 20-minute call with Joash: where your enquiries slip through, and what Fredi would look like on your website. No obligation.</p>
         <div class="cta-actions">
-          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer" class="btn-gold">Book a Scoping Call</a>
-          <button id="bookDemoBtn" type="button" class="btn-ghost">Try Fredi Live</button>
+          <a href="https://calendar.app.google/9BEVTDBPUjEqcaRdA" target="_blank" rel="noopener noreferrer" class="btn-gold">Book a call with Joash</a>
+          <a href="https://www.mediahubink.com/demos" class="btn-ghost">See all live demos</a>
         </div>
+        <p class="cf-small" style="margin-top:1.2rem;">Built by Mediahubink, Wakefield. <a href="https://www.mediahubink.com/#case-study">Read about our BizSpace trial &rarr;</a></p>
       </div>
     </div>
   </section>
@@ -531,6 +434,7 @@
     <a href="https://www.mediahubink.com/terms">Terms &amp; Conditions</a>
   </div>
 
+  <button id="bookDemoBtn" type="button" hidden aria-hidden="true"></button>
   <button id="back-to-top" aria-label="Back to top">
     <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
   </button>
@@ -782,13 +686,23 @@
     window.addEventListener("pagehide",sendLead);
     document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")sendLead();});
 
-    document.getElementById("compareToggle").addEventListener("click",function(){
+    (document.getElementById("compareToggle")||{addEventListener(){}}).addEventListener("click",function(){
       const w=document.getElementById("compareWrap"),open=w.classList.toggle("open");
-      this.textContent=open?"▲ Hide comparison":"▼ See full feature comparison";
+      this.textContent=open?"Hide comparison":"See full feature comparison";
     });
 
     (function(){const btn=document.getElementById("back-to-top");if(!btn)return;window.addEventListener("scroll",()=>{btn.classList.toggle("visible",window.scrollY>400);},{passive:true});btn.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"});});})();
     (function(){const els=document.querySelectorAll(".reveal");if(!els.length)return;const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}});},{threshold:0.08});els.forEach(el=>io.observe(el));})();
   </script>
+<script>
+/* Chat-first: put the live chat in the hero and start the conversation straight away (no focus, so phones don't pop the keyboard). */
+(function(){
+  var slot=document.getElementById('heroChatSlot'); if(!slot||typeof widget==='undefined') return;
+  slot.appendChild(widget); widget.classList.add('open'); isOpen=true; document.body.classList.add('cf-ready');
+  if(!chatStarted){ chatStarted=true; setTimeout(startConversation,700); }
+  var start=document.getElementById('openDemoBtn');
+  if(start) start.addEventListener('click',function(){ slot.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(function(){ try{ chatInput.focus({preventScroll:true}); }catch(e){} },400); });
+})();
+</script>
 </body>
 </html>
