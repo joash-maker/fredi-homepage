@@ -336,6 +336,42 @@ body.cf-ready #widgetToggle, body.cf-ready #teaserBubble { display: none !import
   .cf-steps { display: none; }
 }
 </style>
+<style>
+/* ── WHAT LANDS WITH YOU: animated sequence ── */
+.cf-convo { display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+.cf-bubble { flex: 0 0 auto !important; }
+.cf-bubble.user { align-self: flex-end; max-width: 88%; background: var(--gold); color: var(--ink); border-radius: 14px 14px 4px 14px; padding: 0.7rem 0.9rem; font-size: 0.84rem; font-weight: 500; line-height: 1.5; }
+.cf-bubble.bot { max-width: 92%; }
+.cf-time { display: block; font-size: 0.64rem; letter-spacing: 0.04em; opacity: 0.6; margin-bottom: 0.2rem; font-weight: 400; }
+.cfa-typing { display: none; }
+.cf-alert, .cf-sheet { flex: 0 0 auto !important; }
+.cf-card > p { margin-top: auto !important; }
+.cfa-ping { display: inline-block; margin-left: 0.5rem; padding: 0.05rem 0.5rem; border-radius: 20px; background: rgba(74,222,128,0.14); color: #4ade80; font-size: 0.6rem; letter-spacing: 0.08em; vertical-align: 1px; }
+.cf-alert dl div, .cf-alert-head { transition: opacity 0.35s ease, transform 0.35s ease; }
+.cfa-replay-wrap { text-align: center; margin: 1.4rem 0 0; min-height: 1.6rem; }
+.cfa-replay { background: none; border: 1px solid var(--line); color: var(--muted); font: inherit; font-size: 0.78rem; padding: 0.4rem 0.9rem; border-radius: 20px; cursor: pointer; }
+.cfa-replay:hover { color: var(--gold); border-color: var(--gold); }
+/* Starting state (only applied when JS will animate) */
+.cfa-ready .cf-card { opacity: 0.45; transition: opacity 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+.cfa-ready .cf-card.is-on { opacity: 1; border-color: rgba(198,164,108,0.45); box-shadow: 0 0 0 4px rgba(198,164,108,0.05); }
+.cfa-ready .cf-card.is-done { opacity: 1; }
+.cfa-ready .cfa-u, .cfa-ready .cfa-r { opacity: 0; transform: translateY(8px); transition: opacity 0.35s ease, transform 0.35s ease; }
+.cfa-ready .cfa-u.show, .cfa-ready .cfa-r.show { opacity: 1; transform: none; }
+.cfa-ready .cfa-typing.show { display: inline-flex; gap: 4px; align-items: center; align-self: flex-start; padding: 0.7rem 0.85rem; }
+.cfa-typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: 0.35; animation: cfaDot 1.1s infinite; }
+.cfa-typing i:nth-child(2) { animation-delay: 0.18s; } .cfa-typing i:nth-child(3) { animation-delay: 0.36s; }
+@keyframes cfaDot { 0%,70%,100% { opacity: 0.3; transform: none; } 35% { opacity: 1; transform: translateY(-3px); } }
+.cfa-ready .cfa-ping { opacity: 0; transform: scale(0.6); transition: opacity 0.25s ease, transform 0.3s cubic-bezier(.34,1.56,.64,1); }
+.cfa-ready .cfa-ping.show { opacity: 1; transform: none; }
+.cfa-ready .cfa-alert { opacity: 0; transform: translateY(-10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.cfa-ready .cfa-alert.show { opacity: 1; transform: none; }
+.cfa-ready .cfa-alert dl div { opacity: 0; transform: translateX(-6px); }
+.cfa-ready .cfa-alert dl div.show { opacity: 1; transform: none; }
+.cfa-ready .cfa-row { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; overflow: hidden; transition: max-height 0.45s ease, padding 0.45s ease, opacity 0.35s ease 0.1s, background 1.6s ease; background: rgba(74,222,128,0.28); }
+.cfa-ready .cfa-row.show { max-height: 80px; padding-top: 0.5rem; padding-bottom: 0.5rem; opacity: 1; }
+.cfa-ready .cfa-row.settled { background: rgba(74,222,128,0.06); }
+@media (prefers-reduced-motion: reduce) { .cfa-typing i { animation: none; } }
+</style>
 </head>
 <body>
 
@@ -371,15 +407,19 @@ body.cf-ready #widgetToggle, body.cf-ready #teaserBubble { display: none !import
       <div class="tag">What lands with you</div>
       <h2>Your customer gets an answer.<br><em>You get the lead.</em></h2>
       <p class="cf-lead">Every conversation that ends with contact details reaches you two ways, within seconds. These are examples of what you'd receive.</p>
-      <div class="cf-grid3">
-        <div class="cf-card">
+      <div class="cf-grid3" id="cfAnim">
+        <div class="cf-card" data-step="1">
           <div class="cf-card-label">1 · Your customer</div>
-          <div class="cf-bubble bot">Thanks Dave. A leaking combi in WF2 is usually a same-day job. I've passed your details on, and you'll get a call to confirm a time.</div>
+          <div class="cf-convo">
+            <div class="cf-bubble user cfa-u"><span class="cf-time">21:06</span>My combi's leaking and I'm in WF2. Can anyone come today?</div>
+            <div class="cf-bubble bot cfa-typing" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="cf-bubble bot cfa-r"><span class="cf-time">21:07 · Fredi</span>Thanks Dave. A leaking combi in WF2 is usually a same-day job. I've passed your details on, and you'll get a call to confirm a time.</div>
+          </div>
           <p>An instant, specific reply, in your business's name, at any hour.</p>
         </div>
-        <div class="cf-card">
-          <div class="cf-card-label">2 · Your inbox</div>
-          <div class="cf-alert">
+        <div class="cf-card" data-step="2">
+          <div class="cf-card-label">2 · Your inbox <span class="cfa-ping">New email</span></div>
+          <div class="cf-alert cfa-alert">
             <div class="cf-alert-head"><span class="cf-av">F</span><strong>New lead: Dave Smith</strong><em>21:07</em></div>
             <dl>
               <div><dt>Job</dt><dd>Combi boiler leaking</dd></div>
@@ -390,16 +430,17 @@ body.cf-ready #widgetToggle, body.cf-ready #teaserBubble { display: none !import
           </div>
           <p>An email alert with the details and the full conversation.</p>
         </div>
-        <div class="cf-card">
+        <div class="cf-card" data-step="3">
           <div class="cf-card-label">3 · Your spreadsheet</div>
           <div class="cf-sheet" role="table" aria-label="Example Google Sheet row">
             <div class="cf-row cf-head" role="row"><span>Time</span><span>Name</span><span>Job</span><span>Status</span></div>
-            <div class="cf-row cf-new" role="row"><span>21:07</span><span>Dave Smith</span><span>Boiler leak</span><span>New</span></div>
+            <div class="cf-row cf-new cfa-row" role="row"><span>21:07</span><span>Dave Smith</span><span>Boiler leak</span><span>New</span></div>
             <div class="cf-row" role="row"><span>18:42</span><span>Priya K.</span><span>Bathroom quote</span><span>Called</span></div>
           </div>
           <p>Newest at the top of your Google Sheet, ready to follow up.</p>
         </div>
       </div>
+      <p class="cfa-replay-wrap"><button type="button" class="cfa-replay" id="cfaReplay" hidden>&#8635; Play it again</button></p>
     </div>
   </section>
 
@@ -720,6 +761,42 @@ body.cf-ready #widgetToggle, body.cf-ready #teaserBubble { display: none !import
   if(!chatStarted){ chatStarted=true; setTimeout(startConversation,700); }
   var start=document.getElementById('openDemoBtn');
   if(start) start.addEventListener('click',function(){ slot.scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(function(){ try{ chatInput.focus({preventScroll:true}); }catch(e){} },400); });
+})();
+</script>
+<script>
+/* "What lands with you": plays once when scrolled into view; final state shows without JS or with reduced motion. */
+(function(){
+  var root=document.getElementById('cfAnim'); if(!root) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!('IntersectionObserver' in window)) return;
+  var cards=root.querySelectorAll('.cf-card'), q=function(sel){return root.querySelector(sel);};
+  var u=q('.cfa-u'), ty=q('.cfa-typing'), r=q('.cfa-r'), ping=q('.cfa-ping'), al=q('.cfa-alert'), rows=root.querySelectorAll('.cfa-alert dl div'), row=q('.cfa-row');
+  var replay=document.getElementById('cfaReplay'), timers=[];
+  function at(ms,fn){ timers.push(setTimeout(fn,ms)); }
+  function on(i){ cards.forEach(function(c,j){ c.classList.toggle('is-on', j===i); if(j<i) c.classList.add('is-done'); }); }
+  function reset(){
+    timers.forEach(clearTimeout); timers=[];
+    root.classList.add('cfa-ready');
+    cards.forEach(function(c){ c.classList.remove('is-on','is-done'); });
+    [u,ty,r,ping,al,row].forEach(function(el){ el && el.classList.remove('show','settled'); });
+    rows.forEach(function(d){ d.classList.remove('show'); });
+    if(replay) replay.hidden=true;
+  }
+  function play(){
+    reset();
+    at(150,function(){ on(0); });
+    at(350,function(){ u.classList.add('show'); });
+    at(1000,function(){ ty.classList.add('show'); });
+    at(2200,function(){ ty.classList.remove('show'); r.classList.add('show'); });
+    at(3100,function(){ on(1); ping.classList.add('show'); al.classList.add('show'); });
+    rows.forEach(function(d,i){ at(3400+i*220,function(){ d.classList.add('show'); }); });
+    at(4700,function(){ on(2); row.classList.add('show'); });
+    at(5600,function(){ row.classList.add('settled'); cards.forEach(function(c){ c.classList.remove('is-on'); c.classList.add('is-done'); }); if(replay) replay.hidden=false; });
+  }
+  reset();
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ play(); io.disconnect(); } }); },{threshold:0.45});
+  io.observe(root);
+  if(replay) replay.addEventListener('click',play);
 })();
 </script>
 </body>
