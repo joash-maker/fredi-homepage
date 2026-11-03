@@ -13,6 +13,8 @@ const EXTRACTION_PROMPT = `You extract sales-lead details from a chat between Fr
 
 Important: visitors sometimes role-play as one of their own customers (for example "I'm a patient wanting a check-up" or "my tap is leaking") to test the demo. Details given during role-play belong to an imaginary customer and are NOT the prospect's details.
 
+Fredi steps out of character after a role-play (for example "That's what your customers would get"). Details the visitor gives AFTER that point, in answer to Fredi asking for their own details, are the prospect's. Details given before it, while acting as a customer, are not, and Fredi addressing the visitor by a role-play name does not make them real.
+
 The prospect is the business owner or manager interested in buying Mediahubink's service. Extract only the prospect's own details.
 
 Return ONLY a JSON object, no other text:
