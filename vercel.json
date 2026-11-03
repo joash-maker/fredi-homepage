@@ -21,6 +21,11 @@
       "source": "/fredi-homepage-final/:path*",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/privacy-fredi.html",
+      "destination": "https://www.mediahubink.com/privacy",
+      "permanent": true
     }
   ]
 }
