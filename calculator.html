@@ -745,13 +745,8 @@
     .cta-buttons .cta-btn-secondary { width: 100%; }
   }
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6K93P2PT63"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-6K93P2PT63');
-</script>
+<script>window.MHI_GA_ID='G-6K93P2PT63';</script>
+<script src="/consent.js"></script>
 </head>
 <body>
 
@@ -899,7 +894,7 @@
         <button class="cta-btn-secondary" id="cta-results-btn" onclick="submitLead('email_results')">Email me my results</button>
       </div>
       <p class="email-error" id="email-error" role="alert">Please enter a valid email address.</p>
-      <p class="cta-note">No spam. Used only to follow up on what you've asked for.</p>
+      <p class="cta-note">No spam. Used only to follow up on what you've asked for, and kept as a record of your enquiry. <a href="https://www.mediahubink.com/privacy" style="color:inherit;text-decoration:underline;">Privacy policy</a></p>
       <p class="cta-trust">Fixed £495 fee &bull; No obligation to go further &bull; Built in Wakefield</p>
     </div>
 
@@ -925,7 +920,7 @@
     &middot;
     <a href="https://mediahubink.com/privacy">Privacy Policy</a>
     &middot;
-    <a href="https://mediahubink.com/terms">Terms &amp; Conditions</a>
+    <a href="https://mediahubink.com/terms">Terms &amp; Conditions</a> &middot; <a href="#" onclick="return mhiCookieSettings()">Cookie settings</a>
   </p>
 </footer>
 
