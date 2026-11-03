@@ -22,7 +22,7 @@ Return ONLY a JSON object, no other text:
  "name": "", "email": "", "phone": "", "business": "",
  "industry": "one of: Trades, Transport, Hospitality, Fitness, Commercial Property, School, Church, Legal, Estate Agent, Dental, Retail, General",
  "painPoints": "one or two sentences on their problem, or empty",
- "preferredCallback": "when they'd like a call, or empty"}`;
+ "preferredCallback": "when the visitor said suits them for a call, in their words, or empty. Leave empty if they only received a booking link"}`;
 
 const esc = (s) =>
   String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
