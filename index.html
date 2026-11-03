@@ -655,7 +655,7 @@ body.cf-ready #widgetToggle, body.cf-ready #teaserBubble { display: none !import
 
     function resetNudge(){
       if(nudgeTimer)clearTimeout(nudgeTimer);
-      nudgeTimer=setTimeout(()=>{if(nudgeCount<1&&messages.length>0&&!leadCaptured&&!/calendar\.app\.google/.test((messages[messages.length-1]||{}).content||"")){nudgeCount++;sendMessage("[NUDGE]");}},65000);
+      nudgeTimer=setTimeout(()=>{if(nudgeCount<1&&messages.length>0&&!leadCaptured&&!/calendar\.app\.google/.test((messages[messages.length-1]||{}).content||"")){nudgeCount++;sendMessage("[NUDGE]");}},90000);
     }
 
     const GREETING="Hi, I'm Fredi 👋 Want to see how I'd handle enquiries for your kind of business? Pick one below, or just tell me what you do.";

@@ -21,7 +21,7 @@ Return ONLY a JSON object, no other text:
 {"isProspectLead": true or false (true only if the visitor shared their OWN real email or phone as a business owner wanting to be contacted),
  "name": "", "email": "", "phone": "", "business": "",
  "industry": "one of: Trades, Transport, Hospitality, Fitness, Commercial Property, School, Church, Legal, Estate Agent, Dental, Retail, General",
- "painPoints": "one or two sentences on their problem, or empty",
+ "painPoints": "one or two sentences on the problem the visitor themselves described, in their words. Never use Fredi's own sales lines. Empty if they didn't describe one",
  "preferredCallback": "when the visitor said suits them for a call, in their words, or empty. Leave empty if they only received a booking link"}`;
 
 const esc = (s) =>
