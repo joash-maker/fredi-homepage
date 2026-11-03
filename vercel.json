@@ -16,17 +16,11 @@
       ],
       "destination": "https://fredi.mediahubink.com/:path*",
       "permanent": true
-    }
-  ],
-  "headers": [
+    },
     {
-      "source": "/fredi-homepage-final/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
-        }
-      ]
+      "source": "/fredi-homepage-final/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
