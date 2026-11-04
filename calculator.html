@@ -748,6 +748,18 @@
     .cta-buttons .cta-btn,
     .cta-buttons .cta-btn-secondary { width: 100%; }
   }
+
+/* ── Button system: gold pill (primary), outline pill (secondary), dark pill on cream ── */
+.btn-primary,.nav-cta,.p-cta-gold,.cta-btn,.btn-gold{border-radius:999px !important;background:linear-gradient(180deg,#EBCB8E 0%,#C6A46C 100%) !important;color:#15120c !important;border:0 !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -1px 0 rgba(0,0,0,.12),0 8px 24px -10px rgba(198,164,108,.6),0 0 0 1px rgba(232,197,131,.35);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s !important;}
+.btn-primary:hover,.nav-cta:hover,.p-cta-gold:hover,.cta-btn:hover,.btn-gold:hover{background:linear-gradient(180deg,#F0D49C 0%,#CDAC74 100%) !important;transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(0,0,0,.12),0 14px 34px -10px rgba(198,164,108,.75),0 0 0 1px rgba(232,197,131,.5);}
+.btn-ghost,.p-cta-ghost,.p-cta-archer,.nav-fredi,.cta-btn-secondary,.nav-back{border-radius:999px !important;border:1px solid rgba(198,164,108,.45) !important;background:rgba(198,164,108,.04) !important;transition:border-color .2s,background .2s,color .2s,transform .25s !important;}
+.btn-ghost:hover,.p-cta-ghost:hover,.p-cta-archer:hover,.nav-fredi:hover,.cta-btn-secondary:hover,.nav-back:hover{border-color:#C6A46C !important;background:rgba(198,164,108,.1) !important;color:#E8C583 !important;transform:translateY(-1px);}
+.about-btn{border-radius:999px !important;background:linear-gradient(180deg,#26272a 0%,#101112 100%) !important;color:#F7F5F1 !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 26px -12px rgba(16,17,18,.6);}
+.about-btn .btn-ico{background:linear-gradient(180deg,#EBCB8E,#C6A46C);color:#101112;}
+.btn-ico{width:30px;height:30px;border-radius:50%;background:#101112;color:#E8C583;display:inline-flex;align-items:center;justify-content:center;margin-left:.75rem;flex-shrink:0;transition:transform .25s cubic-bezier(.2,.7,.2,1);}
+a:has(> .btn-ico),button:has(> .btn-ico){display:inline-flex !important;align-items:center;padding-right:.45rem !important;padding-top:.45rem !important;padding-bottom:.45rem !important;}
+a:hover > .btn-ico,button:hover > .btn-ico{transform:translateX(3px);}
+@media (prefers-reduced-motion: reduce){.btn-ico{transition:none;}}
 </style>
 <script>window.MHI_GA_ID='G-6K93P2PT63';</script>
 <script src="/consent.js"></script>
@@ -894,7 +906,7 @@
         <input type="email" class="email-input" id="email-input" placeholder="your@email.com" aria-label="Email address">
       </div>
       <div class="cta-buttons">
-        <button class="cta-btn" id="cta-audit-btn" onclick="submitLead('audit_request')">Request my £495 audit</button>
+        <button class="cta-btn" id="cta-audit-btn" onclick="submitLead('audit_request')">Request my £495 audit<span class="btn-ico" aria-hidden="true"><svg viewBox="0 0 16 16" width="13" height="13"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
         <button class="cta-btn-secondary" id="cta-results-btn" onclick="submitLead('email_results')">Email me my results</button>
       </div>
       <p class="email-error" id="email-error" role="alert">Please enter a valid email address.</p>
