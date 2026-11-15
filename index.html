@@ -540,7 +540,7 @@ a:hover > .btn-ico,button:hover > .btn-ico{transform:translateX(3px);}
   <div id="widget" class="widget">
     <div class="chat-header">
       <div class="chat-av">F</div>
-      <div><h1>Fredi</h1><p class="chat-status"><span class="live-dot" aria-hidden="true"></span>Online &middot; replies in seconds</p></div>
+      <div><h1>Fredi</h1><p class="chat-status"><span class="live-dot" aria-hidden="true"></span>AI assistant &middot; replies in seconds</p></div>
       <div class="chat-header-actions">
         <!-- Copy button -->
         <button class="hdr-btn" id="fredi-copy" title="Copy conversation">
@@ -673,7 +673,7 @@ a:hover > .btn-ico,button:hover > .btn-ico{transform:translateX(3px);}
       nudgeTimer=setTimeout(()=>{if(nudgeCount<1&&messages.length>0&&!leadCaptured&&!/calendar\.app\.google/.test((messages[messages.length-1]||{}).content||"")){nudgeCount++;sendMessage("[NUDGE]");}},90000);
     }
 
-    const GREETING="Hi, I'm Fredi 👋 Want to see how I'd handle enquiries for your kind of business? Pick one below, or just tell me what you do.";
+    const GREETING="Hi, I'm Fredi, Mediahubink's AI assistant 👋 Want to see how I'd handle enquiries for your kind of business? Pick one below, or just tell me what you do.";
 
     function startConversation(){
       showTyping();
